@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+
+    <title>LncExpDB: Gene page</title>
+
+</head>
+
+<body style="font-family: Arial">
+<div th:replace="~{common/top_header :: header}"></div>
+<div class="breadcrumb" style="margin-top: 20px">
+    <li><a href="/LncExpDB">Home</a></li>
+    <li>Genes</li>
+</div>
+
+<div class="row" style="padding-top: 30px">
+    <div class="col-md-12">
+        <div class="col-md-2" role="complementary">
+            <div class=" bs-docs-sidebar" style="width: 200px">
+                <ul class="nav nav-stacked nav-pills" style="background-color: white;border-bottom: 1px solid #ecedf1">
+                    <li class="active"><a href="#gene_info">Summary</a></li>
+                    <li><a href="#trans_info">Transcript Infomation</a></li>
+                    <li><a href="#hpa_panel">Normal Tissue</a></li>
+                    <li><a href="#encode_panel">Normal Cell Line</a></li>
+                    <li><a href="#cell_line_panel">Cancer Cell Line</a></li>
+                    <li><a href="#subcellular_panel">Subcellular Localization</a></li>
+                    <li><a href="#exosome_panel">Exosome</a></li>
+                    <li><a href="#virus_infection_panel">Virus Infection</a></li>
+                    <li><a href="#preimplantation_panel">Preimplantation Embryo</a></li>
+                    <li><a href="#development_panel">Organ Development</a></li>
+                    <li><a href="#cell_differentiation_panel">Cell Differentiation</a></li>
+                    <li><a href="#circadian_panel">Circadian Rhythm</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-10" style="padding-right: 20px">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel-group">
+                        <div class="panel panel-info">
+                            <div class="panel-heading" id="gene_info">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_summary">
+                                        <span class="glyphicon glyphicon-triangle-bottom"></span> Summary
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="panel-collapse collapse in" id="collapse_summary">
+
+                                <div class="panel-body" th:attr="data-geneid=${geneid}">
+
+                                    <div class="col-md-12">
+                                        <div class="col-xs-6 gc-double-column">
+                                            <table id="gene_table" class="table table-striped"></table>
+                                        </div>
+
+                                        <div class="col-xs-6">
+                                            <table id="gene_table1" class="table table-striped"></table>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <table id="gene_table2" class="table table-striped"></table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="panel-group">
+                        <div class="panel panel-info">
+                            <div class="panel-heading" id="trans_info">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_transcript">
+                                        <span class="glyphicon glyphicon-triangle-bottom"></span> Transcript Infomation
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="panel-collapse collapse in" id="collapse_transcript">
+                                <div class="panel-body" th:attr="data-geneid=${geneid}" style="white-space: nowrap; overflow: hidden; overflow-x: scroll;-webkit-backface-visibility: hidden;-webkit-overflow-scrolling: touch;">
+                                    <table class="table table-bordered table-striped table-hover" id="transcript_table">
+                                        <thead>
+                                        <tr>
+                                            <th>Transcript ID</th>
+                                            <th>Chromosome</th>
+                                            <th>Strand</th>
+                                            <th>Start Site</th>
+                                            <th>End Site</th>
+                                            <th>Transcript Length</th>
+                                            <th>Exon Length</th>
+                                            <th>Exon Number</th>
+                                            <th>Classification</th>
+                                            <th>Alias</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="panel-group">
+                        <div class="panel panel-info">
+                            <div class="panel-heading" id="hpa_panel">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_hpa">
+                                        <span class="glyphicon glyphicon-triangle-bottom"></span> Normal Tissue
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="panel-collapse collapse in" id="collapse_hpa">
+
+                                <table id="hpa_table" class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <!--<th>Gene ID</th>-->
+                                        <th>Gene ID</th>
+                                        <th><a title="Tissue-Specific Index, τ value interpolates the entire range between 0 for housekeeping genes and 1 for strictly one-tissue-specific genes.">&tau;-value <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th><a title="Biological contition that shows the maximum TPM value">Max Expression <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th>Max TPM</th>
+                                        <th>Min TPM</th>
+                                        <th>Median TPM</th>
+                                        <th>Average TPM</th>
+                                        <th><a title="Coefficient of Variation">CV <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th>Expression Breadth</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+
+                                <div class="panel-body" id="hpa_plot">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="panel-group">
+                        <div class="panel panel-info">
+                            <div class="panel-heading" id="encode_panel">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_encode">
+                                        <span class="glyphicon glyphicon-triangle-bottom"></span> Normal Cell Line
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="panel-collapse collapse in" id="collapse_encode">
+
+                                <table id="encode_table" class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <!--<th>Gene ID</th>-->
+                                        <th>Gene ID</th>
+                                        <th><a title="Tissue-Specific Index, τ value interpolates the entire range between 0 for housekeeping genes and 1 for strictly one-tissue-specific genes.">&tau;-value <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th><a title="Biological contition that shows the maximum TPM value">Max Expression <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th>Max TPM</th>
+                                        <th>Min TPM</th>
+                                        <th>Median TPM</th>
+                                        <th>Average TPM</th>
+                                        <th><a title="Coefficient of Variation">CV <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th>Expression Breadth</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+
+                                <div class="panel-body" id="encode_plot">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="panel-group">
+                        <div class="panel panel-info">
+                            <div class="panel-heading" id="cell_line_panel">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_cell_line">
+                                        <span class="glyphicon glyphicon-triangle-bottom"></span> Cancer Cell Line
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="panel-collapse collapse in" id="collapse_cell_line">
+
+                                <table id="ccle_table" class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <!--<th>Gene ID</th>-->
+                                        <th>Gene ID</th>
+                                        <th><a title="Tissue-Specific Index, τ value interpolates the entire range between 0 for housekeeping genes and 1 for strictly one-tissue-specific genes.">&tau;-value <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th><a title="Biological contition that shows the maximum TPM value">Max Expression <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th>Max TPM</th>
+                                        <th>Min TPM</th>
+                                        <th>Median TPM</th>
+                                        <th>Average TPM</th>
+                                        <th><a title="Coefficient of Variation">CV <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th>Expression Breadth</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+
+                                <div class="panel-body" id="cell_line_plot">
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion"
+                                               href="#collapseTwo" style="color: #0c0c0c;font-size: 16px">
+                                                Click here to get the extension of cancer cell line abbreviations.
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <strong>ALL: </strong>Acute Lymphoblastic Leukemia; <strong>BLCA:</strong> Bladder Urothelial Carcinoma; <strong>BRCA:</strong> Breast invasive carcinoma;
+                                            <strong>CESC:</strong> Cervical squamous cell carcinoma and endocervical adenocarcinoma; <strong>CLL: </strong>
+                                            Chronic lymphocytic leukemia; <strong>COAD: </strong>Colon adenocarcinoma; <strong>DLBC: </strong>
+                                            Lymphoid Neoplasm Diffuse Large B-cell Lymphoma; <strong>ESCA: </strong>Esophageal carcinoma;
+                                            <strong>GBM: </strong>Glioblastoma multiforme; <strong>HNSC: </strong>Head and Neck squamous cell carcinoma;
+                                            <strong>KICH: </strong>Kidney Chromophobe; <strong>KIRC: </strong>Kidney renal clear cell carcinoma;
+                                            <strong>KIRP: </strong>Kidney renal papillary cell carcinoma; <strong>LAML: </strong>Acute Myeloid Leukemia;
+                                            <strong>LGG: </strong>Brain Lower Grade Glioma; <strong>LIHC: </strong>Liver hepatocellular carcinoma;
+                                            <strong>LUAD: </strong>Lung adenocarcinoma; <strong>LUSC: </strong>Lung squamous cell carcinoma;
+                                            <strong>MESO: </strong>Mesothelioma; <strong>OV: </strong>Ovarian serous cystadenocarcinoma;
+                                            <strong>PAAD: </strong>Pancreatic adenocarcinoma; <strong>PCPG: </strong>Pheochromocytoma and Paraganglioma;
+                                            <strong>PRAD: </strong>Prostate adenocarcinoma; <strong>READ: </strong>Rectum adenocarcinoma;
+                                            <strong>SARC: </strong>Sarcoma; <strong>SKCM: </strong>Skin Cutaneous Melanoma;
+                                            <strong>STAD: </strong>Stomach adenocarcinoma; <strong>TGCT: </strong>Testicular Germ Cell Tumors;
+                                            <strong>THCA: </strong>Thyroid carcinoma; <strong>THYM: </strong>Thymoma;
+                                            <strong>UCEC: </strong>Uterine Corpus Endometrial Carcinoma;
+                                            <strong>UCS: </strong>Uterine Carcinosarcoma; <strong>UVM: </strong>Uveal Melanoma;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="panel-group">
+                        <div class="panel panel-info">
+                            <div class="panel-heading" id="subcellular_panel">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_subcellular">
+                                        <span class="glyphicon glyphicon-triangle-bottom"></span> Subcellular Localization
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="panel-collapse collapse in" id="collapse_subcellular">
+
+                                <div style="white-space: nowrap; overflow: hidden; overflow-x: scroll;-webkit-backface-visibility: hidden;-webkit-overflow-scrolling: touch;">
+                                    <table id="hkts_table" class="display" width="80%" cellspacing="0" style="font-size:13px">
+                                        <thead>
+                                        <tr>
+                                            <th>Gene ID</th>
+                                            <th>ER Membrane</th>
+                                            <th>ER Lumen</th>
+                                            <th>Nuclear Lamina</th>
+                                            <th>Mitochondrial Matrix</th>
+                                            <th>Cytosole</th>
+                                            <th>Nucleolus</th>
+                                            <th>Nucleus</th>
+                                            <th>Nuclear Pore</th>
+                                            <th>Outer Mito. Membrane</th>
+                                            <th>Breadth</th>
+                                        </tr>
+                                        </thead>
+                                        </tfoot>
+                                    </table>
+                                </div>
+
+                                <div class="panel-body" id="subcellular_plot">
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="panel-group">
+                        <div class="panel panel-info">
+                            <div class="panel-heading" id="exosome_panel">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_exosome">
+                                        <span class="glyphicon glyphicon-triangle-bottom"></span> Exosome
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="panel-collapse collapse in" id="collapse_exosome">
+
+                                <div class="row" style="padding-top: 10px;padding-left: 5px">
+                                    <div class="col-md-6">
+                                        <select id="exosome" name="type" class="data_type form-control">
+                                            <option value="colorectal">Select a dataset</option>
+                                            <option value="colorectal">Blood exosomes from colorectal cancer patients vs. normal control</option>
+                                            <option value="coronary">Blood exosomes from colorectal heart disease patients vs. normal control</option>
+                                            <option value="hepatocellular">Blood exosomes from hepatocellular carcinoma patients vs. normal control</option>
+                                            <option value="pancreatic">Blood exosomes from pancreatic adenocarcinoma patients vs. normal control</option>
+                                            <option value="escc">Blood exosomes from early-stage esophageal squamous cell carcinoma patients vs. normal control</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <table id="exosome_table" class="table table-bordered table-striped table-hover" style="width: 97%">
+                                        <thead>
+                                        <tr>
+                                            <!--<th>Gene ID</th>-->
+                                            <th>Gene ID</th>
+                                            <th><a title="The sample type corresponding to the maximum TPM value">baseMean <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                            <th><a title="The sample type corresponding to the maximum TPM value">log2foldchange <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                            <th><a title="Standard error">lfcse <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                            <th><a title="Wald statistic">stat <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                            <th><a title="Wald test p-value">p value <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                            <th><a title="BH adjusted p-value">padj <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="panel-body" id="exosome_plot" >
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="panel-body" id="exosome2_plot" >
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="panel-group">
+                        <div class="panel panel-info">
+                            <div class="panel-heading" id="virus_infection_panel">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_virus">
+                                        <span class="glyphicon glyphicon-triangle-bottom"></span> Virus Infection
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="panel-collapse collapse in" id="collapse_virus">
+
+                                <div class="row" style="padding-top: 10px;padding-left: 5px">
+                                    <div class="col-md-4">
+                                        <select id="virus" name="type" class="data_type form-control">
+                                            <option value="sars2">Select a dataset</option>
+                                            <option value="sars2">COVID patients vs. normal control</option>
+                                            <option value="hiv">HIV infected vs. normal control</option>
+                                            <option value="hbv">HBV infected vs. normal control</option>
+                                            <option value="hcv">HCV infected vs. normal control</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <table id="virus_table" class="table table-bordered table-striped table-hover" style="width: 97%">
+                                        <thead>
+                                        <tr>
+                                            <th>Gene ID</th>
+                                            <th><a title="The sample type corresponding to the maximum TPM value">baseMean <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                            <th><a title="The sample type corresponding to the maximum TPM value">log2foldchange <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                            <th><a title="Standard error">lfcse <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                            <th><a title="Wald statistic">stat <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                            <th><a title="Wald test p-value">p value <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                            <th><a title="BH adjusted p-value">padj <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="panel-body" id="virus_plot" >
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="panel-body" id="hiv_plot" >
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="panel-group">
+                        <div class="panel panel-info">
+                            <div class="panel-heading" id="preimplantation_panel">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_preimplantation">
+                                        <span class="glyphicon glyphicon-triangle-bottom"></span> Preimplantation Embryo
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="panel-collapse collapse in" id="collapse_preimplantation">
+                                <div class="row" style="padding-top: 10px;padding-left: 5px">
+                                    <div class="col-md-4">
+                                        <select id="preimplantation" name="type" class="data_type form-control">
+                                            <option value="preimplantation1">Select a dataset</option>
+                                            <option value="preimplantation1">Preimplantation dataset1</option>
+                                            <option value="preimplantation2">Preimplantation dataset2</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <table id="preimplantation_hkts_table" class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <!--<th>Gene ID</th>-->
+                                        <th>Gene ID</th>
+                                        <th><a title="Tissue-Specific Index, τ value interpolates the entire range between 0 for housekeeping genes and 1 for strictly one-tissue-specific genes.">τ-Value <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th><a title="Biological contition that shows the maximum TPM value">Max Expression <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th>Max TPM</th>
+                                        <th>Min TPM</th>
+                                        <th>Median TPM</th>
+                                        <th>Average TPM</th>
+                                        <th><a title="Coefficient of Variation">CV <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th>Expression Breadth</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                                <table id="preimplantation_pattern_table" class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <!--<th>Gene ID</th>-->
+                                        <th>Gene ID</th>
+                                        <th>P value</th>
+                                        <th><a title="The goodness of fit, R2, is used for selecting genes with clear time-expression trends in maSigPro. In general, for R2 = 0.7 the method archives a good control of FDR with negligible FNR.">R<SUP>2</SUP> <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th>K=4</th>
+                                        <th>K=5</th>
+                                        <th>K=6</th>
+                                        <th>K=7</th>
+                                        <th>K=8</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="panel-body" id="preimplantation_plot2">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="panel-body" id="preimplantation_plot">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="panel-group">
+                        <div class="panel panel-info">
+                            <div class="panel-heading" id="development_panel">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_development">
+                                        <span class="glyphicon glyphicon-triangle-bottom"></span> Organ Development
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="panel-collapse collapse in" id="collapse_development">
+                                <div class="panel-body" id="development_plot">
+                                </div>
+                                <div class="row" style="padding-top: 10px;padding-bottom: 10px;padding-left: 5px"><div class="col-md-3">
+                                    <select id="development" name="type" class="data_type form-control">
+                                        <option value="brain">Select a tissue</option>
+                                        <option value="brain">Brain</option>
+                                        <option value="cerebellum">Cerebellum</option>
+                                        <option value="heart">Heart</option>
+                                        <option value="kidney">Kidney</option>
+                                        <option value="liver">Liver</option>
+                                        <option value="ovary">Ovary</option>
+                                        <option value="testis">Testis</option>
+                                    </select>
+                                </div>
+                                </div>
+                                <table id="development_hkts_table" class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <!--<th>Gene ID</th>-->
+                                        <th>Gene ID</th>
+                                        <th><a title="Tissue-Specific Index, τ value interpolates the entire range between 0 for housekeeping genes and 1 for strictly one-tissue-specific genes.">τ-Value <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th><a title="Biological contition that shows the maximum TPM value">Max Expression <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th>Max TPM</th>
+                                        <th>Min TPM</th>
+                                        <th>Median TPM</th>
+                                        <th>Average TPM</th>
+                                        <th><a title="Coefficient of Variation">CV <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th>Expression Breadth</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                                <table id="development_pattern_table" class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Gene ID</th>
+                                        <th>P value</th>
+                                        <th><a title="The goodness of fit, R2, is used for selecting genes with clear time-expression trends in maSigPro. In general, for R2 = 0.7 the method archives a good control of FDR with negligible FNR.">R<SUP>2</SUP> <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th>K=4</th>
+                                        <th>K=5</th>
+                                        <th>K=6</th>
+                                        <th>K=7</th>
+                                        <th>K=8</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                                <div class="panel-body" id="single_development_plot" style="min-height: 350px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="panel-group">
+                        <div class="panel panel-info">
+                            <div class="panel-heading" id="cell_differentiation_panel">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_differentiation">
+                                        <span class="glyphicon glyphicon-triangle-bottom"></span> Cell Differentiation
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="panel-collapse collapse in" id="collapse_differentiation">
+                                <table id="differentiation_hkts_table" class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <!--<th>Gene ID</th>-->
+                                        <th>Gene ID</th>
+                                        <th><a title="Tissue-Specific Index, τ value interpolates the entire range between 0 for housekeeping genes and 1 for strictly one-tissue-specific genes.">τ-Value <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th><a title="Biological contition that shows the maximum TPM value">Max Expression <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th>Max TPM</th>
+                                        <th>Min TPM</th>
+                                        <th>Median TPM</th>
+                                        <th>Average TPM</th>
+                                        <th><a title="Coefficient of Variation">CV <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th>Expression Breadth</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                                <table id="differentiation_pattern_table" class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Gene ID</th>
+                                        <th>P value</th>
+                                        <th><a title="The goodness of fit, R2, is used for selecting genes with clear time-expression trends in maSigPro. In general, for R2 = 0.7 the method archives a good control of FDR with negligible FNR.">R<SUP>2</SUP> <span class="glyphicon glyphicon-question-sign"></span></a></th>
+                                        <th>K=4</th>
+                                        <th>K=5</th>
+                                        <th>K=6</th>
+                                        <th>K=7</th>
+                                        <th>K=8</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                                <div class="panel-body" id="differentiation_plot">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="panel-group">
+                        <div class="panel panel-info">
+                            <div class="panel-heading" id="circadian_panel">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_circadian">
+                                        <span class="glyphicon glyphicon-triangle-bottom"></span> Circadian Rhythm
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="panel-collapse collapse in" id="collapse_circadian">
+                                <div style="white-space: nowrap; overflow: hidden; overflow-x: scroll;-webkit-backface-visibility: hidden;-webkit-overflow-scrolling: touch;">
+                                    <table id="circadian_table" class="display" width="100%" cellspacing="0" style="font-size:13px">
+                                        <thead>
+                                        <tr>
+                                            <!--<th>Gene ID</th>-->
+                                            <th>Gene ID</th>
+                                            <th>JTK P-value</th>
+                                            <th>JTK BH.Q</th>
+                                            <th>JTK Period</th>
+                                            <th>JTK Adjphase</th>
+                                            <th>JTK Amplitude</th>
+                                            <th>LS P-value</th>
+                                            <th>LS BH.Q</th>
+                                            <th>LS Period</th>
+                                            <th>LS Adjphase</th>
+                                            <th>LS Amplitude</th>
+                                            <th>Meta2d P-value</th>
+                                            <th>Meta2d BH.Q</th>
+                                            <th>Meta2d Period</th>
+                                            <th>Meta2d Adjphase</th>
+                                            <th>Meta2d Amplitude</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div class="panel-body" id="circaidan_plot">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<div th:replace="~{common/common_js::common_js}"></div>
+<script src="https://bigd.big.ac.cn/js/headerfooter-full.js"></script>
+<script th:src="@{/highcharts/highcharts.js}"></script>
+<script th:src="@{/highcharts/exporting.js}"></script>
+<script th:src="@{js/genetable.js}"></script>
+<script th:src="@{/js/GenePage/GEHpa.js}"></script>
+<script th:src="@{/js/GenePage/GEEncode.js}"></script>
+<script th:src="@{/js/GenePage/GECell.js}"></script>
+<script th:src="@{/js/GenePage/GEDevelopment.js}"></script>
+<script th:src="@{/js/GenePage/GEDevelopmentTissue.js}"></script>
+<script th:src="@{/js/GenePage/GESubcellular.js}"></script>
+<script th:src="@{/js/GenePage/GEExosome.js}"></script>
+<script th:src="@{/js/GenePage/GEExosome2.js}"></script>
+<script th:src="@{/js/GenePage/GEPreimplantation.js}"></script>
+<script th:src="@{/js/GenePage/GEPreimplantation2.js}"></script>
+<script th:src="@{/js/GenePage/GEDifferentiation.js}"></script>
+<script th:src="@{/js/GenePage/GECircadian.js}"></script>
+<script th:src="@{/js/GenePage/GEVirus.js}"></script>
+<script th:src="@{/js/GenePage/HKTSTable.js}"></script>
+<script th:src="@{/js/GenePage/PatternTable.js}"></script>
+<script th:src="@{/js/GenePage/CircadianTable.js}"></script>
+<script th:src="@{/js/GenePage/SubcellularTable.js}"></script>
+<script th:src="@{/js/GenePage/DiffExpTable.js}"></script>
+</html>

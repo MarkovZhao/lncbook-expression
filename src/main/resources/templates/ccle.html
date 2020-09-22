@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/components/icon.min.css"/>
+    <meta charset="UTF-8">
+
+    <title>LncExpDB: Cell Line</title>
+</head>
+
+<body style="font-family: Arial">
+<div th:replace="~{common/top_header :: header}"></div>
+
+<div class="breadcrumb" style="margin-top: 20px">
+    <li><a href="/LncExpDB">Home</a></li>
+    <li>Contexts</li>
+    <li><a href="/LncExpDB/help#collection" target="_blank" title="Browse the detailed information of all datasets in the current context.">Cancer Cell Line <span class="glyphicon glyphicon-info-sign"></span></a></li>
+</div>
+
+<div style="margin-left: 30px;margin-bottom: 10px;margin-right: 30px">
+    <p>
+        <span>
+            LncExpDB identifies and characterizes cell-specific genes and consistently expressed genes
+            for cancer cell lines, and further predicts <a href="/LncExpDB/help#interaction_prediction" target="_blank">lncRNA-mRNA interactions</a> based on co-expression
+            networks.
+        </span>
+    </p>
+
+    <p>
+        <span>
+            In addition to the defined <a href="/LncExpDB/help#featured%20genes">featured genes</a>, you can also explore a group of genes of interest
+            with customized filters.
+        </span>
+    </p>
+</div>
+
+<ul class="nav nav-tabs" role="tablist" style="padding-top: 10px;padding-left: 6px;padding-right: 6px">
+
+    <li role="presentation" class="active">
+        <a href="#hkts" role="tab" data-toggle="tab">Featured Genes</a>
+    </li>
+
+    <li role="presentation">
+        <a href="#coexpression" role="tab" data-toggle="tab"> Interactions</a>
+    </li>
+
+</ul>
+
+<div class="tab-content" style="min-height: 500px; margin-bottom: 30px; padding-top: 15px;padding-left: 15px;padding-right: 15px">
+
+    <div role="tabpanel" class="tab-pane active" id="hkts">
+
+        <div class="panel-group">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse_filter_hkts">
+                            <span class="glyphicon glyphicon-triangle-bottom"></span> <a href="/LncExpDB/help#featured%20genes" title="View the defined featured genes or explore a group of lncRNA genes of interest with customized filtration.">Filter <span class="glyphicon glyphicon-question-sign"></span></a>
+                        </a>
+                    </h4>
+                </div>
+                <div class="panel-collapse collapse in" id="collapse_filter_hkts">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div>
+                                            <label class="radio control-label" style="text-align: left;padding: 0 0 0 20px">
+                                                <input type="radio" name="radio" value="0" id="chkBrowse" checked="checked"/>Specifically/Consistently Expressed Genes:
+                                            </label>
+                                        </div>
+
+                                        <div class="well">
+                                            Filter Criteria:
+                                            <ul>
+                                                <li>Specifically Expressed Genes: &tau; >= 0.9; Max TPM >= 10<a href="#" id="tsr">  click here</a></li>
+                                                <li>Consistently Expressed Genes: &tau; <= 0.35; Max TPM >= 10<a href="#" id="hkr">  click here</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div>
+                                            <label class="radio control-label" style="text-align: left;font-size: 14px;padding: 0 0 0 20px">
+                                                <input type="radio" name="radio" value="0" id="chkTissue" checked="checked"/>Cell-specific Genes:
+                                                <a title="For example, GBM-specific genes are the specifically expressed genes which show the highest expression values in GBM among all the cancer cell lines.">
+                                                    <span class="glyphicon glyphicon-question-sign"></span>
+                                                </a>
+                                            </label>
+
+                                            <select name="tissue" class="tissue form-control" id="tissuename">
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div>
+                                            <label class="radio control-label" style="text-align: left;padding: 10px 0 5px 20px">
+                                                <input type="radio" name="radio" value="0" id="chkDiy" checked="checked"/>Customized Filter:
+                                            </label>
+                                        </div>
+
+                                        <div class="well" style="min-height: 250px">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-12">&tau;-Value: </label>
+                                                <div class="col-md-6">
+                                                    <input type="number" name="tau1" value="0" placeholder="minimum value"
+                                                                             min="0" max="1" step="0.1"
+                                                                             id="tau1"
+                                                                             class="form-control"/>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="number" name="tau2" value="1" placeholder="maximum value"
+                                                                             min="0" max="1" step="0.1"
+                                                                             id="tau2"
+                                                                             class="form-control"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-12">Breadth: </label>
+                                                <div class="col-md-6">
+                                                    <input type="number" name="minBreadth" value="0" class="form-control" id="minBreadth"
+                                                           min="0" max="51" step="1"
+                                                           placeholder="minimum value"/>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="number" name="maxBreadth" value="51" class="form-control" id="maxBreadth"
+                                                           min="0" max="51" step="1"
+                                                           placeholder="maximum value"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-12">CV: </label>
+                                                <div class="col-md-6">
+                                                    <input type="number" name="cv1" value="0" class="form-control" id="cv1" min="0" max="8"
+                                                           step="0.1"
+                                                           placeholder="minimum value"/>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="number" name="cv2" value="8" class="form-control" id="cv2" min="0" max="8"
+                                                           step="0.1"
+                                                           placeholder="maximum value"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group form-group-sm">
+                                                <div class="input-group-btn" style="padding-left: 15px;padding-top: 15px">
+                                                    <button class="btn btn-primary btn-sm" type="button" id="tau"
+                                                            data-loading-text="Loading...">
+                                                        <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>  Filter
+                                                    </button>
+                                                </div>
+                                            </div>
+<!--                                            <div class="form-group form-group-sm" style="padding-left: 15px;margin-top: 50px">-->
+<!--                                                <button class="btn btn-primary btn-sm" type="button" id="tau"-->
+<!--                                                        data-loading-text="Loading...">-->
+<!--                                                    <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>  Filter-->
+<!--                                                </button>-->
+<!--                                            </div>-->
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-2" style="padding-top: 180px">
+                                        <div class="col-md-12" id="error" style="display: none">
+                                            <div class="alert alert-error">
+                                                <p id="msg"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="margin-top: 50px">
+                                            <div class="col-md-12">
+                                                <div class="input-group-btn" style="padding-top: 30px">
+<!--                                                    <button class="btn btn-primary btn-sm" type="button" id="tau"-->
+<!--                                                            data-loading-text="Loading...">-->
+<!--                                                        <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>  Filter-->
+<!--                                                    </button>-->
+                                                    <button class="btn btn-success btn-sm" type="button" id="reset"
+                                                            data-loading-text="Loading..."><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Reset
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-group">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse_hkts">
+                            <span class="glyphicon glyphicon-triangle-bottom"></span> <a href="/LncExpDB/help#expression%20capacity" target="_blank" title="LncRNA genes with maxium TPM less than 1.0 TPM are filtered out here.">Expression Profile <span class="glyphicon glyphicon-question-sign"></span></a>
+                        </a>
+                    </h4>
+                </div>
+                <div class="panel-collapse collapse in" id="collapse_hkts">
+                    <div class="panel-body">
+                        <div class="row">
+
+                            <div id="expression_plot"></div>
+
+                            <div class="form-horizontal" style="align-content: center">
+                                <div class="form-group">
+                                    <div class="col-md-4" style="padding-left: 40px">
+                                        <span>Search By: </span>
+                                        <select name="filter" class="filter2" id="feature_sect2" style="width: 200px;height: 28px">
+                                            <option value="geneid">Gene ID</option>
+                                            <option value="symbol">Gene Symbol</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3" style="width: 300px">
+                                        <select name="feature" class="feature2 form-control" style="width: 200px" id="featurelnc2" data-placeholder="eg. HSALNG0000002">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <span class="cancel col-md-1" id="featurelnc_cancel2" hidden="hidden">
+                                            <a><span class="glyphicon glyphicon-remove-circle"></span></a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <table id="hkts_table" class="table table-striped table-bordered"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="coexpression">
+        <div class="panel-group">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse_filter_ce">
+                            <span class="glyphicon glyphicon-triangle-bottom"></span> <a href="/LncExpDB/help#contexts" target="_blank" title="View the predicted cis or trans interactions between featured lncRNA genes and featured protein-coding genes.">Filter <span class="glyphicon glyphicon-question-sign"></span></a>
+                        </a>
+                    </h4>
+                </div>
+                <div class="panel-collapse collapse in" id="collapse_filter_ce">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div>
+                                            <label class="radio control-label" style="text-align: left;padding: 0 0 0 20px">
+                                                <input type="radio" name="radio" value="0" id="ce_chkBrowse" checked="checked"/><i>Cis</i> or <i>Trans</i> Interactions:
+                                            </label>
+                                        </div>
+
+                                        <div class="well">
+                                            Filter Criteria:
+                                            <ul>
+                                                <li><i>Cis</i> Interactions: <a href="#" id="ce_tsr"> click here</a></li>
+                                                <li><i>Trans</i> Interactions: <a href="#" id="ce_hkr"> click here</a></li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-5">
+                                        <div>
+                                            <label class="radio control-label" style="text-align: left;padding: 10px 0 5px 20px">
+                                                <input type="radio" name="radio" value="0" id="ce_chkDiy" checked="checked"/>Customized Filter:
+                                            </label>
+                                        </div>
+                                        <div class="well" style="min-height: 250px">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-12">P-Value: </label>
+                                                <div class="col-md-6"><input type="number" name="ce_tau1" value="0" placeholder="minimum value"
+                                                                             min="0" max="0" step="0.1"
+                                                                             id="ce_tau1"
+                                                                             class="form-control"/>
+                                                </div>
+                                                <div class="col-md-6"><input type="number" name="ce_tau2" value="1" placeholder="maximum value"
+                                                                             min="0" max="0.1" step="0.01"
+                                                                             id="ce_tau2"
+                                                                             class="form-control"/></div>
+                                            </div>
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-12">Pearson Correlation Coefficient: </label>
+                                                <div class="col-md-6">
+                                                    <input type="number" name="ce_minBreadth" value="0.5" class="form-control" id="ce_minBreadth"
+                                                           min="0.5" max="1" step="0.01"
+                                                           placeholder="minimum value"/>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="number" name="ce_maxBreadth" value="1" class="form-control" id="ce_maxBreadth"
+                                                           min="1" max="1" step="1"
+                                                           placeholder="maximum value"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-12">Distance between LncRNA and mRNA: </label>
+                                                <div class="col-md-6">
+                                                    <input type="number" name="ce_cv1" value="0" class="form-control" id="ce_cv1" min="0" max="1000000000"
+                                                           step="1000"
+                                                           placeholder="minimum value"/>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="number" name="ce_cv2" value="10000" class="form-control" id="ce_cv2" min="0" max="10000000000"
+                                                           step="1000"
+                                                           placeholder="maximum value"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group form-group-sm">
+                                                <div class="input-group-btn" style="padding-left: 15px;padding-top: 15px">
+                                                    <button class="btn btn-primary btn-sm" type="button" id="ce_tau"
+                                                            data-loading-text="Loading...">
+                                                        <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>  Filter
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2" style="padding-top: 180px">
+                                        <div class="col-md-12" id="ce_error" style="display: none">
+                                            <div class="alert alert-error">
+                                                <p id="ce_msg"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="margin-top: 50px">
+                                            <div class="col-md-12">
+                                                <div class="input-group-btn" style="padding-top: 30px">
+
+                                                    <button class="btn btn-success btn-sm" type="button" id="ce_reset"
+                                                            data-loading-text="Loading..."><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Reset
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-group">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse_ce">
+                            <span class="glyphicon glyphicon-triangle-bottom"></span> <a href="/LncExpDB/help#interaction_prediction" target="_blank" title="View the predicted interactions between featured lncRNAs and featured mRNAs.">Interactions <span class="glyphicon glyphicon-question-sign"></span></a>
+                        </a>
+                    </h4>
+                </div>
+                <div class="panel-collapse collapse in" id="collapse_ce">
+                    <div class="panel-body">
+                        <div class="row">
+
+                            <div class="form-horizontal" style="align-content: center">
+                                <div class="form-group">
+                                    <div class="col-md-4" style="padding-left: 40px">
+                                        <span>Search By: </span>
+                                        <select name="filter" class="filter" id="feature_sect1">
+                                            <option value="lncid">LncRNA ID</option>
+                                            <option value="lncname">LncRNA Symbol</option>
+                                            <option value="pcgid">Protein-Coding ID</option>
+                                            <option value="pcgname">Protein-Coding Symbol</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3" style="width: 300px">
+                                        <select name="feature" class="feature form-control" style="width: 200px" id="featurelnc" data-placeholder="eg. HSALNG0000002">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <span class="cancel col-md-1" onclick="cancel($(this))" id="featurelnc_cancel" hidden="hidden">
+                                            <a><span class="glyphicon glyphicon-remove-circle"></span></a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <table id="ce_table" class="table table-striped table-bordered">
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+
+<div th:replace="~{common/common_js::common_js}"></div>
+<script src="https://bigd.big.ac.cn/js/headerfooter-full.js"></script>
+<script th:src="@{/js/tableExport.min.js}"></script>
+<script th:src="@{/js/bootstrap-table-export.js}"></script>
+<script th:src="@{/highcharts/highcharts.js}"></script>
+<script th:src="@{/highcharts/exporting.js}"></script>
+<script th:src="@{/js/BrowsePage/Ccle.js}"></script>
+<script th:src="@{/js/BrowsePage/SampleCcle.js}"></script>
+</html>

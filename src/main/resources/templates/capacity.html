@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/components/icon.min.css"/>
+    <meta charset="UTF-8">
+
+    <title>LncExpDB: Expression Capacity</title>
+</head>
+
+<body>
+<div th:replace="~{common/top_header :: header}"></div>
+
+<div class="breadcrumb" style="margin-top: 20px;margin-left: 30px;margin-right: 30px">
+    <li><a href="/LncExpDB">Home</a></li>
+    <li><a href="###" title="Estimation of lncRNA genes' expression capacities.">Expression Capacity <span class="glyphicon glyphicon-info-sign"></span></a></li>
+</div>
+
+<div style="margin-left: 30px;margin-bottom: 10px;margin-right: 30px">
+    <p>
+        <span>
+            LncExpDB estimates lncRNAs' expression capacities based on their <a href="/LncExpDB/help#filter" target="_blank">expression levels</a>. For a certain context,
+            HC lncRNAs are expressed at high expression levels in at least one <a href="/LncExpDB/help#structure" target="_blank">condition</a>,
+            while LC lncRNAs are expressed at low expression levels in all <a href="/LncExpDB/help#structure" target="_blank">conditions.</a>
+            The remaining lncRNAs are MC.
+        </span>
+    </p>
+
+    <p>
+        <span>
+            HC: High-Capacity; MC: Medium-Capacity; LC: Low-Capacity; NE: Not Expressed.
+            <a href="/LncExpDB/help#filter" target="_blank">See more about expression capacity <span class="glyphicon glyphicon-circle-arrow-right"></span></a>
+        </span>
+    </p>
+    </h4>
+</div>
+
+<div style="margin-left: 19px">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-9">
+
+                <div class="col-md-3">
+                    <label>Search By: </label>
+                    <select name="select_filter" class="select_filter" style="width: 200px;height: 28px" id="feature_sect1">
+                        <option value="geneid">Gene ID</option>
+                        <option value="symbol">Gene Symbol</option>
+                        <option value="classification">Classification</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <label>Input Gene ID/Symbol: </label>
+                    <select name="feature" class="feature form-control col-md-3" style="width: 200px" id="featurelnc" data-placeholder="eg. HSALNG0000002">-->
+                        <option value=""></option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                        <span class="cancel col-md-2" style="margin-top: 25px" onclick="cancel($(this))" id="featurelnc_cancel" hidden="hidden">
+                            <a><span class="glyphicon glyphicon-remove-circle"></span></a>
+                        </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-12">
+
+                <div class="col-md-2">
+                    <label>Normal Tissue/Cell Line: </label>
+                    <select name="select" class="select form-control col-md-3" style="width: 200px" id="normal">
+                        <option value="NA">All</option>
+                        <option value="HC">HC</option>
+                        <option value="LC">LC</option>
+                        <option value="MC">MC</option>
+                        <option value="NE">NE</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <label>Organ Development: </label>
+                    <select name="select" class="select form-control col-md-3" style="width: 200px" id="development">
+                        <option value="NA">All</option>
+                        <option value="HC">HC</option>
+                        <option value="LC">LC</option>
+                        <option value="MC">MC</option>
+                        <option value="NE">NE</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <label>Preimplantation Embryo: </label>
+                    <select name="select" class="select form-control col-md-3" style="width: 200px" id="preimplantation">
+                        <option value="NA">All</option>
+                        <option value="HC">HC</option>
+                        <option value="LC">LC</option>
+                        <option value="MC">MC</option>
+                        <option value="NE">NE</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <label>Cell Differentiation: </label>
+                    <select name="select" class="select form-control col-md-3" style="width: 200px" id="differentiation">
+                        <option value="NA">All</option>
+                        <option value="HC">HC</option>
+                        <option value="LC">LC</option>
+                        <option value="MC">MC</option>
+                        <option value="NE">NE</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <label>Subcellular Localization: </label>
+                    <select name="select" class="select form-control col-md-3" style="width: 200px" id="subcellular">
+                        <option value="NA">All</option>
+                        <option value="HC">HC</option>
+                        <option value="LC">LC</option>
+                        <option value="MC">MC</option>
+                        <option value="NE">NE</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-12">
+
+                <div class="col-md-2">
+                    <label>Exosome: </label>
+                    <select name="select" class="select form-control col-md-3" style="width: 200px" id="exosome">
+                        <option value="NA">All</option>
+                        <option value="HC">HC</option>
+                        <option value="LC">LC</option>
+                        <option value="MC">MC</option>
+                        <option value="NE">NE</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <label>Cancer Cell Line: </label>
+                    <select name="select" class="select form-control col-md-3" style="width: 200px" id="ccle">
+                        <option value="NA">All</option>
+                        <option value="HC">HC</option>
+                        <option value="LC">LC</option>
+                        <option value="MC">MC</option>
+                        <option value="NE">NE</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <label>Virus Infection: </label>
+                    <select name="select" class="select form-control col-md-3" style="width: 200px" id="virus">
+                        <option value="NA">All</option>
+                        <option value="HC">HC</option>
+                        <option value="LC">LC</option>
+                        <option value="MC">MC</option>
+                        <option value="NE">NE</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <label>Circadian Rhythm: </label>
+                    <select name="select" class="select form-control col-md-3" style="width: 200px" id="circadian">
+                        <option value="NA">All</option>
+                        <option value="HC">HC</option>
+                        <option value="LC">LC</option>
+                        <option value="MC">MC</option>
+                        <option value="NE">NE</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-success btn-sm" type="button" id="reset"
+                        data-loading-text="Loading..." style="margin-top: 23px;margin-left: 15px;height: 34px;width: 100px;font-size: 14px;font-family: Arial"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Reset
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="expression_plot"></div>
+    <div id="annotation" style="padding-bottom: 30px"></div>
+    <div id="loading" style="min-width: 20px"></div>
+
+    <div style="margin-left: 19px;margin-right: 30px">
+        <table id="featured_table" class="display" width="100%" cellspacing="0" style="font-size:13px;margin-top: 15px;margin-left: 30px"></table>
+    </div>
+</div>
+
+</body>
+
+<div th:replace="~{common/common_js::common_js}"></div>
+<script src="https://bigd.big.ac.cn/js/headerfooter-full.js"></script>
+<script th:src="@{/highcharts/highcharts.js}"></script>
+<script th:src="@{/highcharts/exporting.js}"></script>
+<script th:src="@{/js/BrowsePage/profile.js}"></script>
+<script th:src="@{/js/BrowsePage/LevelBar.js}"></script>
+</html>

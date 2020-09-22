@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/components/icon.min.css"/>
+    <meta charset="UTF-8">
+
+    <title>LncExpDB: Interactions</title>
+</head>
+
+<body>
+<div th:replace="~{common/top_header :: header}"></div>
+
+<div class="breadcrumb" style="margin-top: 20px;margin-left: 30px;margin-right: 30px">
+    <li><a href="/LncExpDB">Home</a></li>
+    <li><a href="###" title="Overview the predicted interactions between featured lncRNAs and featured mRNAs across different contexts.">Interactions <span class="glyphicon glyphicon-info-sign"></span></a></li>
+</div>
+
+<div style="margin-left: 30px;margin-bottom: 10px;margin-right: 30px">
+    <p>
+        <span>
+            LncExpDB predicts lncRNA-mRNA interactions based on co-expression networks.
+            <a href="/LncExpDB/help#interaction_prediction" target="_blank">See more about interactions <span class="glyphicon glyphicon-circle-arrow-right"></span></a>
+        </span>
+    </p>
+
+</div>
+
+<div class="row" style="margin-left: 30px;margin-right: 30px;padding-top: 20px">
+
+    <div class="form-horizontal" style="align-content: center">
+        <div class="form-group">
+            <div class="col-md-4" style="padding-left: 40px">
+                <span>Search By: </span>
+                <select name="filter" class="filter" id="feature_sect1">
+                    <option value="lncid">LncRNA ID</option>
+                    <option value="lncname">LncRNA Symbol</option>
+                    <option value="pcgid">Protein-Coding ID</option>
+                    <option value="pcgname">Protein-Coding Symbol</option>
+                </select>
+            </div>
+            <div class="col-md-3" style="width: 300px">
+                <select name="feature" class="feature form-control" style="width: 200px" id="featurelnc" data-placeholder="eg. HSALNG0000002">
+                    <option value=""></option>
+                </select>
+            </div>
+            <div>
+                <span class="cancel col-md-1" onclick="cancel($(this))" id="featurelnc_cancel" hidden="hidden">
+                    <a><span class="glyphicon glyphicon-remove-circle"></span></a>
+                </span>
+            </div>
+        </div>
+    </div>
+    <table id="ce_table" class="table table-striped table-bordered">
+
+    </table>
+</div>
+</body>
+
+<div th:replace="~{common/common_js::common_js}"></div>
+<script src="https://bigd.big.ac.cn/js/headerfooter-full.js"></script>
+<script th:src="@{/js/BrowsePage/Interaction.js}"></script>
+</html>

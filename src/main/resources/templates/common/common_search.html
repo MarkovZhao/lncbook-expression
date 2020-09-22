@@ -1,0 +1,48 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: caojb
+  Date: 2018/6/25
+  Time:  22:00 pm
+  create common search
+-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:fragment="common_search">
+        <!--<div class="col-md-2 col-md-offset-0"></div>-->
+
+        <!--<div class="col-md-3 col-md-offset-0"></div>-->
+        <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <!--<label class="control-label" style="float: right; color: #1995dc;font-size: 16px">Search</label>-->
+            <!--<div style="padding: 0px">-->
+
+            <div class="input-group">
+
+                <input id="input_id" class="form-control" value="" placeholder="Search all fields">
+                <span class="input-group-btn">
+                <button class="btn btn-info" id="search_id" type="button"><span class="glyphicon glyphicon-search"></span></button>
+              </span>
+            </div>
+
+        </div>
+        </div>
+
+
+
+        <div class="col-md-12" id="exp">
+                            <span class="help-block text-center">e.g.,
+                            <a href="/lncbook/searchlncrna?text=HOTAIR">HOTAIR</a>;
+                            <a href="/lncbook/transcript?transid=HSALNT0145221">HSALNT0145221</a>;
+                            <a href="/lncbook/gene?geneid=HSALNG0044780">HSALNG0044780</a>;
+                            <a href="/lncbook/searchlncrna?text=ENST00000427258">ENST00000427258</a>;
+                            <a href="/lncbook/searchlncrna?text=Breast cancer">Breast Cancer</a>;
+                            <a href="/lncbook/searchlncrna?text=Development">Development</a>;
+                            <a href="/lncbook/searchlncrna?text=Intergenic">Intergenic</a>
+                            </span>
+        </div>
+    </div>
+
+
+</body>
+</html>

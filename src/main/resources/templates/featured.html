@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/components/icon.min.css"/>
+    <meta charset="UTF-8">
+
+    <title>LncExpDB: Featured Genes</title>
+</head>
+
+<body>
+<div th:replace="~{common/top_header :: header}"></div>
+
+<div class="breadcrumb" style="margin-left: 30px;margin-right: 30px;margin-top: 20px">
+    <li><a href="/LncExpDB">Home</a></li>
+    <li><a href="###" title="Overview featured lncRNA genes across different contexts.">Featured Genes <span class="glyphicon glyphicon-info-sign"></span></a></li>
+</div>
+
+<div style="margin-left: 30px;margin-bottom: 10px;margin-right: 30px">
+    <p>
+        <span>
+            LncExpDB identifies and characterizes featured lncRNA genes that are specifically
+            expressed in a certain cell line/tissue, differentially expressed in the
+            <a href="/LncExpDB/help#structure">context</a> of cancer or virus infection, enriched in a subcellular compartment,
+            dynamically expressed during cell differentiation or embryo/organ development, or periodically
+            expressed with circadian rhythm.
+        </span>
+    </p>
+
+    <p>
+        <span>
+            "✔" represents featured gene under the context; "✘" represents not a featured gene
+            under the context. <a href="/LncExpDB/help#featured%20genes" target="_blank">See more about featured genes <span class="glyphicon glyphicon-circle-arrow-right"></span></a>
+        </span>
+    </p>
+    </h4>
+</div>
+
+<div style="margin-left: 30px;margin-right: 30px;padding-top: 15px">
+    <div>
+
+        <div class="form-horizontal" >
+            <div class="form-group">
+                <div class="col-md-9">
+
+                    <div class="col-md-3">
+                        <label>Search By: </label>
+                        <select name="select_filter" class="select_filter" style="width: 200px;height: 28px" id="feature_sect1">
+                            <option value="geneid">Gene ID</option>
+                            <option value="symbol">Gene Symbol</option>
+                            <option value="classification">Classification</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label>Input Gene ID/Symbol: </label>
+                        <select name="feature" class="feature form-control col-md-3" style="width: 200px" id="featurelnc" data-placeholder="eg. HSALNG0000002">-->
+                            <option value=""></option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <span class="cancel col-md-2" style="margin-top: 25px" onclick="cancel($(this))" id="featurelnc_cancel" hidden="hidden">
+                            <a><span class="glyphicon glyphicon-remove-circle"></span></a>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-12">
+
+                    <div class="col-md-2">
+                        <label>Normal Tissue/Cell Line: </label>
+                        <select name="select" class="select form-control col-md-3" style="width: 200px" id="normal">
+                            <option value="NA">All</option>
+                            <option value="True">✔</option>
+                            <option value="False">✘</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label>Organ Development: </label>
+                        <select name="select" class="select form-control col-md-3" style="width: 200px" id="development">
+                            <option value="NA">All</option>
+                            <option value="True">✔</option>
+                            <option value="False">✘</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label>Preimplantation Embryo: </label>
+                        <select name="select" class="select form-control col-md-3" style="width: 200px" id="preimplantation">
+                            <option value="NA">All</option>
+                            <option value="True">✔</option>
+                            <option value="False">✘</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label>Cell Differentiation: </label>
+                        <select name="select" class="select form-control col-md-3" style="width: 200px" id="differentiation">
+                            <option value="NA">All</option>
+                            <option value="True">✔</option>
+                            <option value="False">✘</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label>Subcellular Localization: </label>
+                        <select name="select" class="select form-control col-md-3" style="width: 200px" id="subcellular">
+                            <option value="NA">All</option>
+                            <option value="True">✔</option>
+                            <option value="False">✘</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-12">
+
+                    <div class="col-md-2">
+                        <label>Exosome: </label>
+                        <select name="select" class="select form-control col-md-3" style="width: 200px" id="exosome">
+                            <option value="NA">All</option>
+                            <option value="True">✔</option>
+                            <option value="False">✘</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label>Cancer Cell Line: </label>
+                        <select name="select" class="select form-control col-md-3" style="width: 200px" id="ccle">
+                            <option value="NA">All</option>
+                            <option value="True">✔</option>
+                            <option value="False">✘</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label>Virus Infection: </label>
+                        <select name="select" class="select form-control col-md-3" style="width: 200px" id="virus">
+                            <option value="NA">All</option>
+                            <option value="True">✔</option>
+                            <option value="False">✘</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label>Circadian Rhythm: </label>
+                        <select name="select" class="select form-control col-md-3" style="width: 200px" id="circadian">
+                            <option value="NA">All</option>
+                            <option value="True">✔</option>
+                            <option value="False">✘</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-success btn-sm" type="button" id="reset"
+                        data-loading-text="Loading..." style="margin-top: 23px;margin-left: 15px;height: 34px;width: 100px;font-size: 14px;font-family: Arial"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Reset
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <table id="featured_table" class="display" width="100%" cellspacing="0" style="font-size:13px"></table>
+        </div>
+
+    </div>
+</div>
+</body>
+
+<div th:replace="~{common/common_js::common_js}"></div>
+<script src="https://bigd.big.ac.cn/js/headerfooter-full.js"></script>
+<script th:src="@{/js/BrowsePage/FeaturedGeneTable.js}"></script>
+</html>
