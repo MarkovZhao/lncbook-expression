@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/semantic.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homepage-customized-style.css}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/components/icon.min.css"/>
+    <meta charset="UTF-8">
+
+    <title>LncExpDB:Downloads</title>
+
+</head>
+
+<body>
+
+<div th:replace="~{common/top_header :: header}"></div>
+<div class="breadcrumb" style="margin-top: 20px;margin-left: 30px;margin-right: 30px">
+    <li><a href="/LncExpDB">Home</a></li>
+    <li>Downloads</li>
+</div>
+<!--<div class="container" style="padding-top: 30px">-->
+
+<div class="panel panel-default" style="margin-top: 30px;margin-left: 30px;margin-right: 30px">
+
+        <div class="panel-heading">
+            <span style="font-size: 20px;padding-left: 3%">Downloads</span>
+        </div>
+
+        <div class="panel-body">
+            <h3 style="font-size: 16px;">Reference Gene Model</h3>
+            <table class="table table-bordered">
+                <tbody style="vertical-align: center">
+                    <tr>
+                        <th>Description</th>
+                        <th>GTF File</th>
+                    </tr>
+                    <tr>
+                        <th>Full lncRNA set and GENCODE protein coding genes (hg38)</th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/0-ReferenceGeneModel/1-GTFFiles/LncExpDB_All.tar.gz" title="size: 54.10M, last update: 2020-08-14">
+                        <span>LncExpDB_All.tar.gz</span></a></th>
+                    </tr>
+                    <tr>
+                        <th>Full lncRNA set (hg38)</th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/0-ReferenceGeneModel/1-GTFFiles/LncExpDB_OnlyLnc.tar.gz" title="size: 14.89M, last update: 2020-08-14">
+                        <span>LncExpDB_OnlyLnc.tar.gz</span></a></th>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <h3 style="font-size: 16px">Gene Expression Analysis</h3>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <tbody style="vertical-align: center">
+                    <tr>
+                        <th>Context</th>
+                        <th>Project</th>
+                        <th>Expression Profile</th>
+                        <th>Expression Level</th>
+                        <th>Featured Gene</th>
+                        <th>Co-expression Matrix</th>
+                    </tr>
+
+                    <tr style="background-color: white">
+                        <th rowspan="2">Normal Tissue/Cell Line</th>
+                        <th>The Human Protein Atlas</th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/1-NormalTissuesAndCellLines/1-TheHumanProteinAtlas/expression_profiles_HPA.tar.gz" title="size: 694.28M, last update: 2020-08-13"><span>expression_profiles_HPA.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/1-NormalTissuesAndCellLines/1-TheHumanProteinAtlas/expression_level_HPA.tar.gz" title="size: 17.54M, last update: 2020-08-18"><span>expression_level_HPA.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/1-NormalTissuesAndCellLines/1-TheHumanProteinAtlas/tau_HPA.tar.gz" title="size: 3.51M, last update: 2020-08-13"><span>tau_HPA.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/1-NormalTissuesAndCellLines/1-TheHumanProteinAtlas/coexpression_HPA.tar.gz" title="size: 1240.56M, last update: 2020-08-13"><span>coexpression_HPA.tar.gz</span></a></th>
+                    </tr>
+
+                    <tr style="background-color: white">
+                        <th>ENCODE Primary Cell Line</th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/1-NormalTissuesAndCellLines/2-ENCODEPrimaryCellLines/expression_profiles_SRP013565.tar.gz" title="size: 755.01M, last update: 2020-08-13"><span>expression_profiles_SRP013565.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/1-NormalTissuesAndCellLines/2-ENCODEPrimaryCellLines/expression_level_SRP013565.tar.gz" title="size: 29.91M, last update: 2020-08-18"><span>expression_level_SRP013565.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/1-NormalTissuesAndCellLines/2-ENCODEPrimaryCellLines/tau_SRP013565.tar.gz" title="size: 3.65M, last update: 2020-08-13"><span>tau_SRP013565.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/1-NormalTissuesAndCellLines/2-ENCODEPrimaryCellLines/coexpression_SRP013565.tar.gz" title="size: 470.32M, last update: 2020-08-13"><span>coexpression_SRP013565.tar.gz</span></a></th>
+                    </tr>
+
+                    <tr style="background-color: #f5f5f5">
+                        <th>Organ Development</th>
+                        <th>E-MTAB-6814</th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/2-OrganDevelopment/1-E-MTAB-6814//expression_profiles_E-MTAB-6814.tar.gz" title="size: 1925.23M, last update: 2020-08-13"><span>expression_profiles_E-MTAB-6814.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/2-OrganDevelopment/1-E-MTAB-6814//expression_level_E-MTAB-6814.tar.gz" title="size: 58.17M, last update: 2020-08-18"><span>expression_level_E-MTAB-6814.tar.gz</span></a></th>
+                        <th>
+                            <a href="ftp://download.big.ac.cn/lncexpdb/2-OrganDevelopment/1-E-MTAB-6814//tau_E-MATB-6814.tar.gz" title="size: 14.43M, last update: 2020-08-13"><span>tau_E-MATB-6814.tar.gz;</span></a>
+                            <a href="ftp://download.big.ac.cn/lncexpdb/2-OrganDevelopment/1-E-MTAB-6814//masigpro_E-MTAB-6814.tar.gz" title="size: 297.31K, last update: 2020-08-13"><span>masigpro_E-MTAB-6814.tar.gz</span></a>
+                        </th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/2-OrganDevelopment/1-E-MTAB-6814//coexpression_E-MATB-6814.tar.gz" title="size: 3923.76M, last update: 2020-08-13"><span>coexpression_E-MATB-6814.tar.gz</span></a></th>
+                    </tr>
+
+                    <tr style="background-color: white">
+                        <th rowspan="2">Preimplantation Embryo</th>
+                        <th>Preimplantation DataSet1</th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/3-PreimplantationEmbryos/1-SRP011546/expression_profiles_SRP011546.tar.gz" title="size: 755.01M, last update: 2020-08-13"><span>expression_profiles_SRP011546.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/3-PreimplantationEmbryos/1-SRP011546/expression_level_SRP011546.tar.gz" title="size: 248.01K, last update: 2020-08-18"><span>expression_level_SRP011546.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/3-PreimplantationEmbryos/1-SRP011546/tau_SRP011546.tar.gz" title="size: 1.73M, last update: 2020-08-13"><span>tau_SRP011546.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/3-PreimplantationEmbryos/1-SRP011546/coexpression_SRP011546.tar.gz" title="size: 258.10M, last update: 2020-08-13"><span>coexpression_SRP011546.tar.gz</span></a></th>
+                    </tr>
+
+                    <tr style="background-color: white">
+                        <th>Preimplantation DataSet2</th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/3-PreimplantationEmbryos/2-SRP061636/expression_profiles_SRP061636.tar.gz" title="size: 147.59M, last update: 2020-08-13"><span>expression_profiles_SRP061636.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/3-PreimplantationEmbryos/2-SRP061636/expression_level_SRP061636.tar.gz" title="size: 1.53M, last update: 2020-08-18"><span>expression_level_SRP061636.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/3-PreimplantationEmbryos/2-SRP061636/tau_SRP061636.tar.gz" title="size: 1.53M, last update: 2020-08-13"><span>tau_SRP061636.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/3-PreimplantationEmbryos/2-SRP061636/coexpression_SRP061636.tar.gz" title="size: 452.73M, last update: 2020-08-13"><span>coexpression_SRP061636.tar.gz</span></a></th>
+                    </tr>
+
+                    <tr style="background-color: #f5f5f5">
+                        <th>Cell Differentiation</th>
+                        <th>SRP168391</th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/4-CellDifferentiation/1-SRP168391/expression_profiles_SRP168391.tar.gz" title="size: 1906.55M, last update: 2020-08-13"><span>expression_profiles_SRP168391.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/4-CellDifferentiation/1-SRP168391/expression_level_SRP168391.tar.gz" title="size: 9.21M, last update: 2020-08-18"><span>expression_level_SRP168391.tar.gz</span></a></th>
+                        <th>
+                            <a href="ftp://download.big.ac.cn/lncexpdb/4-CellDifferentiation/1-SRP168391/tau_SRP168391.tar.gz" title="size: 1.77M, last update: 2020-08-13"><span>tau_SRP168391.tar.gz;</span></a>
+                            <a href="ftp://download.big.ac.cn/lncexpdb/4-CellDifferentiation/1-SRP168391/masigpro_SRP168391.tar.gz" title="size: 9.67K, last update: 2020-08-13"><span>masigpro_SRP168391.tar.gz</span></a>
+                        </th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/4-CellDifferentiation/1-SRP168391/coexpression_SRP168391.tar.gz" title="size: 1037.73M, last update: 2020-08-13"><span>coexpression_SRP168391.tar.gz</span></a></th>
+                    </tr>
+
+                    <tr style="background-color: white">
+                        <th>Subcellular Localization</th>
+                        <th>SRP150867</th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/5-SubcellularLocalization/1-SRP150867/expression_profiles_SRP150867.tar.gz" title="size: 95.81M, last update: 2020-08-13"><span>expression_profiles_SRP150867.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/5-SubcellularLocalization/1-SRP150867/expression_level_SRP150867.tar.gz" title="size: 2.66M, last update: 2020-08-18"><span>expression_level_SRP150867.tar.gz</span></a></th>
+                        <th>
+                            <a href="ftp://download.big.ac.cn/lncexpdb/5-SubcellularLocalization/1-SRP150867/deseq2_SRP150867.tar.gz" title="size: 13.62M, last update: 2020-08-13"><span>deseq2_SRP150867.tar.gz</span></a>
+                        </th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/5-SubcellularLocalization/1-SRP150867/coexpression_SRP150867.tar.gz" title="size: 1156.52M, last update: 2020-08-13"><span>coexpression_SRP150867.tar.gz</span></a></th>
+                    </tr>
+
+                    <tr style="background-color: #f5f5f5">
+                        <th rowspan="2">Exosome</th>
+                        <th>exoRBase</th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/6-Exosomes/1-exoRBase//expression_profiles_exoRBase.tar.gz" title="size: 214.70M, last update: 2020-08-13"><span>expression_profiles_exoRBase.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/6-Exosomes/1-exoRBase//expression_level_exoRBase.tar.gz" title="size: 7.19M, last update: 2020-08-18"><span>expression_level_exoRBase.tar.gz</span></a></th>
+                        <th>
+                            <a href="ftp://download.big.ac.cn/lncexpdb/6-Exosomes/1-exoRBase//deseq2_exoRBase.tar.gz" title="size: 4.45M, last update: 2020-08-13"><span>deseq2_exoRBase.tar.gz</span></a>
+                        </th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/6-Exosomes/1-exoRBase//coexpression_exoRBase.tar.gz" title="size: 99.68M, last update: 2020-08-13"><span>coexpression_exoRBase.tar.gz</span></a></th>
+                    </tr>
+
+                    <tr style="background-color: #f5f5f5">
+                        <th>ESCC/Normal</th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/6-Exosomes/2-SRP119895/expression_profiles_SRP119895.tar.gz" title="size: 154.48M, last update: 2020-08-13"><span>expression_profiles_SRP119895.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/6-Exosomes/2-SRP119895/expression_level_SRP119895.tar.gz" title="size: 5.69M, last update: 2020-08-18"><span>expression_level_SRP119895.tar.gz</span></a></th>
+                        <th>
+                            <a href="ftp://download.big.ac.cn/lncexpdb/6-Exosomes/2-SRP119895/deseq2_SRP119895.tar.gz" title="size: 2.68M, last update: 2020-08-13"><span>deseq2_SRP119895.tar.gz</span></a>
+                        </th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/6-Exosomes/2-SRP119895/coexpression_SRP119895.tar.gz" title="size: 19.44M, last update: 2020-08-13"><span>coexpression_SRP119895.tar.gz</span></a></th>
+                    </tr>
+
+                    <tr style="background-color: white">
+                        <th>Cancer Cell Line</th>
+                        <th>Cancer Cell Line Encyclopedia</th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/7-CancerCellLines/1-CancerCellLineEncyclopedia/expression_profiles_CCLE.tar.gz" title="size: 5567.87M, last update: 2020-08-13"><span>expression_profiles_CCLE.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/7-CancerCellLines/1-CancerCellLineEncyclopedia/expression_level_CCLE.tar.gz" title="size: 24.27M, last update: 2020-08-18"><span>expression_level_CCLE.tar.gz</span></a></th>
+                        <th>
+                            <a href="ftp://download.big.ac.cn/lncexpdb/7-CancerCellLines/1-CancerCellLineEncyclopedia/tau_CCLE.tar.gz" title="size: 2.87M, last update: 2020-08-13"><span>deseq2_CCLE.tar.gz</span></a>
+                        </th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/7-CancerCellLines/1-CancerCellLineEncyclopedia/coexpression_CCLE.tar.gz" title="size: 667.96M, last update: 2020-08-13"><span>coexpression_CCLE.tar.gz</span></a></th>
+                    </tr>
+
+                    <tr style="background-color: #f5f5f5">
+                        <th rowspan="2">Virus Infection</th>
+                        <th>HIV, HBV, HCV</th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/8-VirusInfection/1-SRP182096/expression_profiles_SRP182096.tar.gz" title="size: 414.23M, last update: 2020-08-13"><span>expression_profiles_SRP182096.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/8-VirusInfection/1-SRP182096/expression_level_SRP182096.tar.gz" title="size: 2.86M, last update: 2020-08-18"><span>expression_level_SRP182096.tar.gz</span></a></th>
+                        <th>
+                            <a href="ftp://download.big.ac.cn/lncexpdb/8-VirusInfection/1-SRP182096/deseq2_SRP182096.tar.gz" title="size: 7.22M, last update: 2020-08-13"><span>deseq2_SRP182096.tar.gz</span></a>
+                        </th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/8-VirusInfection/1-SRP182096/coexpression_SRP182096.tar.gz" title="size: 3.77M, last update: 2020-08-13"><span>coexpression_SRP182096.tar.gz</span></a></th>
+                    </tr>
+
+                    <tr style="background-color: #f5f5f5">
+                        <th>SARS-CoV-2</th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/8-VirusInfection/2-SRP253951/expression_profiles_SRP253951.tar.gz" title="size: 280.85M, last update: 2020-08-13"><span>expression_profiles_SRP253951.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/8-VirusInfection/2-SRP253951/expression_level_SRP253951.tar.gz" title="size: 965.88M, last update: 2020-08-18"><span>expression_level_SRP253951.tar.gz</span></a></th>
+                        <th>
+                            <a href="ftp://download.big.ac.cn/lncexpdb/8-VirusInfection/2-SRP253951/deseq2_SRP253951.tar.gz" title="size: 4.44M, last update: 2020-08-13"><span>deseq2_SRP253951.tar.gz</span></a>
+                        </th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/8-VirusInfection/2-SRP253951/coexpression_SRP253951.tar.gz" title="size: 17.93M, last update: 2020-08-13"><span>coexpression_SRP253951.tar.gz</span></a></th>
+                    </tr>
+
+                    <tr style="background-color: white">
+                        <th>Circadian Rhythm</th>
+                        <th>SRP144178</th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/9-CircadianRhythm/1-SRP144178/expression_profiles_SRP144178.tar.gz" title="size: 1506.93M, last update: 2020-08-13"><span>expression_profiles_SRP144178.tar.gz</span></a></th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/9-CircadianRhythm/1-SRP144178/expression_level_SRP144178.tar.gz" title="size: 7.33M, last update: 2020-08-18"><span>expression_level_SRP144178.tar.gz</span></a></th>
+                        <th>
+                            <a href="ftp://download.big.ac.cn/lncexpdb/9-CircadianRhythm/1-SRP144178/meta2d_SRP144178.tar.gz" title="size: 7.22M, last update: 2020-08-13"><span>meta2d_SRP144178.tar.gz</span></a>
+                        </th>
+                        <th><a href="ftp://download.big.ac.cn/lncexpdb/9-CircadianRhythm/1-SRP144178/coexpression_SRP144178.tar.gz" title="size: 773.50M, last update: 2020-08-13"><span>coexpression_SRP144178.tar.gz</span></a></th>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+<!--</div>-->
+</body>
+
+<div th:replace="~{common/common_js::common_js}"></div>
+<script src="https://bigd.big.ac.cn/js/headerfooter-full.js"></script>
+
+</html>

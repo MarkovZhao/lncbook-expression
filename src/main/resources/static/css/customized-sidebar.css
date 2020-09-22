@@ -1,0 +1,58 @@
+.sidebar {
+    width: 100px;
+    /*margin-left: -40px;*/
+    background-color: white;
+    overflow: hidden;
+    transition: 0.8s all;
+}
+
+.fixed {
+    position: fixed;
+    width: 200px;
+}
+
+.sidebar ul {
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar ul li {
+    list-style: none;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: black;
+    height: 100%;
+    width: 100%;
+    font-size: 16px;
+    font-family: Arial, "Microsoft YaHei", "微软雅黑", serif;
+    line-height: 16px;
+    text-align: center;
+    display: block;
+    transition: 0s all;
+}
+
+.sidebar ul li a:hover {
+    background: #337ab7;
+    color: white;
+    border-right: 1px solid greenyellow;
+}
+
+.sidebar ul li a:visited {
+    background: #337ab7;
+    color: white;
+    border-right: 1px solid greenyellow;
+}
+
+/*.sidebar ul li a:hover {*/
+/*    background: #d9edf7;*/
+/*    border-top: 1px solid #ecedf1;;*/
+/*}*/
+
+@media (max-width: 1199px) {
+    #nav_container {
+        margin-left: -200px;
+        width: 100%;
+    }
+}

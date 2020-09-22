@@ -1,0 +1,89 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: liz
+  Date: 2020/5/8
+  Time:  17:20 am
+  create nav page
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+
+<div th:fragment="header">
+    <div class="container-fluid" style="padding-left: 0px">
+        <div class="row" style="background-color: #f5f5f5">
+            <div class="col-md-12" style="min-height: 136px; background-color: #3482c1;
+            background-image: url('https://bigd.big.ac.cn/LncExpDB/images/background.png'); background-size: cover; box-shadow: 0px 0px 5px rgba(52,130,193,0.75)">
+                <div class="container" style="padding-top: 10px;padding-left: 0px;margin-left: 0px">
+
+                    <div style="padding-left: 0px;padding-top: 20px;margin-left: 13px">
+                        <div class="col-md-8">
+                            <h1 style="color: white;font-size: 30px">LncExpDB</h1>
+                            <h3 style="color: white">Expression Database of Human Long non-coding RNAs</h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header>
+
+        <nav class="navbar navbar-default" style="box-shadow:0px 0px 5px rgba(52, 130, 193, 0.75); background-color: white; height: 10px">
+            <div class="container-fluid" id="nav-container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!--                <a class="navbar-brand" href="/LncExpDB/home" style="padding-top: 12px;padding-bottom: 6px">-->
+                    <!--                    <span>Home</span>-->
+                    <!--                </a>-->
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-left: 0px">
+                    <ul class="nav navbar-nav" style="padding-left: 0px">
+                        <li><a href="/LncExpDB"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
+                        <li><a href="/LncExpDB/genes/"><span class="glyphicon glyphicon-align-justify"></span>&nbsp;Genes</a></li>
+                        <li><a href="/LncExpDB/featured/"><span class="glyphicon glyphicon-tag"></span>&nbsp;Featured Genes</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>&nbsp;Contexts<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/LncExpDB/normal">Normal Tissue and Cell Line</a></li>
+                                <li><a href="/LncExpDB/development">Organ Development</a></li>
+                                <li><a href="/LncExpDB/preimplantation">Preimplantation Embryo</a></li>
+                                <li><a href="/LncExpDB/differentiation">Cell Differentiation</a></li>
+                                <li><a href="/LncExpDB/subcellular">Subcellular Localization</a></li>
+                                <li><a href="/LncExpDB/exosome">Exosome</a></li>
+                                <li><a href="/LncExpDB/ccle">Cancer Cell Line</a></li>
+                                <li><a href="/LncExpDB/virus">Virus Infection</a></li>
+                                <li><a href="/LncExpDB/circadian">Circadian Rhythm</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/LncExpDB/capacity/"><span class="glyphicon glyphicon-stats"></span>&nbsp;Expression Capacity</a></li>
+                        <li><a href="/LncExpDB/interactions"><span class="glyphicon glyphicon-magnet" aria-hidden="true"></span>&nbsp;Interactions</a></li>
+                        <li><a href="/LncExpDB/downloads"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>&nbsp;Downloads</a></li>
+                        <li><a href="/LncExpDB/statistics"><span class="glyphicon glyphicon-signal"></span>&nbsp;Statistics</a></li>
+                        <li><a href="/LncExpDB/help"><span class="glyphicon glyphicon-header"></span>&nbsp;Help</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div style="display: none">
+            <script>
+                var _hmt = _hmt || [];
+                (function() {
+                    var hm = document.createElement("script");
+                    hm.src = "https://hm.baidu.com/hm.js?6135241d036b9e2c1e8a5b127010d808";
+                    var s = document.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(hm, s);
+                })();
+            </script>
+            <script src='https://bigd.big.ac.cn/cdn/js/nsti.statistics.js'></script>
+        </div>
+    </header>
+</div>
+

@@ -1,0 +1,122 @@
+a:link{
+    color: black;
+}
+.resource-counts .col-stat{
+    border-right:1px solid #ecedf1;
+    border-bottom: 1px solid #ecedf1;
+    transition:background-color .1s
+}
+
+.resource-counts .col-stat:hover{
+    background-color:rgba(62,76,108,.03)
+}
+
+.resource-counts .col-stat:last-child{
+    border-right: none;
+}
+
+@media (max-width:768px){
+    .resource-counts .col-stat{
+        padding:1.333em
+    }
+
+    .resource-counts .col-stat:nth-of-type(-n+2){
+        border-bottom:1px solid #ecedf1
+    }
+
+    .resource-counts .col-stat:nth-child(2){
+        border-right:none
+    }
+}
+
+@media (max-width:767.98px){
+    .resource-counts .col-stat{
+        margin:0 8em;
+        padding:.667em;
+        border-right:none;
+        border-bottom:1px solid #ecedf1
+    }
+}
+
+.resource-counts .stat{
+    padding:20px 50px
+}
+
+.resource-counts .stat,.resource-counts .stat:active,.resource-counts .stat:focus,.resource-counts .stat:hover,.resource-counts .stat:visited{
+    text-decoration:none
+}
+
+.resource-counts .stat .stat-name{
+    color:#777777;
+    font-size:18px;
+    font-weight:100;
+    text-align:center;
+    justify-content:center}
+
+@media (max-width:543px){
+    .resource-counts .stat .stat-name{
+        font-size:16px;
+        font-weight:200;
+        margin-bottom:.25em
+    }
+}
+
+@media (max-width:991px){
+    .resource-counts .stat .stat-name{
+        font-size:18px
+    }
+}
+
+.resource-counts .stat .stat-count{
+    display:flex;
+    font-size:18px;
+    font-weight:200;
+    text-align:center;
+    padding-top: 7px;
+    justify-content:center;}
+
+.resource-counts .stat .stat-count:after{
+    content:"";
+    width:0;
+    height:0;
+    border-color:transparent #788197 transparent transparent;
+    border-style:solid;
+    border-width:0 8px 8px 0;
+    margin-top:13px;
+    margin-left:5px}
+
+.resource-counts .stat .stat-count.chemical{
+    color:#497de3
+}
+
+.resource-counts .stat .stat-count.chemical svg path{
+    fill:#497de3
+}
+
+.resource-counts .stat .stat-count.pathway{
+    color:#fba162
+}
+
+.resource-counts .stat .stat-count.pathway svg path{
+    fill:#fba162
+}
+
+.resource-counts .stat .stat-count.guideline{
+    color:#b370e2
+}
+
+.resource-counts .stat .stat-count.guideline svg path{
+    fill:#b370e2
+}
+
+.resource-counts .stat .stat-count.drugLabel{
+    color:#46cad4
+}
+
+.resource-counts .stat .stat-count.drugLabel svg circle,.resource-counts .stat .stat-count.drugLabel svg path{
+    fill:#46cad4
+}
+
+.resource-counts .stat .stat-count svg{
+    margin-right:.3em
+}

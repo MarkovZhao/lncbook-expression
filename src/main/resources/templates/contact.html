@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/semantic.min.css}">
+    <link rel="stylesheet" th:href="@{css/customized-sidebar.css}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/components/icon.min.css"/>
+    <meta charset="UTF-8">
+
+    <title>LncExpDB: Contact</title>
+
+</head>
+<body>
+<div th:replace="~{common/top_header :: header}"></div>
+<div class="breadcrumb" style="margin-top: 20px">
+    <li><a href="/home">Home</a></li>
+    <li>Contact</li>
+</div>
+<div class="panel panel-default" style="margin-top: 30px;margin-left: 20px;margin-right: 20px">
+    <div class="panel-body">
+        <div class="class=col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <address>
+                <Strong>Email: </Strong>
+                <br>
+                lncexpdb(AT)big.ac.cn<br>
+            </address>
+            <address>
+                <strong>Postal Address</strong><br>
+                The LncExpDB Team<br>
+                National Genomics Data Center<br>
+                China National Center for Bioinformation / Beijing Institute of Genomics, Chinese Academy of Sciences<br>
+                No.1 Beichen West Road<br>
+                Chaoyang District, Beijing 100101<br>
+                China
+            </address>
+            <address>
+                <Strong>Project Leader:</Strong>
+                <br>
+                <a href="https://bigd.big.ac.cn/people/Lina-Ma" target="_blank">Lina Ma:</a> malina(AT)big.ac.cn<br>
+            </address>
+
+            <address>
+                <Strong>LncRNA Integration:</Strong>
+                <br>
+                <a href="http://bigd.big.ac.cn/people/Zhao-Li" target="_blank">Zhao Li:</a> lizhao2018m(AT)big.ac.cn<br>
+                <a href="https://bigd.big.ac.cn/people/Lina-Ma" target="_blank">Lina Ma:</a> malina(AT)big.ac.cn
+            </address>
+
+            <address>
+                <Strong>Web Development:</Strong>
+                <br>
+                <a href="http://bigd.big.ac.cn/people/Zhao-Li" target="_blank">Zhao Li:</a> lizhao2018m(AT)big.ac.cn<br>
+                <a href="http://bigd.big.ac.cn/people/Qiang-Du" target="_blank">Qiang Du:</a> duqiang2019m(AT)big.ac.cn<br>
+            </address>
+
+            <address>
+                <Strong>Data Collection: </Strong>
+                <br>
+                <a href="https://bigd.big.ac.cn/people/Lin-Liu" target="_blank">Lin Liu:</a> liulin(AT)big.ac.cn<br>
+                <a href="https://bigd.big.ac.cn/people/Zhao-Li" target="_blank">Zhao Li:</a> lizhao2018m(AT)big.ac.cn<br>
+                <a href="https://bigd.big.ac.cn/people/Lina-Ma" target="_blank">Lina Ma:</a> malina(AT)big.ac.cn
+            </address>
+
+            <address>
+                <Strong>Expression Analysis: </Strong>
+                <br>
+                <a href="https://bigd.big.ac.cn/people/Lin-Liu" target="_blank">Lin Liu:</a> liulin(AT)big.ac.cn<br>
+                <a href="https://bigd.big.ac.cn/people/Zhao-Li" target="_blank">Zhao Li:</a> lizhao2018m(AT)big.ac.cn<br>
+            </address>
+
+            <address>
+                <Strong>Principal Investigator: </Strong>
+                <br>
+                <a href="http://bigd.big.ac.cn/people/Zhang-Zhang" target="_blank">Zhang Zhang</a>: zhangzhang@big.ac.cn
+            </address>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <address>
+                <strong>Map: </strong><br>
+                <img th:src="@{/images/address.jpg}" height="366" width="540"/>
+            </address>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<div th:replace="~{common/common_js::common_js}"></div>
+<script src="https://bigd.big.ac.cn/js/headerfooter-full.js"></script>
+
+</html>

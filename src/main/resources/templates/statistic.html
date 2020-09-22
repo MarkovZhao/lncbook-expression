@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/semantic.min.css}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/components/icon.min.css"/>
+    <meta charset="UTF-8">
+    <title>LncExpDB: Statistics</title>
+</head>
+<body>
+
+<div th:replace="~{common/top_header :: header}"></div>
+    <div class="breadcrumb" style="margin-top: 20px;margin-left: 30px;margin-right: 30px">
+        <li><a href="/LncExpDB">Home</a></li>
+        <li>Statistics</li>
+    </div>
+
+    <div class="panel panel-default" style="margin-top: 30px;margin-left: 30px;margin-right: 30px">
+            <div class="panel-heading">
+                <span style="font-size: 20px"><strong>Gene Annotation</strong></span>
+            </div>
+            <div class="panel-body">
+                    <h4 style="margin-bottom: 20px"><strong>1. LncRNA Integration</strong></h4>
+                    <table id="trans_num" class="table table-striped table-bordered" width="100%">
+                        <thead>
+                        <tr>
+                            <th>Data Item</th>
+                            <th>Number</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Total genes</td>
+                            <td>101,293</td>
+                        </tr>
+                        <tr>
+                            <td>Total transcripts</td>
+                            <td>331,244</td>
+                        </tr>
+                        <tr>
+                            <td>Functional lncRNAs supported by experimental evidence</td>
+                            <td>4,214</td>
+                        </tr>
+                        <tr>
+                            <td>Integration resources</td>
+                            <td>LncBook, RefLnc, GENCODE, FANTOM-CAT, CHESS, BIGTranscriptome</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <h4 style="margin-bottom: 20px"><strong>2. LncRNA Distribution</strong></h4>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div  id="exons_of_transcript" style="width: 100%; min-height: 350px"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-body" id="transcripts_of_gene" style="width: 100%; min-height: 350px">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 style="margin-bottom: 20px"><a href="/LncExpDB/help#classification" target="_blank" title="Based on their genomic locations in respect to protein-coding genes, we classified lncRNAs into seven groups, Intergenic, Intronic (S), Intronic (AS), Overlapping (S), Overlapping (AS), Sense, and Antisense. S in the bracket represents that lncRNAs are in the same strand of protein-coding RNAs, and AS represents lncRNAs are in the antisense strand of protein-coding RNAs.">
+                        <strong>3. Classification</strong><span class="glyphicon glyphicon-question-sign"></span></a></h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div id="gene_classification" style="width: 100%; min-height: 350px"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div id="trans_classification" style="width: 100%; min-height: 350px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+    <div class="panel panel-default" style="margin-left: 30px;margin-right: 30px;margin-top: 30px">
+        <div class="panel-heading">
+            <span style="font-size: 20px"><strong>Expression Statistic</strong></span>
+        </div>
+        <div class="panel-body">
+
+            <h4 style="margin-top: 20px"><strong>1. Expression Profiles of LncRNA Genes</strong></h4>
+            <div class="row">
+                 <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div id="profile" style="width: 100%; min-height: 350px"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <h4 style="margin-top: 20px"><strong>2. Overview of Featured Genes</strong></h4>
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="radar" style="width: 100%; min-height: 350px"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="featured" style="width: 100%; min-height: 350px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 style="margin-top: 20px"><strong>3. Featured Genes in Normal Tissues</strong></h4>
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="hpa" style="width: 100%; min-height: 350px"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <h4 style="margin-top: 20px"><strong>4. Featured Genes in Normal Cell Lines</strong></h4>
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="encode" style="width: 100%; min-height: 450px"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <h4 style="margin-top: 20px"><strong>5. Featured Genes in Cancer Cell Lines</strong></h4>
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="ccle" style="width: 100%; min-height: 350px"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <h4 style="margin-top: 20px"><strong>6. Featured Genes in Subcellular Localization</strong></h4>
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="subcellular" style="width: 100%; min-height: 350px"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 style="margin-top: 20px"><strong>7. Featured Genes in Disease-associated Exosomes</strong></h4>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="diff_exosome" style="width: 100%; min-height: 350px"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h4 style="margin-top: 20px"><strong>8. Featured Genes in Virus-infected Samples</strong></h4>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="diff_virus" style="width: 100%; min-height: 350px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <h4 style="margin-top: 20px"><strong>9. Dynamic Genes during Development of 7 Organs</strong></h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="pcg_development" style="width: 100%; min-height: 350px"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="lnc_development" style="width: 100%; min-height: 350px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 style="margin-top: 20px"><strong>10. Time-Specific Genes during Development of Preimplantation Embryos</strong> (Only used DataSet2)</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="pcg_pre" style="width: 100%; min-height: 350px"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="lnc_pre" style="width: 100%; min-height: 350px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 style="margin-top: 20px"><strong>11. Coexpression between LncRNA and Protein-coding Genes under 9 <a href="/LncExpDB/help#structure" target="_blank">Contexts</a></strong></h4>
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="coexpression" style="width: 100%; min-height: 350px"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<div th:replace="~{common/common_js::common_js}"></div>
+<script src="https://bigd.big.ac.cn/js/headerfooter-full.js"></script>
+<script th:src="@{/js/StatisticsPage/Integration_TranscriptsOfGenes.js}"></script>
+<script th:src="@{/js/StatisticsPage/Integration_ExonsOfTranscripts.js}"></script>
+<script th:src="@{/js/StatisticsPage/Integration_Classification.js}"></script>
+<script th:src="@{/js/StatisticsPage/Expression_Hpa.js}"></script>
+<script th:src="@{/js/StatisticsPage/Expression_Ccle.js}"></script>
+<script th:src="@{/js/StatisticsPage/Expression_Subcellular.js}"></script>
+<script th:src="@{/js/StatisticsPage/Overview_RadarAll.js}"></script>
+<script th:src="@{/js/StatisticsPage/Overview_Bar.js}"></script>
+<script th:src="@{/js/StatisticsPage/Expression_Development.js}"></script>
+<script th:src="@{/js/StatisticsPage/Expression_Diff.js}"></script>
+<script th:src="@{/js/StatisticsPage/Expression_Pre.js}"></script>
+<script th:src="@{/js/StatisticsPage/Expression_Coexpression.js}"></script>
+<script th:src="@{/js/StatisticsPage/Expression_Profile.js}"></script>
+<script th:src="@{/js/StatisticsPage/Expression_Bar.js}"></script>
+<script th:src="@{/js/StatisticsPage/Expression_Encode.js}"></script>
+</html>

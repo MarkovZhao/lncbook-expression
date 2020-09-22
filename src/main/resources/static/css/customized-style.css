@@ -1,0 +1,265 @@
+body {
+    font-family: Arial, "Microsoft YaHei", "微软雅黑", serif;
+    font-size: 14px;
+    background-color: white;
+    position: relative
+}
+
+.navbar-header>a {
+    min-width: 100px;
+}
+
+.nav > li:hover .dropdown-menu {
+    display: block;
+}
+
+.navbar-nav>li {
+    min-width: 55px;
+    /*width: 10%;*/
+    text-align: center;
+}
+
+.navbar{
+    border: 0px;
+    margin: 0px;
+    font-size: 15px;
+}
+
+
+.navbar-default {
+    background-color: #fff;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    background-color: rgb(61, 61, 61);
+    color: rgb(255, 255, 255);
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    background-color: #dedddd;
+    color: #333;
+}
+
+a:link,a:visited{color:#4183c4;}
+
+table{
+    font-size: 14px;
+}
+
+th {
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+td {
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+.index {
+    background-color: #ffffff;
+    position: relative;
+    padding: 15px 15px 15px 15px;
+    border-width: 1px;
+    margin-bottom: 0;
+    -webkit-box-shadow: inset 0 3px 6px rgba(0, 0, 0, .05);
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, .05);
+}
+
+/*.select2-container .select2-selection--single{*/
+/*    min-height:36px;*/
+/*}*/
+
+.filter {
+    height: 28px;
+    width: 200px;
+
+}
+
+@media (max-width: 1199px) {
+    #nav_container {
+        margin-left: 2px;
+        margin-right: 2px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 1130px) {
+    #nav_container {
+        margin-left: 2px;
+        margin-right: 2px;
+        width: 100%;
+    }
+
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
+}
+
+a {
+    cursor: pointer;
+}
+
+a >
+.ui-autocomplete {
+    z-index: 5000;
+}
+/*!*超链接颜色与下划线*!*/
+/*a:hover{*/
+/*    text-decoration: none;*/
+/*}*/
+
+.bs-callout {
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 0;
+    border: 1px solid #eeeeee;
+}
+
+.bs-callout img {
+    float: left;
+    /*vertical-align: text-bottom;*/
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.bs-callout h3 {
+    margin: 0;
+}
+
+.bs-callout p:last-child {
+    margin-bottom: 0
+}
+
+.bs-callout code {
+    border-radius: 3px
+}
+
+.bs-callout + .bs-callout {
+    margin-top: -5px
+}
+
+.bs-callout-danger {
+    border-left-color: #ce4844
+}
+
+.bs-callout-danger h4 {
+    color: #ce4844
+}
+
+.bs-callout-warning {
+    border-left-color: #aa6708
+}
+
+.bs-callout-warning h4 {
+    color: #aa6708
+}
+
+.bs-callout-info {
+    border-top-color: #00AADC;
+    height: 100px;
+}
+
+.bs-callout-info h4 {
+    color: #1b809e
+}
+.bs-callout-success {
+    border-top-color: #00AA88;
+}
+
+.bs-callout-success h4 {
+    color: #00AA88;
+}
+
+.bs-callout-success h4 > a {
+    color: #00AA88;
+}
+
+
+/*////////////////*/
+/*loading animate*/
+.spinner {
+    margin: 100px auto;
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.spinner > div {
+    background-color: #00AADC;
+    height: 100%;
+    width: 6px;
+    display: inline-block;
+
+    -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+    animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+
+@-webkit-keyframes sk-stretchdelay {
+    0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+    20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes sk-stretchdelay {
+    0%, 40%, 100% {
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+    }  20% {
+           transform: scaleY(1.0);
+           -webkit-transform: scaleY(1.0);
+       }
+}
