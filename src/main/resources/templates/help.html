@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+
+    <title>LncExpDB: Help</title>
+
+</head>
+
+<body>
+<div th:replace="~{common/top_header :: header}"></div>
+<div class="breadcrumb" style="margin-top: 20px">
+    <li><a href="/LncExpDB">Home</a></li>
+    <li>Help</li>
+</div>
+<div class="row">
+    <div class="col-md-12" style="padding-top: 30px">
+        <div class="col-md-3" role="complementary">
+            <div class="bs-docs-sidebar" style="width: 300px">
+                <ul class="nav bs-docs-sidenav nav-stacked nav-pills">
+                    <li class="active"><a href="#introduction">1. What is LncExpDB</a></li>
+                    <li class="active">
+                        <a href="#methods">2. Data and Methods</a>
+                        <ul class="nav nav-stacked">
+                        <li>
+                            <a href="#collection">2.1 Data collection</a>
+                        </li>
+                        <li>
+                            <a href="#structure">2.2 Data structure</a>
+                        </li>
+                        <li>
+                            <a href="#compare">2.3 LncRNA integraction and curation </a>
+                        </li>
+                        <li>
+                            <a href="#reference">2.4 Overlap among different resources at transcript levels </a>
+                        </li>
+                        <li>
+                            <a href="locus">2.5 Assignment of lncRNA transcripts into loci</a>
+                        </li>
+                        <li>
+                            <a href="#classification">2.6 LncRNA classification </a>
+                        </li>
+
+                        <li>
+                            <a href="#analysis">2.7 Read mapping, quantification and normalization</a>
+                        </li>
+                        <li>
+                            <a href="#expression capacity">2.8 Estimation of transcription reliability</a>
+                        </li>
+                        <li>
+                            <a href="#filter">2.9 Estimation of lncRNA expression capacity</a>
+                        </li>
+                        <li>
+                            <a href="#featured genes">2.10 Identification of high-confidence featured lncRNAs</a>
+                        </li>
+                        <li>
+                            <a href="#interaction_prediction">2.11 LncRNA-mRNA interaction prediction</a>
+                        </li>
+                    </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#usage">3. Database Usage</a>
+                        <ul class="nav nav-stacked">
+                            <li>
+                                <a href="#quick_start">3.1 Quick start in LncExpDB</a>
+                            </li>
+                            <li>
+                                <a href="#browse_genes">3.2 Browse lncRNA genes in LncExpDB</a>
+                            </li>
+                            <li>
+                                <a href="#featured_genes">3.3 Explore featured genes in LncExpDB</a>
+                            </li>
+                            <li>
+                                <a href="#contexts">3.4 View featured lncRNAs and interactions among biological contexts in LncExpDB</a>
+                            </li>
+                            <li>
+                                <a href="#capacity">3.5 Browse expression capacity in LncExpDB</a>
+                            </li>
+
+                            <li>
+                                <a href="#interactions">3.6 Visualize lncRNA-mRNA interactions in LncExpDB</a>
+                            </li>
+
+                            <li>
+                                <a href="#downloads">3.7 Download data in LncExpDB</a>
+                            </li>
+
+                            <li>
+                                <a href="#statistics">3.8 Statistic results in LncExpDB</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#contact">4. Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-9" style="padding-bottom: 100px">
+            <!--        <div class="panel panel-default">-->
+            <!--            <div class="panel-body" style="text-align: justify">-->
+            <h3 class="passage-header text-primary" id="introduction">Introduction</h3>
+            <h5><strong>1 What is LncExpDB?</strong></h5>
+            <p>
+                <span style="text-align: justify">
+                    LncExpDB is a comprehensive database for lncRNA expression. It covers expression profiles of lncRNA
+                    genes across various biological contexts, predicts potential functional lncRNAs and their interacting
+                    partners, and thus provides essential guidance on experimental design.
+                </span>
+            </p>
+
+            <p>
+                <span style="text-align: justify">
+                    Based on comprehensive integration, stringent curation and systematic analysis, LncExpDB currently
+                    presents a collection of 101,293 high-quality human lncRNA genes and houses abundant expression
+                    profiles derived from 1,977 samples of 337 biological conditions across nine biological contexts.
+                    Consequently, LncExpDB estimates lncRNA genes’ expression reliability and capacities, identifies
+                    25,191 featured genes, and further obtains 28,443,865 lncRNA-mRNA interactions.
+                </span>
+            </p>
+
+            <p>
+                <span>
+                    Moreover, LncExpDB is equipped with user-friendly web interfaces, providing functionalities for data
+                    query, browsing, visualization as well as easy access.
+                </span>
+            </p>
+            <h3 class="passage-header text-primary" id="methods">Data and Methods</h3>
+            <h5 id="collection"><strong>2.1 Data collection</strong></h5>
+            <p>
+                <span style="text-align: center">
+                    LncExpDB collects a total of 24 RNA-seq datasets across 1,977 samples from
+                    <a href="https://www.ncbi.nlm.nih.gov/gds/" target="_blank">GEO</a>,
+                    <a href="https://www.ncbi.nlm.nih.gov/sra/" target="_blank">SRA</a>
+                    and <a href="https://www.ebi.ac.uk/arrayexpress/" target="_blank">ArrayExpress</a>,
+                    covering 337 biological conditions of nine important biological contexts,
+                    including normal tissues/cell lines, organ development, preimplantation embryos,
+                    cell differentiation, subcellular localizations, exosomes, cancer cell lines,
+                    virus infection and circadian rhythm.
+                </span>
+            </p>
+
+<!--            <table class="table table-bordered" style="padding-bottom: 20px">-->
+<!--                <tbody style="vertical-align: center">-->
+
+<!--                <tr>-->
+<!--                    <th>Context type</th>-->
+<!--                    <th>Description</th>-->
+<!--                    <th>Sample numbers</th>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                    <th>Normal Tissue/Cell Line</th>-->
+<!--                    <th>Normal tissue samples are obtained from Human Protein Atlas, and normal primary-->
+<!--                    cell line samples are obtained from ENCODE</th>-->
+<!--                    <th>232</th>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                    <th>Development</th>-->
+<!--                    <th>These samples cover the development of seven major organs (forebrain/cerebrum-->
+<!--                        (hereafter referred to as ‘brain’), cerebellum, heart, kidney, liver, ovary-->
+<!--                        and testis) from early organogenesis to adulthood</th>-->
+<!--                    <th>313</th>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                    <th>Preimplantation Embryo</th>-->
+<!--                    <th>Obtained from human preimplantation embryos </th>-->
+<!--                    <th>125</th>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                    <th>Cell Differentiation</th>-->
+<!--                    <th>Collected from 19 Yoruba individuals at 16 time points each during the differentiation-->
+<!--                        from iPSC to cardiomyocyte.</th>-->
+<!--                    <th>297</th>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                    <th>Subcellular Localization</th>-->
+<!--                    <th>Samples are direct proximity labeled by APEX-seq, enabling to distinguish different-->
+<!--                        subcellular localizations at nanometer-resolution.</th>-->
+<!--                    <th>36</th>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                    <th>Exosomes</th>-->
+<!--                    <th>Human blood exosomes from coronary heart disease patients, colorectal carcinoma patients, hepatocellular-->
+<!--                        carcinoma patients, pancreatic carcinoma,early-stage esophageal squamous cell carcinoma (ESCC) patients-->
+<!--                        and normal control are collected.</th>-->
+<!--                    <th>97</th>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                    <th>Cancer Cell Line</th>-->
+<!--                    <th>All samples are resourced from Cancer Cell Line Encyclopedia (CCLE).</th>-->
+<!--                    <th>658</th>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                    <th>Virus Infection</th>-->
+<!--                    <th>Collected from the blood of well-characterized chronic HBV patients, chronic HCV patients, and HIV patients.-->
+<!--                        SARS-CoV2-infected lung and healthy lung samples are obtained in another dataset.</th>-->
+<!--                    <th>66</th>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                    <th>Circadian Rhythm</th>-->
+<!--                    <th>Obtained from whole blood, which is collected every 2h over 28hr (15 time points)</th>-->
+<!--                    <th>153</th>-->
+<!--                </tr>-->
+
+<!--                </tbody>-->
+<!--            </table>-->
+
+            <table class="table table-bordered" style="padding-bottom: 20px">
+                <tbody style="vertical-align: center">
+
+                <tr style="background-color: #f5f5f5">
+                    <th>Biological Context</th>
+                    <th>Project ID</th>
+                    <th>Dataset</th>
+                    <th>Source</th>
+                    <th>Sample Number</th>
+                    <th>PMID</th>
+<!--                    <th>Description</th>-->
+                </tr>
+
+                <tr style="background-color: white">
+                    <th rowspan="2">Normal Tissue/Cell</th>
+                    <th>E-MTAB-2836</th>
+                    <th>The Human Protein Atlas</th>
+                    <th>EBI ArrayExpress</th>
+                    <th>121</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/28940711/">28940711</a></th>
+<!--                    <th>HPA Expression profiles of 32 normal tissues.</th>-->
+                </tr>
+
+                <tr style="background-color: white">
+                    <th>SRP013565</th>
+                    <th>ENCODE Primary Cell Lines</th>
+                    <th>NCBI SRA</th>
+                    <th>111</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/29126249/">29126249</a></th>
+<!--                    <th>Expression profiles of 55 primary cells.</th>-->
+                </tr>
+
+                <tr style="background-color: #f5f5f5">
+                    <th rowspan="7">Organ Development</th>
+                    <th>E-MTAB-6814</th>
+                    <th>Development of Brain</th>
+                    <th>EBI ArrayExpress</th>
+                    <th>55</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/31243368/">31243368</a></th>
+                </tr>
+
+                <tr style="background-color: #f5f5f5">
+                    <th>E-MTAB-6814</th>
+                    <th>Development of Cerebellum</th>
+                    <th>EBI ArrayExpress</th>
+                    <th>59</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/31243368/">31243368</a></th>
+                </tr>
+
+                <tr style="background-color: #f5f5f5">
+                    <th>E-MTAB-6814</th>
+                    <th>Development of Heart</th>
+                    <th>EBI ArrayExpress</th>
+                    <th>50</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/31243368/">31243368</a></th>
+                </tr>
+
+                <tr style="background-color: #f5f5f5">
+                    <th>E-MTAB-6814</th>
+                    <th>Development of Kidney</th>
+                    <th>EBI ArrayExpress</th>
+                    <th>40</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/31243368/">31243368</a></th>
+                </tr>
+
+                <tr style="background-color: #f5f5f5">
+                    <th>E-MTAB-6814</th>
+                    <th>Development of Liver</th>
+                    <th>EBI ArrayExpress</th>
+                    <th>50</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/31243368/">31243368</a></th>
+                </tr>
+
+                <tr style="background-color: #f5f5f5">
+                    <th>E-MTAB-6814</th>
+                    <th>Development of Ovary</th>
+                    <th>EBI ArrayExpress</th>
+                    <th>18</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/31243368/">31243368</a></th>
+                </tr>
+
+                <tr style="background-color: #f5f5f5">
+                    <th>E-MTAB-6814</th>
+                    <th>Development of Testis</th>
+                    <th>EBI ArrayExpress</th>
+                    <th>41</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/31243368/">31243368</a></th>
+                </tr>
+
+                <tr style="background-color: white">
+                    <th rowspan="2">Preimplantation Embryo</th>
+                    <th>GSE71318</th>
+                    <th>Oocyte to Lateblastocyst (7 Stages)</th>
+                    <th>NCBI GEO</th>
+                    <th>35</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/27315811/">27315811</a></th>
+                </tr>
+
+                <tr style="background-color: white">
+                    <th>GSE36552</th>
+                    <th>Oocyte to Lateblastocyst (9 Stages)</th>
+                    <th>NCBI GEO</th>
+                    <th>90</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/23934149/">23934149</a></th>
+                </tr>
+
+                <tr style="background-color: #f5f5f5">
+                    <th>Cell Differentiation</th>
+                    <th>GSE122380</th>
+                    <th>Cell Differentiation</th>
+                    <th>NCBI GEO</th>
+                    <th>297</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/31249060/">31249060</a></th>
+                </tr>
+
+                <tr style="background-color: white">
+                    <th>Subcellular Localization</th>
+                    <th>GSE116008</th>
+                    <th>Subcellular Localization</th>
+                    <th>NCBI GEO</th>
+                    <th>36</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/31230715/">31230715</a></th>
+                </tr>
+
+                <tr style="background-color: #f5f5f5">
+                    <th rowspan="5">Exosome</th>
+                    <th>GSE104926</th>
+                    <th>Blood Exosomes from Early-Stage Esophageal Squamous Cell Carcinoma Patients vs. Normal Control</th>
+                    <th>NCBI GEO</th>
+                    <th>12</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/32043367/">32043367</a></th>
+                </tr>
+
+                <tr style="background-color: #f5f5f5">
+                    <th>GSE100063, GSE100206</th>
+                    <th>Blood Exosomes from Colorectal Cancer Patients vs. Normal Control</th>
+                    <th>NCBI GEO</th>
+                    <th>44</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/30053265/">30053265</a></th>
+                </tr>
+
+                <tr style="background-color: #f5f5f5">
+                    <th>GSE100063, GSE100206</th>
+                    <th>Blood Exosomes from Coronary Heart Disease vs. Normal Control</th>
+                    <th>NCBI GEO</th>
+                    <th>38</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/30053265/">30053265</a></th>
+                </tr>
+
+                <tr style="background-color: #f5f5f5">
+                    <th>GSE100063, GSE100206</th>
+                    <th>Blood Exosomes from Hepatocellular Carcinoma vs. Normal Control</th>
+                    <th>NCBI GEO</th>
+                    <th>53</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/30053265/">30053265</a></th>
+                </tr>
+
+                <tr style="background-color: #f5f5f5">
+                    <th>GSE100063, GSE100206</th>
+                    <th>Blood Exosomes from Pancreatic Adenocarcinoma Patients vs. Normal Control</th>
+                    <th>NCBI GEO</th>
+                    <th>46</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/30053265/">30053265</a></th>
+                </tr>
+
+                <tr style="background-color: white">
+                    <th>Cancer Cell Line</th>
+                    <th>PRJNA523380</th>
+                    <th>Cancer Cell Line</th>
+                    <th>NCBI SRA</th>
+                    <th>658</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/31068700/">31068700</a></th>
+                </tr>
+
+                <tr style="background-color: #f5f5f5">
+                    <th rowspan="4">Virus Infection</th>
+                    <th>GSE125686</th>
+                    <th>HIV Infection vs. Normal Control</th>
+                    <th>NCBI GEO</th>
+                    <th>22</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/30185599/">30185599</a></th>
+                </tr>
+
+                <tr style="background-color: #f5f5f5">
+                    <th>GSE125686</th>
+                    <th>HBV Infection vs. Normal Control</th>
+                    <th>NCBI GEO</th>
+                    <th>48</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/30185599/">30185599</a></th>
+                </tr>
+
+                <tr style="background-color: #f5f5f5">
+                    <th>GSE125686</th>
+                    <th>HCV Infection vs. Normal Control</th>
+                    <th>NCBI GEO</th>
+                    <th>24</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/30185599/">30185599</a></th>
+                </tr>
+
+                <tr style="background-color: #f5f5f5">
+                    <th>GSE147507</th>
+                    <th>COVID Patients vs. Normal Control</th>
+                    <th>NCBI GEO</th>
+                    <th>4</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/32416070/">32416070</a></th>
+                </tr>
+
+                <tr style="background-color: white">
+                    <th>Circadian Rhythm</th>
+                    <th>GSE113883</th>
+                    <th>Circadian Rhythm</th>
+                    <th>NCBI GEO</th>
+                    <th>153</th>
+                    <th><a href="https://pubmed.ncbi.nlm.nih.gov/30201705/">30201705</a></th>
+                </tr>
+
+                </tbody>
+            </table>
+
+            <h5 id="structure"><strong>2.2 Data structure</strong></h5>
+            <img th:src="@{/images/data_structure.png}" style="width: 800px;height: 400px;padding-bottom: 20px;horiz-align: center">
+            <h5 id="compare"><strong>2.3 LncRNA integration and curation</strong></h5>
+            <img th:src="@{/images/Integration.png}" style="width: 800px;height: 400px;padding-bottom: 20px">
+            <p>
+                <span style="text-align: center">
+                    LncExpDB integrates human lncRNA transcripts from
+                    <a href="https://bigd.big.ac.cn/lncbook/" target="_blank">LncBook v1.2</a>,
+                    <a href="http://reflnc.gao-lab.org/" target="_blank">RefLnc</a>,
+                    <a href="https://www.gencodegenes.org/" target="_blank">GENCODE v33</a>,
+                    <a href="http://ccb.jhu.edu/chess/" target="_blank">CHESS v2.2</a>,
+                    <a href="https://fantom.gsc.riken.jp/cat/" target="_blank">FANTOM-CAT (lv4_strigent)</a>
+                    and <a href="http://big.hanyang.ac.kr/CASOL/catalog.html" target="_blank">BIGTranscriptome</a>.
+                    To obtain a high-confidence lncRNA dataset, a set of strict criteria is adopted by considering
+                    redundancy, mapping error, possible pre-mRNA fragment, polymerase run-on, incomplete transcript, length, boundary, strand and
+                    coding potential.
+                </span>
+            </p>
+            <h5 id="reference"><strong>2.4 Overlap among different resources at transcript levels</strong></h5>
+            <img th:src="@{/images/UpSet.png}" style="width: 1000px;height: 760px;padding-bottom: 20px;horiz-align: left">
+            <p>
+                <span>
+                    Overlap is defined as exact match of all exon junctions and 5'-start, 3'-end bounaries.
+                </span>
+            </p>
+            <h5 id="locus"><strong>2.5 Assignment of lncRNA transcripts into gene loci</strong></h5>
+<!--            <p>-->
+<!--                <span>-->
+<!--                    Following the classical definition of ‘gene’ for protein-coding genes, lncRNA transcripts intersecting-->
+<!--                    any exons of one other in the same strand are considered as the same gene.-->
+<!--                </span>-->
+<!--            </p>-->
+            <img th:src="@{/images/GeneLocus.png}" style="width: 800px;height: 500px;padding-bottom: 20px;horiz-align: left">
+            <p>
+                <span>
+                    LncRNA transcripts are assigned into the same gene if they share exonic sequences in the same strand.
+                    Six cases of lncRNA genes are listed.
+                </span>
+            </p>
+            <h5 id="classification"><strong>2.6 LncRNA classification</strong></h5>
+            <p>
+                <span>
+                    Based on their genomic locations in respect to protein-coding genes, we classified lncRNAs into seven
+                    groups, Intergenic, Intronic (S), Intronic (AS), Overlapping (S), Overlapping (AS), Sense, and Antisense.
+                    "S" in the bracket represents that lncRNAs are in the same strand of protein-coding RNAs, and "AS" represents
+                    that lncRNAs are in the antisense strand of protein-coding RNAs.
+                </span>
+            </p>
+
+            <p>
+                <li><strong>Intergenic:</strong> lncRNAs are transcribed from intergenic regions;</li>
+                <li><strong>Intronic (S):</strong> lncRNAs are transcribed entirely from introns of protein-coding genes;</li>
+                <li><strong>Intronic (AS):</strong> lncRNAs are transcribed from antisense strand of protein-coding genes
+                    and the entire sequences are covered by introns of protein-coding genes;</li>
+                <li><strong>Overlapping (S):</strong> lncRNAs that contain coding genes within an intron on the sense strand;</li>
+                <li><strong>Overlapping (AS):</strong> lncRNAs that contain coding genes within an intron on the antisense strand;</li>
+                <li><strong>Sense:</strong> lncRNAs are transcribed from the sense strand of protein-coding genes and the
+                    entire sequence of lncRNAs are covered by protein-coding genes (Intronic lncRNAs are not included),
+                    or the entire sequence of protein-coding genes are covered by lncRNAs (Overlapping lncRNAs are not
+                    included), or both lncRNAs and protein-coding genes intersect each other partially;</li>
+                <li><strong>Antisense:</strong> lncRNAs are transcribed from the antisense strand of protein-coding genes
+                    and the entire sequence of lncRNAs are covered by protein-coding genes (Intronic lncRNAs are not included),
+                    or the entire sequence of protein-coding genes are covered by lncRNAs (Overlapping lncRNAs are not
+                    included), or both lncRNAs and protein-coding genes intersect each other partially.</li>
+                <li>See more details in <a href="https://pubmed.ncbi.nlm.nih.gov/25399417/" target="_blank">LncRNAWiki</a></li>
+            </p>
+
+            <img th:src="@{/images/Classification.png}" style="width: 600px;height: 800px;padding-bottom: 20px;horiz-align: center">
+            <h5 id="analysis"><strong>2.7 Read mapping, quantification and normalization</strong></h5>
+            <p>
+                <span style="text-align: center">
+                    All samples are processed by a standardized RNA-seq pipeline (<a href="https://pubmed.ncbi.nlm.nih.gov/24695404/" target="_blank">Trimmomatic</a>,
+                    <a href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/" target="_blank">FastQC</a>, <a href="https://pubmed.ncbi.nlm.nih.gov/23104886/" target="_blank">STAR</a>,
+                    <a href="https://pubmed.ncbi.nlm.nih.gov/22743226/" target="_blank">RSeQC</a>,
+                    <a href="https://pubmed.ncbi.nlm.nih.gov/23104886/" target="_blank">Kallisto</a> and
+                    <a href="https://pubmed.ncbi.nlm.nih.gov/24227677/" target="_blank">featureCounts</a>) to get the abundance matrixes (reads count, CPM,
+                    FPKM and TPM) of lncRNAs. The raw abundance matrixes are normalized by
+                    <a href="https://pubmed.ncbi.nlm.nih.gov/19910308/" target="_blank">TMM method</a>.
+                </span>
+            </p>
+
+            <h5 id="expression capacity"><strong>2.8 Estimation of transcription reliability</strong></h5>
+            <p>
+                <span style="text-align: center">
+                    LncExpDB considers lncRNA genes with maximum expression values less than 1.0 TPM in a certain
+                    biological condition as not expressed (NE). If the lncRNA genes are tagged with NE in
+                    all biological conditions available, they are most likely unreliable lncRNA genes.
+                    Of course, it is possible that this definition may change when novel biological conditions
+                    are covered.
+                </span>
+            </p>
+
+            <h5 id="filter"><strong>2.9 Estimation of lncRNA expression capacity</strong></h5>
+            <p>
+                <span style="text-align: center">
+                    All expressed genes are ranked in a specific condition (time point/stage/tissue/cell/component/processing).
+                    Specifically, genes with expression values greater than the upper quantile are classified as “H”
+                    (high expression level), those less than the lower quantile as “L” (low expression level), and the remaining
+                    as “M” (medium expression level). High-capacity lncRNAs (HCL) are genes with “H” classification in at least
+                    one condition, and low-capacity lncRNAs (LCL) are those with “L” in all conditions, and the remaining are
+                    medium-capacity lncRNAs (MCL). It is noted that with more biological conditions covered, LCL or MCL
+                    may change to MCL or HCL.
+                </span>
+            </p>
+
+            <h5 id="featured genes"><strong>2.10 Identification of high-confidence featured lncRNAs</strong></h5>
+            <p>
+                <span>
+                    LncExpDB identifies and characterizes featured lncRNA genes that are specifically
+                    expressed in a certain cell line/tissue, differentially expressed in the context of
+                    cancer or virus infection, enriched in a subcellular compartment, dynamically
+                    expressed during cell differentiation or embryo/organ development, or periodically
+                    expressed with circadian rhythm.
+                </span>
+            </p>
+            <p>
+                <span style="text-align: center">
+                    The featured genes are identified using specialized methods with strict criteria:
+                </span>
+            <li>Time-course expression patterns: R-square >= 0.7 and adjusted p-value < 0.05, <a href="https://pubmed.ncbi.nlm.nih.gov/24894503/" target="_blank">maSigPro</a>;</li>
+            <li>Stage-specific genes and tissue/cell-specific genes: <a href="https://pubmed.ncbi.nlm.nih.gov/15388519/" target="_blank">τ (tissue-specific index)</a> >= 0.9, maximum TPM >= 10;</li>
+            <li>Consistently expressed genes: τ <= 0.35, maximum TPM >= 10;</li>
+            <li>Differentially expressed genes in virus infection and exosomes: |log2 foldchange| >= 1 and adjusted p-value <= 0.05,
+                <a href="https://pubmed.ncbi.nlm.nih.gov/25516281/" target="_blank">DeSeq2</a>;</li>
+            <li>Organelle-enriched genes: log2 foldchange >= 1 and adjusted p-value <= 0.05, DeSeq2;</li>
+            <li>Circadian genes: meta2d and BH < 0.05, <a href="https://pubmed.ncbi.nlm.nih.gov/27378304/" target="_blank">MetaCycle</a>.</li>
+            </p>
+
+            <h5 id="interaction_prediction"><strong>2.11 LncRNA-mRNA interaction prediction</strong></h5>
+            <p>
+                <span style="text-align: center">
+                    LncExpDB predicts lncRNA-mRNA interactions based on co-expression networks.
+                    Co-expressions relationships between lncRNAs and mRNAs are identified using the
+                    Pearson correlation coefficient (adjusted p-value < 0.01 and |r|>=0.5). It is noted due
+                    to the extremely small sampling size (n = 4), the dataset of “COVID patients vs.
+                    normal control” is not analyzed in this section.
+                </span>
+            </p>
+
+            <h3 class="passage-header text-primary" id="usage">Database Usage</h3>
+            <h5 id="quick_start"><strong>3.1 Quick start in LncExpDB</strong></h5>
+            <p>
+                <span>
+                    Enter a gene symbol or gene ID (LncExpDB ID) in the search box on the homepage to
+                    explore the lncRNA of interest. In the “Resources” part or “Context” section in
+                    the navigation bar, the click of each context will lead you to explore the expression
+                    profiles of featured lncRNAs and lncRNA-mRNA interactions across different biological
+                    conditions in the corresponding biological contexts, where you can view the defined
+                    featured genes or explore a group of lncRNA genes of interest with customized filtration.
+                </span>
+            </p>
+            <p>
+                <span>
+                    To overview expression capacities/featured genes/interactions across different contexts,
+                    please click on “Expression Capacity”, “Featured Genes” and “Interactions” in the navigation bar.
+                </span>
+            </p>
+            <h5 id="browse_genes"><strong>3.2  Browse lncRNA genes in LncExpDB</strong></h5>
+            <p>
+                <span>
+                    You can browse all lncRNAs in the "<a href="/LncExpDB/genes/" target="_blank">Genes</a>" page with the basic information of
+                    gene id/symbol, classification, chromosome, strand, location, gene length
+                    and transcript number. You can search lncRNAs of interest by gene id/transcript id derived from
+                    <a href="https://bigd.big.ac.cn/lncbook" target="_blank">LncBook v1.2</a>,
+                    <a href="http://reflnc.gao-lab.org/" target="_blank">RefLnc</a>,
+                    <a href="http://www.noncode.org/" target="_blank">NONCODE v5</a>,
+                    <a href="https://www.gencodegenes.org/" target="_blank">GENCODE v33</a>,
+                    <a href="http://ccb.jhu.edu/chess/" target="_blank">CHESS v2.2</a>,
+                    <a href="https://fantom.gsc.riken.jp/cat/" target="_blank">FANTOM-CAT (lv4_strigent)</a>
+                    and <a href="http://big.hanyang.ac.kr/CASOL/catalog.html" target="_blank">BIGTranscriptome</a>
+                    or gene symbol derived from
+                    <a href="https://www.genenames.org/" target="_blank">HGNC</a>,
+                    chromosome or classification type, and the gene id is linked to detailed
+                    information page of expression profiles in different contexts. In the detaied gene page, all corresponding gene and transcript id
+                    provide hyperlinks to their orginal pages. In addition, users can view our reference gene track on
+                     <a href="http://genome.ucsc.edu/" target="_blank">UCSC Genome Browser</a>.
+                </span>
+            </p>
+
+            <h5 id="featured_genes"><strong>3.3 Explore featured genes in LncExpDB</strong></h5>
+            <p>
+                <span>
+                    You can explore featured lncRNAs in the "<a href="/LncExpDB/featured/" target="_blank">Featured Genes</a>" page, which covers tens of
+                    thousands of featured genes with specific expression patterns in at least one biological
+                    context. You can filter and/or re-order the table content using the categories and search
+                    boxes in the header line. Each gene id is linked to detailed information page of expression
+                    profiles in different contexts.
+                </span>
+            </p>
+
+            <h5 id="contexts"><strong>3.4 View featured lncRNAs and interactions among biological contexts in LncExpDB</strong></h5>
+            <p>
+                <span>
+                    You can view all types of biological samples in the "Contexts" page including normal tissues and cell lines,
+                    organ development, preimplantation embryos, cell differentiation, subcellular localization, exosome, cancer cell line,
+                    virus infection and circadian rhythm. Each context page contains the tabs of “Featured Genes” and “Interaction”.
+                </span>
+            </p>
+
+            <p>
+                <span>
+                    By clicking the tab of “<a href="/LncExpDB/featured/" target="_blank">Featured Genes</a>”, you can select specific datasets of interest and browse all
+                    defined featured genes, e.g., specifically or consistently expressed genes in a certain context.
+                    In addition, you can select a specific group of genes with custom thresholds. You can filter and/or
+                    re-order the expression profile table using the categories and search boxes in the header line.
+                </span>
+            </p>
+
+            <p>
+                <span>
+                    By clicking the tab of “<a href="/LncExpDB/interactions" target="_blank">Interactions</a>”, you can select specific datasets of interest and browse the
+                    <i>cis</i> or <i>trans</i> interactions between lncRNAs and mRNAs. Moreover, you can select a specific group of
+                    interaction by custom thresholds or search the related interactions by lncRNA/protein-coding id or symbol.
+                </span>
+            </p>
+
+
+            <h5 id="capacity"><strong>3.5 Browse expression capacity in LncExpDB</strong></h5>
+            <p>
+                <span>
+                    In the "<a href="/LncExpDB/capacity/" target="_blank">Expression Capacity</a>" page, you can browse the lncRNA’s expression capacity in various
+                    biological contexts. You can filter for high-capacity lncRNAs in one or multiple contexts using the
+                    categories and in the header line of expression capacity table. Furthermore, the “Chart” enables
+                    visualization of expression level distribution among all the biological conditions. Each gene id
+                    is linked to detailed information page of expression profiles in different contexts.
+                </span>
+            </p>
+
+            <h5 id="interactions"><strong>3.6 Visualize lncRNA-mRNA interactions in LncExpDB</strong></h5>
+            <p>
+                <span>
+                    You can visualize all lncRNA-mRNA interactions in the “<a href="/LncExpDB/interactions" target="_blank">Interactions</a>” page, which includes the detail
+                    information of lncRNAs-mRNA pairs, pearson correlation coefficient value, p values and distance. The
+                    “search by” tab allows you to narrow down the results according to gene of your interest. Each gene
+                    id is linked to detailed information page of expression profiles in different contexts.
+                </span>
+            </p>
+
+            <h5 id="downloads"><strong>3.7 Download data in LncExpDB</strong></h5>
+            <p>
+                <span>
+                    The “<a href="/LncExpDB/downloads" target="_blank">Downloads</a>” page contains all the files that you can download such as:
+                    i) reference gene model for RNA-seq analysis,
+                    ii) expression profiles,
+                    iii) expression levels,
+                    iv) featured genes and
+                    v) co-expression matrix in various biological contexts.
+                </span>
+            </p>
+
+            <h5 id="statistics"><strong>3.8 Statistic results in LncExpDB</strong></h5>
+            <p>
+                <span>
+                    In the page of “<a href="https://bigd.big.ac.cn/LncExpDB/statistics" target="_blank">Statistics</a>”, you can find and download all statistical analytics
+                    results for i) gene annotation statistics, such as lncRNA integration, exon and
+                    transcript number distribution and lncRNA classification, ii) expression statistics,
+                    including expression profiles and distribution of featured lncRNAs in different
+                    biological contexts, and iii) lncRNA-mRNA interaction distribution.
+                </span>
+            </p>
+
+            <h3 class="passage-header text-primary" id="contact">Contact Us</h3>
+            <div class="panel panel-default" style="margin-top: 30px;margin-left: 20px;margin-right: 20px">
+                <div class="panel-body">
+                    <div class="class=col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <address>
+                            <Strong>Email: </Strong>
+                            <br>
+                            lncwiki@big.ac.cn<br>
+                        </address>
+                        <address>
+                            <strong>Postal Address</strong><br>
+                            The LncExpDB Team<br>
+                            National Genomics Data Center<br>
+                            China National Center for Bioinformation / Beijing Institute of Genomics, Chinese Academy of Sciences<br>
+                            No.1 Beichen West Road<br>
+                            Chaoyang District, Beijing 100101<br>
+                            China
+                        </address>
+                        <address>
+                            <Strong>Project Leader:</Strong>
+                            <br>
+                            <a href="https://bigd.big.ac.cn/people/Lina-Ma" target="_blank">Lina Ma:</a> malina(AT)big.ac.cn<br>
+                        </address>
+
+                        <address>
+                            <Strong>LncRNA Integration:</Strong>
+                            <br>
+                            <a href="http://bigd.big.ac.cn/people/Zhao-Li" target="_blank">Zhao Li:</a> lizhao2018m(AT)big.ac.cn<br>
+                        </address>
+
+                        <address>
+                            <Strong>Web Development:</Strong>
+                            <br>
+                            <a href="http://bigd.big.ac.cn/people/Zhao-Li" target="_blank">Zhao Li:</a> lizhao2018m(AT)big.ac.cn<br>
+                            <a href="#" target="_blank">Shuai Jiang:</a> jiangs(AT)big.ac.cn<br>
+                            <a href="http://bigd.big.ac.cn/people/Qiang-Du" target="_blank">Qiang Du:</a> duqiang2019m(AT)big.ac.cn<br>
+                            <a href="http://bigd.big.ac.cn/people/Dong-Zou" target="_blank">Dong Zou:</a> zoud(AT)big.ac.cn<br>
+                        </address>
+
+                        <address>
+                            <Strong>Data collection: </Strong>
+                            <br>
+                            <a href="https://bigd.big.ac.cn/people/Lin-Liu" target="_blank">Lin Liu:</a> liulin(AT)big.ac.cn<br>
+                            <a href="https://bigd.big.ac.cn/people/Zhao-Li" target="_blank">Zhao Li:</a> lizhao2018m(AT)big.ac.cn<br>
+                        </address>
+
+                        <address>
+                            <Strong>Expression Analysis: </Strong>
+                            <br>
+                            <a href="https://bigd.big.ac.cn/people/Lin-Liu" target="_blank">Lin Liu:</a> liulin(AT)big.ac.cn<br>
+                            <a href="https://bigd.big.ac.cn/people/Zhao-Li" target="_blank">Zhao Li:</a> lizhao2018m(AT)big.ac.cn<br>
+                            <a href="https://bigd.big.ac.cn/people/Qianpeng-Li" target="_blank">Qianpeng Li:</a> liqianpeng2019d(AT)big.ac.cn<br>
+                            <a href="https://bigd.big.ac.cn/people/Changrui-Feng" target="_blank">Changrui Feng:</a> fengchangrui2019m(AT)big.ac.cn<br>
+                        </address>
+
+                        <address>
+                            <Strong>Principal Investigator: </Strong>
+                            <br>
+                            <a href="http://bigd.big.ac.cn/people/Zhang-Zhang" target="_blank">Zhang Zhang</a>: zhangzhang(AT)big.ac.cn
+                        </address>
+
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <address>
+                            <strong>Map: </strong><br>
+                            <img th:src="@{/images/address.jpg}" height="300" width="420"/>
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="sk-fading-circle" style="width: 50px;height: 50px">-->
+<!--    <div class="sk-circle1 sk-circle"></div>-->
+<!--    <div class="sk-circle2 sk-circle"></div>-->
+<!--    <div class="sk-circle3 sk-circle"></div>-->
+<!--    <div class="sk-circle4 sk-circle"></div>-->
+<!--    <div class="sk-circle5 sk-circle"></div>-->
+<!--    <div class="sk-circle6 sk-circle"></div>-->
+<!--    <div class="sk-circle7 sk-circle"></div>-->
+<!--    <div class="sk-circle8 sk-circle"></div>-->
+<!--    <div class="sk-circle9 sk-circle"></div>-->
+<!--    <div class="sk-circle10 sk-circle"></div>-->
+<!--    <div class="sk-circle11 sk-circle"></div>-->
+<!--    <div class="sk-circle12 sk-circle"></div>-->
+<!--</div>-->
+
+</body>
+
+<div th:replace="~{common/common_js::common_js}"></div>
+<script src="https://bigd.big.ac.cn/js/headerfooter-full.js"></script>
+</html>
