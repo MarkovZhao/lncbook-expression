@@ -1,7 +1,7 @@
 $('#main_search').select2({
     minimumInputLength: 1,
     ajax: {
-        url: '/LncExpDB/browse/search',
+        url: '/lncexpdb/browse/search',
         data: function (params) {
             var query = {
                 type: params.term
@@ -21,7 +21,7 @@ function formatState (state) {
 $('#main_search').on('select2:select', function (e) {
     if ($('#main_search').val().split("|")[1] == "Gene ID") {
         $.ajax({
-            url: '/LncExpDB/browse/searchgene?geneid='+$('#main_search').val().split("|")[0],
+            url: '/lncexpdb/browse/searchgene?geneid='+$('#main_search').val().split("|")[0],
             type: 'POST',
             dataType: 'json',
             cache: false,
@@ -30,12 +30,12 @@ $('#main_search').on('select2:select', function (e) {
         function succFunction(data) {
             var entries = data["search"]
             var id = entries[0]["geneid"]
-            $(location).attr('href', '/LncExpDB/gene?geneid='+id);
+            $(location).attr('href', '/lncexpdb/gene?geneid='+id);
         }
     }
     if ($('#main_search').val().split("|")[1] == "Gene Name") {
         $.ajax({
-            url: '/LncExpDB/browse/searchsymbol?symbol='+$('#main_search').val().split("|")[0],
+            url: '/lncexpdb/browse/searchsymbol?symbol='+$('#main_search').val().split("|")[0],
             type: 'POST',
             dataType: 'json',
             cache: false,
@@ -44,12 +44,12 @@ $('#main_search').on('select2:select', function (e) {
         function succFunction(data) {
             var entries = data["search"]
             var id = entries[0]["geneid"]
-            $(location).attr('href', '/LncExpDB/gene?geneid='+id);
+            $(location).attr('href', '/lncexpdb/gene?geneid='+id);
         }
     }
     if ($('#main_search').val().split("|")[1] == "Transcript ID") {
         $.ajax({
-            url: '/LncExpDB/browse/searchtranscript?transcriptid='+$('#main_search').val().split("|")[0],
+            url: '/lncexpdb/browse/searchtranscript?transcriptid='+$('#main_search').val().split("|")[0],
             type: 'POST',
             dataType: 'json',
             cache: false,
@@ -58,12 +58,12 @@ $('#main_search').on('select2:select', function (e) {
         function succFunction(data) {
             var entries = data["search"]
             var id = entries[0]["geneid"]
-            $(location).attr('href', '/LncExpDB/gene?geneid='+id);
+            $(location).attr('href', '/lncexpdb/gene?geneid='+id);
         }
     }
 });
 
 $("#radar").on('click',function () {
     var tempwindow=window.open('_blank')
-    tempwindow.location.href="/LncExpDB/featured";
+    tempwindow.location.href="/lncexpdb/featured";
 })

@@ -1,9 +1,9 @@
 //Development Table
 var development_pattern_table = (function (tissue) {
     var geneid = window.location.href.split("=")[1].split("#")[0];
-    console.log('/LncExpDB/pattern/' +  tissue + '?geneid=' + '\'' + geneid + '\'')
+    console.log('/lncexpdb/pattern/' +  tissue + '?geneid=' + '\'' + geneid + '\'')
     $.ajax({
-        url: '/LncExpDB/pattern/' +  tissue + '?geneid=' + '\'' + geneid + '\'',
+        url: '/lncexpdb/pattern/' +  tissue + '?geneid=' + '\'' + geneid + '\'',
         type: 'POST',
         dataType: 'json',
         cache: false,
@@ -167,7 +167,7 @@ var differentiation_pattern_table = (function (tissue) {
     var geneid = window.location.href.split("=")[1].split("#")[0];
 
     $.ajax({
-        url: '/LncExpDB/pattern/' +  tissue + '?geneid=' + '\'' + geneid + '\'',
+        url: '/lncexpdb/pattern/' +  tissue + '?geneid=' + '\'' + geneid + '\'',
         type: 'POST',
         dataType: 'json',
         cache: false,
@@ -326,7 +326,7 @@ var preimplantation_pattern_table = (function (tissue) {
     var geneid = window.location.href.split("=")[1].split("#")[0];
 
     $.ajax({
-        url: '/LncExpDB/pattern/' +  tissue + '?geneid=' + '\'' + geneid + '\'',
+        url: '/lncexpdb/pattern/' +  tissue + '?geneid=' + '\'' + geneid + '\'',
         type: 'POST',
         dataType: 'json',
         cache: false,

@@ -2,7 +2,7 @@
 $(function () {
     var geneid = window.location.href.split("=")[1].split("#")[0];
     $.ajax({
-        url: '/LncExpDB/hkts/hpa?geneid=' + '\'' + geneid + '\'',
+        url: '/lncexpdb/hkts/hpa?geneid=' + '\'' + geneid + '\'',
         type: 'POST',
         dataType: 'json',
         cache: false,
@@ -84,7 +84,7 @@ $(function () {
 $(function () {
     var geneid = window.location.href.split("=")[1].split("#")[0];
     $.ajax({
-        url: '/LncExpDB/hkts/encode?geneid=' + '\'' + geneid + '\'',
+        url: '/lncexpdb/hkts/encode?geneid=' + '\'' + geneid + '\'',
         type: 'POST',
         dataType: 'json',
         cache: false,
@@ -166,7 +166,7 @@ $(function () {
 $(function () {
     var geneid = window.location.href.split("=")[1].split("#")[0];
     $.ajax({
-        url: '/LncExpDB/hkts/ccle?geneid=' + '\'' + geneid + '\'',
+        url: '/lncexpdb/hkts/ccle?geneid=' + '\'' + geneid + '\'',
         type: 'POST',
         dataType: 'json',
         cache: false,
@@ -249,7 +249,7 @@ var development_table = (function (tissue) {
     var geneid = window.location.href.split("=")[1].split("#")[0];
 
     $.ajax({
-        url: '/LncExpDB/pattern/' +  tissue + '?geneid=' + '\'' + geneid + '\'',
+        url: '/lncexpdb/pattern/' +  tissue + '?geneid=' + '\'' + geneid + '\'',
         type: 'POST',
         dataType: 'json',
         cache: false,
@@ -333,7 +333,7 @@ $("#development").on("change",function () {
 $(function () {
     var geneid = window.location.href.split("=")[1].split("#")[0];
     $.ajax({
-        url: '/LncExpDB/pattern/differentiation?geneid=' + '\'' + geneid + '\'',
+        url: '/lncexpdb/pattern/differentiation?geneid=' + '\'' + geneid + '\'',
         type: 'POST',
         dataType: 'json',
         cache: false,
@@ -417,7 +417,7 @@ var preimplantation_hkts_table = (function (tissue) {
     var geneid = window.location.href.split("=")[1].split("#")[0];
 
     $.ajax({
-        url: '/LncExpDB/pattern/' +  tissue + '?geneid=' + '\'' + geneid + '\'',
+        url: '/lncexpdb/pattern/' +  tissue + '?geneid=' + '\'' + geneid + '\'',
         type: 'POST',
         dataType: 'json',
         cache: false,

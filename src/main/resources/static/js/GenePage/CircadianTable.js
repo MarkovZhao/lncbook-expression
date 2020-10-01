@@ -2,7 +2,7 @@
 $(function () {
     var geneid = window.location.href.split("=")[1].split("#")[0];
     $.ajax({
-        url: '/LncExpDB/de/circadian?geneid=' + '\'' + geneid + '\'',
+        url: '/lncexpdb/de/circadian?geneid=' + '\'' + geneid + '\'',
         type: 'POST',
         dataType: 'json',
         cache: false,

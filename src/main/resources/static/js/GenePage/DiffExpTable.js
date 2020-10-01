@@ -3,7 +3,7 @@ var exosome_table = (function (tissue) {
     var geneid = window.location.href.split("=")[1].split("#")[0];
 
     $.ajax({
-        url: '/LncExpDB/de/' +  tissue + '?geneid=' + '\'' + geneid + '\'',
+        url: '/lncexpdb/de/' +  tissue + '?geneid=' + '\'' + geneid + '\'',
         type: 'POST',
         dataType: 'json',
         cache: false,
@@ -82,7 +82,7 @@ var virus_table = (function (tissue) {
     var geneid = window.location.href.split("=")[1].split("#")[0];
 
     $.ajax({
-        url: '/LncExpDB/de/' +  tissue + '?geneid=' + '\'' + geneid + '\'',
+        url: '/lncexpdb/de/' +  tissue + '?geneid=' + '\'' + geneid + '\'',
         type: 'POST',
         dataType: 'json',
         cache: false,

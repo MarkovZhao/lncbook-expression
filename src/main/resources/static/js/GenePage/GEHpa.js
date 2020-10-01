@@ -2,7 +2,7 @@
 $(function () {
     var geneid = window.location.href.split("=")[1].split("#")[0];
     $.ajax({
-        url: '/LncExpDB/gene/hpa?geneid=' + geneid,
+        url: '/lncexpdb/gene/hpa?geneid=' + geneid,
         type: 'POST',
         dataType: 'json',
         cache: false,

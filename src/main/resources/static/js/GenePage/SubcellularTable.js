@@ -1,7 +1,7 @@
 $(function () {
     var geneid = window.location.href.split("=")[1].split("#")[0];
     $.ajax({
-        url: '/LncExpDB/hkts/srp150867byid?geneid=' + geneid,
+        url: '/lncexpdb/hkts/srp150867byid?geneid=' + geneid,
         type: 'POST',
         dataType: 'json',
         cache: false,

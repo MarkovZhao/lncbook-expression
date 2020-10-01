@@ -3,7 +3,7 @@
 $(function () {
     var geneid = window.location.href.split("=")[1].split("#")[0];
     $.ajax({
-        url: '/LncExpDB/gene/ccle?geneid=' + geneid,
+        url: '/lncexpdb/gene/ccle?geneid=' + geneid,
         type: 'POST',
         dataType: 'json',
         cache: false,
