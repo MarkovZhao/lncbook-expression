@@ -1,6 +1,9 @@
 package com.ngdc.lncbookexpression.Controller;
 
+import com.ngdc.lncbookexpression.service.CancerMapService;
 import com.ngdc.lncbookexpression.service.GenePageService;
+import com.ngdc.lncbookexpression.view.CancerVO;
+import com.ngdc.lncbookexpression.view.CountryVO;
 import com.ngdc.lncbookexpression.view.GeneInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +20,9 @@ public class PageJumpController {
 
     @Autowired
     private GenePageService genePageService;
+
+    @Autowired
+    private CancerMapService cancerMapService;
 
     @RequestMapping(value = "/gene")
     public ModelAndView gene(@RequestParam("geneid") String geneid, HttpSession httpSession) {
@@ -152,4 +158,46 @@ public class PageJumpController {
         return "capacity";
     }
 
+    @RequestMapping(value = "/cancermap")
+    public ModelAndView main(@RequestParam("country") String country,
+                             @RequestParam("cancer") String cancer,HttpSession httpSession) {
+
+
+        CountryVO countryVO = cancerMapService.findCountry(country);
+
+        CancerVO cancerVO = cancerMapService.findCancer(cancer);
+        Map <String, Object> map = new HashMap<>();
+        if ((countryVO == null) || (cancerVO == null)){
+            map.put("url","./");
+            return new ModelAndView("common/error",map);
+        }
+        else {
+            map.put("country",country);
+            map.put("cancer",cancer);
+            return new ModelAndView("countrypage",map);
+        }
+
+    }
+
+    @RequestMapping("/cancermap/home")
+    public String cancermap(){
+
+        return "cancermap";
+    }
+
+    @RequestMapping("/cancermap/countrypage")
+    public String country(){
+
+        return "countrypage";
+    }
+
+    @RequestMapping("/cancermap/download")
+    public String cmdownload(){
+        return "cmdownload";
+    }
+
+    @RequestMapping("/cancermap/contact")
+    public String cmcontact(){
+        return "cmcontact";
+    }
 }

@@ -38,7 +38,7 @@ var de_table = (function (url) {
                 field: 'geneid',
                 align: "center",
                 formatter: function(value,row,index){
-                    return "<a href='/LncExpDB/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
+                    return "<a href='/lncexpdb/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
                 },
                 // sortable: true
 
@@ -103,7 +103,7 @@ var de_table = (function (url) {
     });
 });
 
-var url1 = "/LncExpDB/de/colorectal";
+var url1 = "/lncexpdb/de/colorectal";
 de_table(url1)
 
 
@@ -130,9 +130,9 @@ $("#de_filter").on('click',function () {
         }
     });
     if (all_params.length == 0) {
-        var url = '/LncExpDB/de/' + datatype;
+        var url = '/lncexpdb/de/' + datatype;
     } else {
-        var url = '/LncExpDB/de/' + datatype + '?' + all_params.join("&");
+        var url = '/lncexpdb/de/' + datatype + '?' + all_params.join("&");
     }
     console.log(url)
     de_table(url);
@@ -236,7 +236,7 @@ $("#de_reset").on('click', function () {
         $(this).removeAttr("disabled");
         $(this).attr('checked',false);
     });
-    var url = "/LncExpDB/de/colorectal";
+    var url = "/lncexpdb/de/colorectal";
     de_table(url);
 });
 

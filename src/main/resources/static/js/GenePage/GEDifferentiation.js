@@ -37,23 +37,33 @@ $(function () {
                     text: '',
                     href: 'http://www.example.com'
                 },
-                title: { text: "Differentiation from iPSC to Cardiomyocyte ("  + geneid + ")"
+                title: { text: "Differentiation from iPSC to Cardiomyocyte ("  + geneid + ")",
+                    style:{
+                        color:"#000000",
+                        fontFamily:"Arial",
+                        fontWeight:"bold",
+                    }
                 },
                 xAxis: {
                     categories: ["Day 0","Day 1","Day 2"
                         ,"Day 3","Day 4","Day 5","Day 6",
                         "Day 7","Day 8","Day 9","Day 10","Day 11"
                         ,"Day 12","Day 13","Day 14","Day 15"],
+                    lineColor: "#000000",
+                    tickColor: "#000000",
                     style:{
                         fontSize: '17px',
+                        color:"#000000",
+                        fontWeight: 'bold',
                         fontFamily: 'Arial, sans-serif'
                     },
                     labels: {
                         rotation: -30,
                         style: {
                             fontSize:'13px',
-                            fontcolor: '#000000',
+                            color: '#000000',
                             fontWeight: 'bold',
+                            fontFamily: "Arial"
                         },
                     },
                     crosshair: true
@@ -64,6 +74,7 @@ $(function () {
                         text: 'TPM',
                         style: {
                             fontSize: '17px',
+                            color:"#000000",
                             fontWeight: 'bold',
                             fontFamily: 'Arial, sans-serif'
                         }
@@ -71,8 +82,9 @@ $(function () {
                     labels: {
                         style: {
                             fontSize:'13px',
-                            fontcolor: '#000000',
+                            color: '#000000',
                             fontWeight: 'bold',
+                            fontFamily: "Arial"
                         },
                     },
                 },

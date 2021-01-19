@@ -57,7 +57,12 @@ $(function () {
                     text: '',
                     href: 'http://www.example.com'
                 },
-                title: { text: "Development of 7 Organs from Early Organogenesis to Adulthood ("  + geneid + ")"
+                title: { text: "Development of 7 Organs from Early Organogenesis to Adulthood ("  + geneid + ")",
+                    style:{
+                        color:"#000000",
+                        fontFamily:"Arial",
+                        fontWeight:"bold",
+                    }
                 },
                 xAxis: {
                     categories: ["Four week","Five week","Seven week"
@@ -80,6 +85,8 @@ $(function () {
                         "Seven week","Eight week","Nine week","Ten week","Eleven week","Twelve week","Thirteen week",
                         "Sixteen week","Eighteen week","Nineteen week","Infant","Toddler","Adolescent","Young adult",
                         "Middle adult","Elderly"],
+                    lineColor: "#000000",
+                    tickColor: "#000000",
                     style:{
                         fontSize: '17px',
                         fontFamily: 'Arial, sans-serif'
@@ -88,8 +95,9 @@ $(function () {
                         rotation: -30,
                         style: {
                             fontSize:'13px',
-                            fontcolor: '#000000',
+                            color: '#000000',
                             fontWeight: 'bold',
+                            fontFamily: "Arial"
                         },
                     },
                     crosshair: true
@@ -100,6 +108,7 @@ $(function () {
                         text: 'TPM',
                         style: {
                             fontSize: '17px',
+                            color: "#000000",
                             fontWeight: 'bold',
                             fontFamily: 'Arial, sans-serif'
                         }
@@ -107,8 +116,9 @@ $(function () {
                     labels: {
                         style: {
                             fontSize:'13px',
-                            fontcolor: '#000000',
+                            color: '#000000',
                             fontWeight: 'bold',
+                            fontFamily: "Arial",
                         },
                     },
                 },

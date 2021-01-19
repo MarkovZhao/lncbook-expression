@@ -7,7 +7,7 @@ $(document).on("click", "a[name='view_expression']", function () {
     $(this).attr("name","hide_expression");
     var geneid = $(this).data("id");
     $.ajax({
-        url: '/LncExpDB/gene/development?geneid=' + geneid,
+        url: '/lncexpdb/gene/development?geneid=' + geneid,
         type: 'POST',
         dataType: 'json',
         cache: false,
@@ -55,10 +55,17 @@ $(document).on("click", "a[name='view_expression']", function () {
                     text: '',
                     href: 'http://www.example.com'
                 },
-                title: { text: "Development of " + tissue_map[tissue] + " from Early Organogenesis to Adulthood ("  + geneid + ")"
+                title: { text: "Development of " + tissue_map[tissue] + " from Early Organogenesis to Adulthood ("  + geneid + ")",
+                    style:{
+                        color:"#000000",
+                        fontFamily:"Arial",
+                        fontWeight:"bold",
+                    }
                 },
                 xAxis: {
                     categories: xais[tissue],
+                    lineColor: "#000000",
+                    tickColor: "#000000",
                     style:{
                         fontSize: '13px',
                         fontFamily: 'Arial, sans-serif'
@@ -66,9 +73,12 @@ $(document).on("click", "a[name='view_expression']", function () {
                     labels: {
                         rotation: -30,
                         style: {
-                            fontSize:'13px',
-                            fontcolor: '#000000',
-                            fontWeight: 'bold',
+                            style: {
+                                fontSize:'13px',
+                                color: '#000000',
+                                fontWeight: 'bold',
+                                fontFamily: "Arial"
+                            },
                         },
                     },
                     crosshair: true
@@ -79,6 +89,7 @@ $(document).on("click", "a[name='view_expression']", function () {
                         text: 'TPM',
                         style: {
                             fontSize: '17px',
+                            color: "#000000",
                             fontWeight: 'bold',
                             fontFamily: 'Arial, sans-serif'
                         }
@@ -86,8 +97,9 @@ $(document).on("click", "a[name='view_expression']", function () {
                     labels: {
                         style: {
                             fontSize:'13px',
-                            fontcolor: '#000000',
+                            color: '#000000',
                             fontWeight: 'bold',
+                            fontFamily: "Arial",
                         },
                     },
                 },

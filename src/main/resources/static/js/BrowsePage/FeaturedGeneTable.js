@@ -203,7 +203,7 @@ var ce_table = (function (url) {
                 field: 'geneid',
                 align: "center",
                 formatter: function(value,row,index){
-                    return "<a href='https://bigd.big.ac.cn/LncExpDB/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
+                    return "<a href='https://bigd.big.ac.cn/lncexpdb/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
                 },
 
             },
@@ -214,7 +214,7 @@ var ce_table = (function (url) {
             },
 
             {
-                title: '<a href="/LncExpDB/help#classification" target="_blank" title' + '="Based on their genomic locations in respect to protein-coding genes, we classified lncRNAs into ' +
+                title: '<a href="/lncexpdb/help#classification" target="_blank" title' + '="Based on their genomic locations in respect to protein-coding genes, we classified lncRNAs into ' +
                     'seven groups, Intergenic, Intronic (S), Intronic (AS), Overlapping (S), Overlapping (AS), Sense, ' +
                     'and Antisense. S in the bracket represents that lncRNAs are in the same strand of protein-coding RNAs,' +
                     ' and AS represents lncRNAs are in the antisense strand of protein-coding RNAs.">'+'Classification'+' ' +
@@ -336,10 +336,10 @@ var ce_table = (function (url) {
     });
 });
 
-url1 = "/LncExpDB/browse/lncall"
+url1 = "/lncexpdb/browse/lncall"
 ce_table(url1)
 
-var url1 = "/LncExpDB/browse/geneidlist";
+var url1 = "/lncexpdb/browse/geneidlist";
 
 $('#featurelnc').select2({
     minimumInputLength: 1,
@@ -358,13 +358,13 @@ $('#featurelnc').select2({
 $('#feature_sect1').change(function () {
 
     if ($('#feature_sect1').val() == "geneid") {
-        url1 = "/LncExpDB/browse/geneidlist";
+        url1 = "/lncexpdb/browse/geneidlist";
         $('#featurelnc').attr('data-placeholder', 'eg. HSALNG000002');
     } else if ($('#feature_sect1').val() == "symbol") {
-        url1 = "/LncExpDB/browse/symlist";
+        url1 = "/lncexpdb/browse/symlist";
         $('#featurelnc').attr('data-placeholder', 'eg. MALAT1');
     } else if ($('#feature_sect1').val() == "classification") {
-        url1 = "/LncExpDB/browse/classificationlist";
+        url1 = "/lncexpdb/browse/classificationlist";
         $('#featurelnc').attr('data-placeholder', 'eg. Intergenic');
     }
     $('#featurelnc').select2({
@@ -385,14 +385,14 @@ $('#feature_sect1').change(function () {
 
 var list = document.getElementById("featurelnc");
 if(list.options[0].value==""){
-    var url = '/LncExpDB/browse/lncall';
+    var url = '/lncexpdb/browse/lncall';
     ce_table(url)
 }
 
 $('.feature').change(function () {
     var dis = $('.feature').val();
     var v2 = $(".select_filter").val();
-    var url = '/LncExpDB/browse/lncall?' +v2 + '=' + "'" + dis + "'";
+    var url = '/lncexpdb/browse/lncall?' +v2 + '=' + "'" + dis + "'";
     console.log(url)
     ce_table(url);
     if($(this).val() != null && $(this).val()!=""){
@@ -401,7 +401,7 @@ $('.feature').change(function () {
         $('#featurelnc_cancel').hide();
     }
     $("#featurelnc_cancel").on("click",function () {
-        var url = '/LncExpDB/browse/lncall';
+        var url = '/lncexpdb/browse/lncall';
         ce_table(url);
         $("#featurelnc").empty();
         $('#featurelnc_cancel').hide();
@@ -409,7 +409,7 @@ $('.feature').change(function () {
 
     var val = $('.feature').val();
     if(val=="" || val==null){
-        var url = '/LncExpDB/browse/lncall';
+        var url = '/lncexpdb/browse/lncall';
         ce_table(url)
     }
 });
@@ -417,16 +417,16 @@ $('.feature').change(function () {
 $('#classification').change(function () {
     var dis = $('#classification').val();
     if (dis != "All") {
-        url_classification = '/LncExpDB/browse/classification' + "?term=" + encodeURIComponent(dis);
+        url_classification = '/lncexpdb/browse/classification' + "?term=" + encodeURIComponent(dis);
         ce_table(url_classification);
     }else{
-        url = '/LncExpDB/browse/lncall';
+        url = '/lncexpdb/browse/lncall';
         ce_table(url);
     }
 })
 
 $('.select').change(function () {
-    var url = '/LncExpDB/browse/lncall?normal=' + "'" + $("#normal").val() + "'&development='" + $("#development").val() + "'&preimplantation='" + $("#preimplantation").val() + "'&differentiation='" + $("#differentiation").val() + "'&circadian='" + $("#circadian").val() + "'&ccle='" + $("#ccle").val() + "'&exosome='" + $("#exosome").val() + "'&virus='" + $("#virus").val() + "'&subcellular='" + $("#subcellular").val() + "'";
+    var url = '/lncexpdb/browse/lncall?normal=' + "'" + $("#normal").val() + "'&development='" + $("#development").val() + "'&preimplantation='" + $("#preimplantation").val() + "'&differentiation='" + $("#differentiation").val() + "'&circadian='" + $("#circadian").val() + "'&ccle='" + $("#ccle").val() + "'&exosome='" + $("#exosome").val() + "'&virus='" + $("#virus").val() + "'&subcellular='" + $("#subcellular").val() + "'";
     console.log(url)
     ce_table(url);
 
@@ -444,6 +444,6 @@ $("#reset").on('click', function () {
     $('#virus').val("NA");
     $('#circadian').val("NA");
 
-    var url = "/LncExpDB/browse/lncall";
+    var url = "/lncexpdb/browse/lncall";
     ce_table(url);
 });

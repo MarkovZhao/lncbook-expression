@@ -1,6 +1,6 @@
 $(function () {
     $.ajax({
-        url: '/LncExpDB/hkts/srp150867',
+        url: '/lncexpdb/hkts/srp150867',
         type: 'POST',
         dataType: 'json',
         cache: false,
@@ -37,7 +37,7 @@ $(function () {
             columns: [
                 {data: 'geneid',
                     render: function (data, type, row) {
-                        return "<a href='https://bigd.big.ac.cn/LncExpDB/gene?geneid=" + row.geneid + "'target='_blank'>" + row.geneid + "</a>"
+                        return "<a href='https://bigd.big.ac.cn/lncexpdb/gene?geneid=" + row.geneid + "'target='_blank'>" + row.geneid + "</a>"
                     }
                 },
                 {data: 'genename'},
@@ -130,6 +130,16 @@ $(function () {
                     }
                 },
             ],
+            dom: 'Bfrtip',
+            buttons: [
+              'copyHtml5',
+                {
+                    text:'CSV',
+                    extend: 'csvHtml5',
+                    fieldSeparator: ',',
+                    extension: '.csv'
+                }
+            ],
             deferRender:    true,
             scroller:       true,
             "order": [],
@@ -206,7 +216,7 @@ var ce_table = (function (url) {
                 field: 'geneid',
                 align: "center",
                 formatter: function(value,row,index){
-                    return "<a href='https://bigd.big.ac.cn/LncExpDB/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
+                    return "<a href='https://bigd.big.ac.cn/lncexpdb/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
                 },
                 // sortable: true
 
@@ -234,6 +244,9 @@ var ce_table = (function (url) {
                 title: 'PCG Symbol',
                 field: 'pcgname',
                 align: "center",
+                formatter: function(value,row,index){
+                    return "<a href='https://www.genecards.org/cgi-bin/carddisp.pl?gene=" + value + "'target='_blank'>" + value + "</a>"
+                },
                 // sortable: true,
             },
             {
@@ -275,7 +288,7 @@ var ce_table = (function (url) {
     });
 });
 
-var url1 = "/LncExpDB/ce/subcellular";
+var url1 = "/lncexpdb/ce/subcellular";
 ce_table(url1)
 
 if ($('#ce_chkBrowse').is(":checked")) {
@@ -365,7 +378,7 @@ $('#ce_chkDiy').on('click', function (e) {
 });
 
 $('#ce_chkTissue').on("click", function () {
-    var url_tissue = "/LncExpDB/hkts/subcellular/tissuename";
+    var url_tissue = "/lncexpdb/hkts/subcellular/tissuename";
     console.log(url_tissue)
     $('#ce_tissuename').select2({
         ajax: {
@@ -378,14 +391,14 @@ $('#ce_chkTissue').on("click", function () {
 $('#ce_hkr').on("click",function () {
     var type = $('#ce_type').val();
     $('#ce_tissuename').empty();
-    $("#ce_table").bootstrapTable('refreshOptions', {url:'/LncExpDB/ce/subcellulardistance?start=-2&end=-0.1',  silent: true, pageNumber: 1, pageSize: 10});
+    $("#ce_table").bootstrapTable('refreshOptions', {url:'/lncexpdb/ce/subcellulardistance?start=-2&end=-0.1',  silent: true, pageNumber: 1, pageSize: 10});
 });
 
 
 $('#ce_tsr').click(function () {
     var type = $('#ce_type').val();
     $('#ce_tissuename').empty();
-    $("#ce_table").bootstrapTable('refreshOptions', {url:'/LncExpDB/ce/subcellulardistance?start=0',  silent: true, pageNumber: 1, pageSize: 10});
+    $("#ce_table").bootstrapTable('refreshOptions', {url:'/lncexpdb/ce/subcellulardistance?start=0',  silent: true, pageNumber: 1, pageSize: 10});
 });
 
 $('#ce_tau').on('click', function () {
@@ -397,7 +410,7 @@ $('#ce_tau').on('click', function () {
     var pcc = $('input[name="ce_minBreadth"]').val();
     var mindis = $('input[name="ce_cv1"]').val();
     var maxdis = $('input[name="ce_cv2"]').val();
-    var url = '/LncExpDB/ce/subcellular' + 'filter?pvalue_start=0&pvalue_end=' + pvalue + '&pcc_start=' + pcc + '&pcc_end=1' + '&distance_start=' + mindis + '&distance_end=' + maxdis;
+    var url = '/lncexpdb/ce/subcellular' + 'filter?pvalue_start=0&pvalue_end=' + pvalue + '&pcc_start=' + pcc + '&pcc_end=1' + '&distance_start=' + mindis + '&distance_end=' + maxdis;
     $("#ce_table").bootstrapTable('refreshOptions', {url:url,  silent: true, pageNumber: 1, pageSize: 10});
     $btn.button("reset")
 });
@@ -412,9 +425,9 @@ $("#ce_reset").on('click', function () {
     $('input[name="ce_maxBreadth"]').val(1000);
     $("#featurelnc").empty();
     $('#featurelnc_cancel').hide();
-    var url = "/LncExpDB/ce/subcellular";
+    var url = "/lncexpdb/ce/subcellular";
     ce_table(url);
-    var url_tissue = "/LncExpDB/ce/subcellular/tissuename";
+    var url_tissue = "/lncexpdb/ce/subcellular/tissuename";
     $('#ce_tissuename').select2({
         ajax: {
             url: url_tissue,
@@ -424,7 +437,7 @@ $("#ce_reset").on('click', function () {
 });
 
 // Select2
-var url1 = "/LncExpDB/ce/subcellularlncid";
+var url1 = "/lncexpdb/ce/subcellularlncid";
 
 $('#featurelnc').select2({
     minimumInputLength: 1,
@@ -444,16 +457,16 @@ $('#feature_sect1').change(function () {
     var type = $('#ce_type').val();
     console.log(type)
     if ($('#feature_sect1').val() == "lncid") {
-        url1 = "/LncExpDB/ce/subcellularlncid";
+        url1 = "/lncexpdb/ce/subcellularlncid";
         $('#featurelnc').attr('data-placeholder', 'eg. HSALNG000002');
     } else if ($('#feature_sect1').val() == "lncname") {
-        url1 = "/LncExpDB/ce/subcellularlncname";
+        url1 = "/lncexpdb/ce/subcellularlncname";
         $('#featurelnc').attr('data-placeholder', 'eg. MALAT1');
     } else if ($('#feature_sect1').val() == "pcgid") {
-        url1 = "/LncExpDB/ce/subcellularpcgid";
+        url1 = "/lncexpdb/ce/subcellularpcgid";
         $('#featurelnc').attr('data-placeholder', 'eg. ENSG00000152078.10');
     } else if ($('#feature_sect1').val() == "pcgname") {
-        url1 = "/LncExpDB/ce/subcellularpcgname";
+        url1 = "/lncexpdb/ce/subcellularpcgname";
         $('#featurelnc').attr('data-placeholder', 'eg. TLCD4');
     }
     $('#featurelnc').select2({
@@ -474,14 +487,14 @@ $('#feature_sect1').change(function () {
 
 var list = document.getElementById("featurelnc");
 if(list.options[0].value==""){
-    var url = '/LncExpDB/ce/subcellular';
+    var url = '/lncexpdb/ce/subcellular';
     ce_table(url)
 }
 
 $('.feature').change(function () {
     var dis = $('.feature').val();
     var v2 = $(".filter").val();
-    var url = '/LncExpDB/ce/subcellularby' + v2 + '?term=' + dis;
+    var url = '/lncexpdb/ce/subcellularby' + v2 + '?term=' + dis;
     console.log(url)
     ce_table(url);
     if($(this).val() != null && $(this).val()!=""){
@@ -490,7 +503,7 @@ $('.feature').change(function () {
         $('#featurelnc_cancel').hide();
     }
     $("#featurelnc_cancel").on("click",function () {
-        var url = '/LncExpDB/ce/subcellular';
+        var url = '/lncexpdb/ce/subcellular';
         ce_table(url);
         $("#featurelnc").empty();
         $('#featurelnc_cancel').hide();
@@ -498,7 +511,7 @@ $('.feature').change(function () {
 
     var val = $('.feature').val();
     if(val=="" || val==null){
-        var url = '/LncExpDB/ce/subcellular';
+        var url = '/lncexpdb/ce/subcellular';
         ce_table(url)
     }
 });

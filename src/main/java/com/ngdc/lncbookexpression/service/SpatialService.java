@@ -4,6 +4,7 @@ import com.ngdc.lncbookexpression.convert.SpatialConversion;
 import com.ngdc.lncbookexpression.convert.StringConversion;
 import com.ngdc.lncbookexpression.dto.Spatialdto;
 import com.ngdc.lncbookexpression.dto.Temporaldto;
+import com.ngdc.lncbookexpression.model.GeneInfo;
 import com.ngdc.lncbookexpression.model.SpatialFeatured;
 import com.ngdc.lncbookexpression.model.TimeFeatured;
 import org.springframework.stereotype.Service;
@@ -12,9 +13,7 @@ import org.springframework.util.StringUtils;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class SpatialService {
@@ -44,6 +43,7 @@ public class SpatialService {
         System.out.println(select);
         Query query = em.createNativeQuery(select);
         List<Object> objects = query.getResultList();
+        System.out.println(objects);
         int total_size = objects.size();
         List<SpatialFeatured> spatialFeatured= null;
         if(page <= ((total_size/size)-1)) {

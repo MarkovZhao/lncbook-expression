@@ -1,6 +1,6 @@
 $(function () {
     $.ajax({
-        url: 'https://bigd.big.ac.cn/LncExpDB/featured/temporal',
+        url: 'https://bigd.big.ac.cn/lncexpdb/featured/temporal',
         type: 'POST',
         dataType: 'json',
         cache: false,
@@ -33,7 +33,7 @@ $(function () {
             columns: [
                 {data: 'geneid',
                     render: function (data, type, row) {
-                        return "<a href='https://bigd.big.ac.cn/LncExpDB/gene?geneid=" + row.geneid + "'target='_blank'>" + row.geneid + "</a>"
+                        return "<a href='https://bigd.big.ac.cn/lncexpdb/gene?geneid=" + row.geneid + "'target='_blank'>" + row.geneid + "</a>"
                     }
                 },
                 {data: 'genename'},
@@ -264,7 +264,7 @@ $(function () {
                 },
                 {data: 'geneid',
                     render: function (data, type, row) {
-                        return "<a href='https://bigd.big.ac.cn/LncExpDB/gene?geneid=" + data + "'target='_blank'>" + data + "</a>"
+                        return "<a href='https://bigd.big.ac.cn/lncexpdb/gene?geneid=" + data + "'target='_blank'>" + data + "</a>"
                     }
                 },
             ],

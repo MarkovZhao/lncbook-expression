@@ -2858,6 +2858,7 @@ public class CEController {
         return map;
     }
 
+
     @RequestMapping("/interactionbylncid")
     public Map interactionbylncid(@RequestParam(value = "page",defaultValue = "1") int page,
                                 @RequestParam(value = "size",defaultValue = "10") int size,
@@ -2905,6 +2906,14 @@ public class CEController {
         map.put("geneInfo",result.getContent());
         return map;
     }
+
+    @RequestMapping("/interactionbyall")
+    public Map interactionbyall(CEdto cEdto,@RequestParam(value = "page", defaultValue = "1") int page,
+                                @RequestParam(value = "size", defaultValue = "10") int size,
+                                String term) {
+        return browseService.searchCE(cEdto,page,size,"interaction");
+    }
+
 
     @RequestMapping("/interactionlncid")
     public Map<String, Object> interactionlncid(@RequestParam("type")String type){

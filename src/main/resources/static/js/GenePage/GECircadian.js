@@ -37,18 +37,27 @@ $(function () {
                     text: '',
                     href: 'http://www.example.com'
                 },
-                title: { text: "Whole Blood with Intermediate Circadian Phenotype ("  + geneid + ")"
+                title: { text: "Whole Blood with Intermediate Circadian Phenotype ("  + geneid + ")",
+                    style:{
+                        color:"#000000",
+                        fontFamily:"Arial",
+                        fontWeight:"bold",
+                    }
+
                 },
                 xAxis: {
                     categories: ["One hour","Three hour","Five hour"
                         ,"Seven hour","Nine hour","Eleven hour","Thirteen hour",
                         "Fifteen hour","Seventeen hour","Nineteen hour","Twenty one hour","Twenty three hour"
                         ],
+                    lineColor: "#000000",
+                    tickColor: "#000000",
                     labels: {
                         rotation: -30,
                         style: {
                             fontSize:'13px',
-                            fontcolor: '#000000',
+                            color: '#000000',
+                            fontFamily: "Arial",
                             fontWeight: 'bold',
                         },
                     },
@@ -59,6 +68,7 @@ $(function () {
                     title: {
                         text: 'TPM',
                         style: {
+                            color: "#000000",
                             fontSize: '17px',
                             fontWeight: 'bold',
                             fontFamily: 'Arial, sans-serif'
@@ -67,8 +77,9 @@ $(function () {
                     labels: {
                         style: {
                             fontSize:'13px',
-                            fontcolor: '#000000',
+                            color: '#000000',
                             fontWeight: 'bold',
+                            fontFamily: "Arial",
                         },
                     },
                 },
@@ -87,7 +98,8 @@ $(function () {
                 },
                 series: [{
                     name: 'TPM',
-                    data: value1
+                    data: value1,
+
                 }],
                 legend: {
                     enabled: false

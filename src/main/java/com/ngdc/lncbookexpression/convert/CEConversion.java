@@ -1,6 +1,7 @@
 package com.ngdc.lncbookexpression.convert;
 
 import com.ngdc.lncbookexpression.model.CoExpression.CeBrain;
+import com.ngdc.lncbookexpression.model.Interaction;
 import com.ngdc.lncbookexpression.model.TemporalExpression.DeColorectalNormal;
 
 import java.util.List;
@@ -8,22 +9,22 @@ import java.util.stream.Collectors;
 
 public class CEConversion {
 
-    public static CeBrain convert(Object obj) {
+    public static Interaction convert(Object obj) {
         Object[] a =  (Object[]) obj;
-        CeBrain ceBrain = new CeBrain();
-        ceBrain.setPcc(Float.parseFloat(a[0].toString()));
-        ceBrain.setPvalue(Float.parseFloat(a[1].toString()));
-        ceBrain.setGeneid(String.valueOf(a[2]));
-        ceBrain.setPcg(String.valueOf(a[3]));
-        ceBrain.setLncname(String.valueOf(a[4]));
-        ceBrain.setLnclocation(String.valueOf(a[5]));
-        ceBrain.setPcgname(String.valueOf(a[6]));
-        ceBrain.setPcglocation(String.valueOf(a[7]));
-        ceBrain.setDistance(Float.parseFloat(a[8].toString()));
-        return ceBrain;
+        Interaction interaction = new Interaction();
+        interaction.setGeneid(String.valueOf(a[0]));
+        interaction.setPcg(String.valueOf(a[1]));
+        interaction.setContext(String.valueOf(a[2]));
+        interaction.setBreadth(Integer.parseInt(a[3].toString()));
+        interaction.setLncname(String.valueOf(a[4]));
+        interaction.setPcgname(String.valueOf(a[5]));
+        interaction.setDistance(Integer.parseInt(a[6].toString()));
+        interaction.setLnclocation(String.valueOf(a[7]));
+        interaction.setPcglocation(String.valueOf(a[8]));
+        return interaction;
     }
-    public static List<CeBrain> convert(List<Object> objects){
-        List<CeBrain> ceBrain =  objects.stream().map(e -> convert(e)).collect(Collectors.toList());
-        return ceBrain;
+    public static List<Interaction> convert(List<Object> objects){
+        List<Interaction> interaction =  objects.stream().map(e -> convert(e)).collect(Collectors.toList());
+        return interaction;
     }
 }

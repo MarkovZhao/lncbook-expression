@@ -1,7 +1,7 @@
 $(function () {
     var geneid = window.location.href.split("=")[1].split("#")[0];
     $.ajax({
-        url: '/LncExpDB/gene/info?geneid=' + geneid,
+        url: '/lncexpdb/gene/info?geneid=' + geneid,
         type: 'POST',
         dataType: 'json',
         cache: false,
@@ -30,8 +30,8 @@ $(function () {
         for (var i=0;i<arr.length;i++) {
             if (arr[i].split("|")[1]=="NONCODE") {
                 geneset += "<a href='http://www.noncode.org/show_gene.php?id=" + arr[i].split("|")[0].split(".")[0] + "&version=" + arr[i].split("|")[0].split(".")[1] + "&org=Human' target='_blank'>" + arr[i].split("|")[0] + " (" + arr[i].split("|")[1] + "); " + "</a>";
-            } else if (arr[i].split("|")[1]=="RefLnc") {
-                geneset += "<a href='http://reflnc.gao-lab.org/transcript/" + arr[i].split("|")[0] + ".html" + "' target='_blank'>" + arr[i].split("|")[0] + " (" + arr[i].split("|")[1] + "); " + "</a>";
+            // } else if (arr[i].split("|")[1]=="RefLnc") {
+            //     geneset += "<a href='http://reflnc.gao-lab.org/transcript/" + arr[i].split("|")[0] + ".html" + "' target='_blank'>" + arr[i].split("|")[0] + " (" + arr[i].split("|")[1] + "); " + "</a>";
             } else if (arr[i].split("|")[1]=="LNCipedia") {
                 geneset += "<a href='https://lncipedia.org/db/gene/" + arr[i].split("|")[0] + "' target='_blank'>" + arr[i].split("|")[0] + " (" + arr[i].split("|")[1] + "); " + "</a>";
             } else if (arr[i].split("|")[1]=="GENCODE") {
@@ -42,20 +42,31 @@ $(function () {
                 geneset += arr[i].split("|")[0] + " (" + arr[i].split("|")[1] + "); ";
             }
         }
-
-        $("#gene_table").append(
-            "<tr><td width='40%'><strong>Gene ID:</strong></td><td style='text-align: left;padding-left: 20px'>" + "<a href='https://bigd.big.ac.cn/lncbook/gene?geneid=" + gene_info.geneid + "' target='_blank'>" + gene_info.geneid + "</a>" + "</td></tr>" +
-            "<tr><td width='40%'><strong>Gene Symbol:</strong></td><td style='text-align: left;padding-left: 20px'>" + gene_info.symbol +"</td></tr>" +
-            "<tr><td><strong>Chromosome:</strong></td><td style='text-align: left;padding-left: 20px'>"+ gene_info.chromosome +"</td></tr>" +
-            "<tr><td><strong>Start Site:</strong></td><td style='text-align: left;padding-left: 20px'>"+ gene_info.start +"</td></tr>" +
-            "<tr><td><strong>End Site:</strong></td><td style='text-align: left;padding-left: 20px'>"+ gene_info.end +"</td></tr>" +
-            "<tr><td><strong>Strand:</strong></td><td style='text-align: left;padding-left: 20px'>"+ gene_info.strand +"</td></tr>"
-        );
+        var largest_id = parseInt(gene_info.geneid.replace(/[^0-9]/ig,""))
+        if (largest_id <= 141630) {
+            $("#gene_table").append(
+                "<tr><td width='40%'><strong>Gene ID:</strong></td><td style='text-align: left;padding-left: 20px'>" + "<a href='https://bigd.big.ac.cn/lncbook/gene?geneid=" + gene_info.geneid + "' target='_blank' title=\"Jump to LncBook\">" + gene_info.geneid + "</a>" + "</td></tr>" +
+                "<tr><td width='40%'><strong>Gene Symbol:</strong></td><td style='text-align: left;padding-left: 20px'>" + gene_info.symbol + "</td></tr>" +
+                "<tr><td><strong>Chromosome:</strong></td><td style='text-align: left;padding-left: 20px'>" + gene_info.chromosome + "</td></tr>" +
+                "<tr><td><strong>Start Site:</strong></td><td style='text-align: left;padding-left: 20px'>" + gene_info.start + "</td></tr>" +
+                "<tr><td><strong>End Site:</strong></td><td style='text-align: left;padding-left: 20px'>" + gene_info.end + "</td></tr>" +
+                "<tr><td><strong>Strand:</strong></td><td style='text-align: left;padding-left: 20px'>" + gene_info.strand + "</td></tr>"
+            );
+        } else {
+            $("#gene_table").append(
+                "<tr><td width='40%'><strong>Gene ID:</strong></td><td style='text-align: left;padding-left: 20px'>" + gene_info.geneid + "</td></tr>" +
+                "<tr><td width='40%'><strong>Gene Symbol:</strong></td><td style='text-align: left;padding-left: 20px'>" + gene_info.symbol + "</td></tr>" +
+                "<tr><td><strong>Chromosome:</strong></td><td style='text-align: left;padding-left: 20px'>" + gene_info.chromosome + "</td></tr>" +
+                "<tr><td><strong>Start Site:</strong></td><td style='text-align: left;padding-left: 20px'>" + gene_info.start + "</td></tr>" +
+                "<tr><td><strong>End Site:</strong></td><td style='text-align: left;padding-left: 20px'>" + gene_info.end + "</td></tr>" +
+                "<tr><td><strong>Strand:</strong></td><td style='text-align: left;padding-left: 20px'>" + gene_info.strand + "</td></tr>"
+            );
+        }
         $('#gene_table1').append(
-            "<tr><td><strong><a href='/LncExpDB/help#classification' target='_blank' title=\"Based on their genomic locations in respect to protein-coding genes, we classified lncRNAs into seven groups, Intergenic, Intronic (S), Intronic (AS), Overlapping (S), Overlapping (AS), Sense, and Antisense. S in the bracket represents that lncRNAs are in the same strand of protein-coding RNAs, and AS represents lncRNAs are in the antisense strand of protein-coding RNAs.\">Classification <span class=\"glyphicon glyphicon-question-sign\"></span> </a>:</strong></td><td style='text-align: left;padding-left: 20px'>" + gene_info.classification +"</td></tr>" +
+            "<tr><td><strong><a href='/lncexpdb/help#classification' target='_blank' title=\"Based on their genomic locations in respect to protein-coding genes, we classified lncRNAs into seven groups, Intergenic, Intronic (S), Intronic (AS), Overlapping (S), Overlapping (AS), Sense, and Antisense. S in the bracket represents that lncRNAs are in the same strand of protein-coding RNAs, and AS represents lncRNAs are in the antisense strand of protein-coding RNAs.\">Classification <span class=\"glyphicon glyphicon-question-sign\"></span> </a>:</strong></td><td style='text-align: left;padding-left: 20px'>" + gene_info.classification +"</td></tr>" +
             "<tr><td width='40%'><strong>Gene Length (nt):</strong></td><td style='text-align: left;padding-left: 20px'>" + gene_info.gene_length +"</td></tr>" +
             "<tr><td width='40%'><strong>Exon Length (nt):</strong></td><td style='text-align: left;padding-left: 20px'>" + gene_info.length +"</td></tr>" +
-            "<tr><td><strong>UCSC Genome Browser:</strong></td>" + "<td style='text-align: left;padding-left: 20px'><a href='http://genome.ucsc.edu/s/lizhao/LncExpDB_UCSC?position=" + gene_info.chromosome + ":" + gene_info.start + "-" + gene_info.end + "' target='_blank'><span class='glyphicon glyphicon-eye-open'></span></a></td></tr>" +
+            "<tr><td><strong>UCSC Genome Browser:</strong></td>" + "<td style='text-align: left;padding-left: 20px'><a href='http://genome.ucsc.edu/s/lizhao/lncexpdb_UCSC?position=" + gene_info.chromosome + ":" + gene_info.start + "-" + gene_info.end + "' target='_blank'><span class='glyphicon glyphicon-eye-open'></span></a></td></tr>" +
             "<tr><td><strong>Assembly:</strong></td><td style='text-align: left;padding-left: 20px'>hg38</td></tr>"
         );
         $('#gene_table2').append(
@@ -70,7 +81,7 @@ $(function () {
 $(function () {
     var geneid = window.location.href.split("=")[1];
     $.ajax({
-        url: '/LncExpDB/gene/alternative?geneid=' + geneid,
+        url: '/lncexpdb/gene/alternative?geneid=' + geneid,
         type: 'POST',
         dataType: 'json',
         cache: false,
@@ -86,7 +97,12 @@ $(function () {
         var gene_info = [];
         for(var i=0;i<gene_alter.length;i++){
             var gene_arry = {};
-            gene_arry['transcriptid'] = "<a href='https://bigd.big.ac.cn/lncbook/transcript?transid=" + gene_alter[i].transcriptid + "' target='_blank'>" + gene_alter[i].transcriptid + "</a>";
+            var largest_id = parseInt(gene_alter[i].transcriptid.replace(/[^0-9]/ig,""))
+            if (largest_id <= 289524) {
+                gene_arry['transcriptid'] = "<a href='https://bigd.big.ac.cn/lncbook/transcript?transid=" + gene_alter[i].transcriptid + "' target='_blank'>" + gene_alter[i].transcriptid + "</a>";
+            } else {
+                gene_arry['transcriptid'] = gene_alter[i].transcriptid;
+            }
             gene_arry['chromosome'] = gene_alter[i].chromosome;
             gene_arry['strand'] = gene_alter[i].strand;
             gene_arry['start'] = gene_alter[i].start;

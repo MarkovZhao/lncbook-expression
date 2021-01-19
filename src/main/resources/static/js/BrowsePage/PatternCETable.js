@@ -38,7 +38,7 @@ var pattern_ce_table = (function (url) {
                 field: 'geneid',
                 align: "center",
                 formatter: function(value,row,index){
-                    return "<a href='https://bigd.big.ac.cn/LncExpDB/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
+                    return "<a href='https://bigd.big.ac.cn/lncexpdb/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
                 },
                 // sortable: true
 
@@ -62,7 +62,7 @@ var pattern_ce_table = (function (url) {
                 field: 'pcg',
                 align: "center",
                 formatter: function(value,row,index){
-                    return "<a href='https://bigd.big.ac.cn/LncExpDB/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
+                    return "<a href='https://bigd.big.ac.cn/lncexpdb/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
                 },
             },
             {
@@ -105,7 +105,7 @@ var pattern_ce_table = (function (url) {
     });
 });
 
-var url1 = "/LncExpDB/ce/brain";
+var url1 = "/lncexpdb/ce/brain";
 pattern_ce_table(url1)
 
 var datatype = "";
@@ -131,9 +131,9 @@ $("#filter").on('click',function () {
         }
     });
     if (all_params.length == 0) {
-        var url = '/LncExpDB/ce/' + datatype;
+        var url = '/lncexpdb/ce/' + datatype;
     } else {
-        var url = '/LncExpDB/ce/' + datatype + '?' + all_params.join("&");
+        var url = '/lncexpdb/ce/' + datatype + '?' + all_params.join("&");
     }
     console.log(url)
     pattern_ce_table(url);
@@ -146,13 +146,13 @@ $("#filter").on('click',function () {
 })
 
 $("#pattern_reset_ce").on('click', function () {
-    var url = "/LncExpDB/ce/" + datatype;
+    var url = "/lncexpdb/ce/" + datatype;
     pattern_ce_table(url);
 
 });
 
 $("#reset").on('click', function () {
-    var url = "/LncExpDB/ce/brain";
+    var url = "/lncexpdb/ce/brain";
     pattern_ce_table(url);
 
 });

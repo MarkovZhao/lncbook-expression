@@ -37,7 +37,7 @@ var pattern_table = (function (url) {
                 field: 'geneid',
                 align: "center",
                 formatter: function(value,row,index){
-                    return "<a href='https://bigd.big.ac.cn/LncExpDB/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
+                    return "<a href='https://bigd.big.ac.cn/lncexpdb/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
                 },
                 // sortable: true
 
@@ -96,7 +96,7 @@ var pattern_table = (function (url) {
     });
 });
 
-var url1 = "/LncExpDB/pattern/brain";
+var url1 = "/lncexpdb/pattern/brain";
 pattern_table(url1)
 
 
@@ -121,7 +121,7 @@ $("#filter").on('click',function () {
         console.log(all_params)
     });
 
-    var url = '/LncExpDB/pattern/' + datatype + '?' + all_params.join("&");
+    var url = '/lncexpdb/pattern/' + datatype + '?' + all_params.join("&");
     console.log(url)
     pattern_table(url);
 
@@ -228,7 +228,7 @@ $("#reset").on('click', function () {
         $(this).removeAttr("disabled");
         $(this).attr('checked',false);
     });
-    var url = "/LncExpDB/pattern/brain";
+    var url = "/lncexpdb/pattern/brain";
     pattern_table(url);
 });
 

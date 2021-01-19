@@ -7,7 +7,7 @@ $(document).on("click", "a[name='view_expression']", function () {
     $(this).attr("name","hide_expression");
     var geneid = $(this).data("id");
     $.ajax({
-        url: '/LncExpDB/profile/level?geneid=' + geneid,
+        url: '/lncexpdb/profile/level?geneid=' + geneid,
         type: 'POST',
         dataType: 'json',
         cache: false,

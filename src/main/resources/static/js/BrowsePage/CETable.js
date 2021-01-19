@@ -38,7 +38,7 @@ var ce_table = (function (url) {
                 field: 'geneid',
                 align: "center",
                 formatter: function(value,row,index){
-                    return "<a href='https://bigd.big.ac.cn/LncExpDB/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
+                    return "<a href='https://bigd.big.ac.cn/lncexpdb/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
                 },
                 // sortable: true
 
@@ -103,7 +103,7 @@ var ce_table = (function (url) {
     });
 });
 
-var url1 = "/LncExpDB/ce/subcellular";
+var url1 = "/lncexpdb/ce/subcellular";
 ce_table(url1)
 
 
@@ -130,9 +130,9 @@ $("#ce_filter").on('click',function () {
         }
     });
     if (all_params.length == 0) {
-        var url = '/LncExpDB/ce/' + datatype;
+        var url = '/lncexpdb/ce/' + datatype;
     } else {
-        var url = '/LncExpDB/ce/' + datatype + '?' + all_params.join("&");
+        var url = '/lncexpdb/ce/' + datatype + '?' + all_params.join("&");
     }
     console.log(url)
     de_table(url);

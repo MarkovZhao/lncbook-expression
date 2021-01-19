@@ -6,6 +6,7 @@ import com.ngdc.lncbookexpression.model.Circadian;
 import com.ngdc.lncbookexpression.model.CoExpression.CeBrain;
 import com.ngdc.lncbookexpression.model.Featured;
 import com.ngdc.lncbookexpression.model.FeaturedAll;
+import com.ngdc.lncbookexpression.model.Interaction;
 import com.ngdc.lncbookexpression.model.SpatialExpression.FtBrain;
 import com.ngdc.lncbookexpression.model.TemporalExpression.DeColorectalNormal;
 import com.ngdc.lncbookexpression.model.TemporalExpression.TauBrain;
@@ -111,6 +112,7 @@ public class BrowseService {
         return map;
     }
 
+
     public String DEFilter(DEdto dEdto){
         String filter="1=1";
 
@@ -179,6 +181,7 @@ public class BrowseService {
     public String HKTSFilter(HKTSdto hktsDto){
         String filter="1=1";
 
+
         if (!StringUtils.isEmpty(hktsDto.getGeneid())) {
             filter += " and s.geneid = "+hktsDto.getGeneid();
         }
@@ -217,7 +220,7 @@ public class BrowseService {
         return filter;
     }
 
-    public Map searchCE(CEdto cEdto, int page, int size, String name,String sortName, String sortOrder) {
+    public Map searchCE(CEdto cEdto, int page, int size, String name) {
         Map map = new HashMap();
         String select = "select * from " + name + " s where ";
         String filter= CEFilter(cEdto);
@@ -226,14 +229,20 @@ public class BrowseService {
         Query query = em.createNativeQuery(select);
         List<Object> objects = query.getResultList();
         int total_size = objects.size();
-        List<CeBrain> ceBrain= null;
-        if(page <= ((total_size/size)-1)) {
-            ceBrain = CEConversion.convert(objects.subList(page * size, page * size + size));
-        }else{
-            ceBrain = CEConversion.convert(objects.subList(page * size, total_size));
+        List<Interaction> interaction= null;
+        if (total_size!=1) {
+            if (page <= ((total_size / size) - 1)) {
+                interaction = CEConversion.convert(objects.subList(page * size, page * size + size));
+            } else {
+                interaction = CEConversion.convert(objects.subList(page * size, total_size));
+            }
         }
+        else if (total_size==1) {
+            interaction = CEConversion.convert(objects.subList(0,1));
+        }
+
         map.put("total",total_size);
-        map.put("geneInfo", ceBrain);
+        map.put("geneInfo", interaction);
         map.put("page", page);
         return map;
     }
@@ -243,14 +252,14 @@ public class BrowseService {
         if (!StringUtils.isEmpty(cEdto.getGeneid())){
             filter += " and s.geneid =" + cEdto.getGeneid();
         }
-        if (!StringUtils.isEmpty(cEdto.getLnc_name())) {
-            filter +=" and s.lnc_name ="+cEdto.getLnc_name();
+        if (!StringUtils.isEmpty(cEdto.getLncname())) {
+            filter +=" and s.lncname ="+cEdto.getLncname();
         }
         if (!StringUtils.isEmpty(cEdto.getPcg())) {
             filter +=" and s.pcg ="+cEdto.getPcg();
         }
-        if (!StringUtils.isEmpty(cEdto.getPcg_name())) {
-            filter +=" and s.pcg_name ="+cEdto.getPcg_name();
+        if (!StringUtils.isEmpty(cEdto.getPcgname())) {
+            filter +=" and s.pcgname ="+cEdto.getPcgname();
         }
         if (!StringUtils.isEmpty(cEdto.getPcc())) {
             filter +=" and s.pcc >="+cEdto.getPcc();

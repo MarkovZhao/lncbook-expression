@@ -12,7 +12,7 @@
 <body>
 <div th:replace="~{common/top_header :: header}"></div>
 <div class="breadcrumb" style="margin-top: 20px">
-    <li><a href="/LncExpDB">Home</a></li>
+    <li><a href="/lncexpdb">Home</a></li>
     <li>Help</li>
 </div>
 <div class="row">
@@ -597,7 +597,7 @@
             <h5 id="browse_genes"><strong>3.2  Browse lncRNA genes in LncExpDB</strong></h5>
             <p>
                 <span>
-                    You can browse all lncRNAs in the "<a href="/LncExpDB/genes/" target="_blank">Genes</a>" page with the basic information of
+                    You can browse all lncRNAs in the "<a href="/lncexpdb/genes/" target="_blank">Genes</a>" page with the basic information of
                     gene id/symbol, classification, chromosome, strand, location, gene length
                     and transcript number. You can search lncRNAs of interest by gene id/transcript id derived from
                     <a href="https://bigd.big.ac.cn/lncbook" target="_blank">LncBook v1.2</a>,
@@ -619,7 +619,7 @@
             <h5 id="featured_genes"><strong>3.3 Explore featured genes in LncExpDB</strong></h5>
             <p>
                 <span>
-                    You can explore featured lncRNAs in the "<a href="/LncExpDB/featured/" target="_blank">Featured Genes</a>" page, which covers tens of
+                    You can explore featured lncRNAs in the "<a href="/lncexpdb/featured/" target="_blank">Featured Genes</a>" page, which covers tens of
                     thousands of featured genes with specific expression patterns in at least one biological
                     context. You can filter and/or re-order the table content using the categories and search
                     boxes in the header line. Each gene id is linked to detailed information page of expression
@@ -638,7 +638,7 @@
 
             <p>
                 <span>
-                    By clicking the tab of “<a href="/LncExpDB/featured/" target="_blank">Featured Genes</a>”, you can select specific datasets of interest and browse all
+                    By clicking the tab of “<a href="/lncexpdb/featured/" target="_blank">Featured Genes</a>”, you can select specific datasets of interest and browse all
                     defined featured genes, e.g., specifically or consistently expressed genes in a certain context.
                     In addition, you can select a specific group of genes with custom thresholds. You can filter and/or
                     re-order the expression profile table using the categories and search boxes in the header line.
@@ -647,7 +647,7 @@
 
             <p>
                 <span>
-                    By clicking the tab of “<a href="/LncExpDB/interactions" target="_blank">Interactions</a>”, you can select specific datasets of interest and browse the
+                    By clicking the tab of “<a href="/lncexpdb/interactions" target="_blank">Interactions</a>”, you can select specific datasets of interest and browse the
                     <i>cis</i> or <i>trans</i> interactions between lncRNAs and mRNAs. Moreover, you can select a specific group of
                     interaction by custom thresholds or search the related interactions by lncRNA/protein-coding id or symbol.
                 </span>
@@ -657,7 +657,7 @@
             <h5 id="capacity"><strong>3.5 Browse expression capacity in LncExpDB</strong></h5>
             <p>
                 <span>
-                    In the "<a href="/LncExpDB/capacity/" target="_blank">Expression Capacity</a>" page, you can browse the lncRNA’s expression capacity in various
+                    In the "<a href="/lncexpdb/capacity/" target="_blank">Expression Capacity</a>" page, you can browse the lncRNA’s expression capacity in various
                     biological contexts. You can filter for high-capacity lncRNAs in one or multiple contexts using the
                     categories and in the header line of expression capacity table. Furthermore, the “Chart” enables
                     visualization of expression level distribution among all the biological conditions. Each gene id
@@ -668,7 +668,7 @@
             <h5 id="interactions"><strong>3.6 Visualize lncRNA-mRNA interactions in LncExpDB</strong></h5>
             <p>
                 <span>
-                    You can visualize all lncRNA-mRNA interactions in the “<a href="/LncExpDB/interactions" target="_blank">Interactions</a>” page, which includes the detail
+                    You can visualize all lncRNA-mRNA interactions in the “<a href="/lncexpdb/interactions" target="_blank">Interactions</a>” page, which includes the detail
                     information of lncRNAs-mRNA pairs, pearson correlation coefficient value, p values and distance. The
                     “search by” tab allows you to narrow down the results according to gene of your interest. Each gene
                     id is linked to detailed information page of expression profiles in different contexts.
@@ -678,7 +678,7 @@
             <h5 id="downloads"><strong>3.7 Download data in LncExpDB</strong></h5>
             <p>
                 <span>
-                    The “<a href="/LncExpDB/downloads" target="_blank">Downloads</a>” page contains all the files that you can download such as:
+                    The “<a href="/lncexpdb/downloads" target="_blank">Downloads</a>” page contains all the files that you can download such as:
                     i) reference gene model for RNA-seq analysis,
                     ii) expression profiles,
                     iii) expression levels,
@@ -690,7 +690,7 @@
             <h5 id="statistics"><strong>3.8 Statistic results in LncExpDB</strong></h5>
             <p>
                 <span>
-                    In the page of “<a href="https://bigd.big.ac.cn/LncExpDB/statistics" target="_blank">Statistics</a>”, you can find and download all statistical analytics
+                    In the page of “<a href="https://bigd.big.ac.cn/lncexpdb/statistics" target="_blank">Statistics</a>”, you can find and download all statistical analytics
                     results for i) gene annotation statistics, such as lncRNA integration, exon and
                     transcript number distribution and lncRNA classification, ii) expression statistics,
                     including expression profiles and distribution of featured lncRNAs in different
@@ -791,4 +791,5 @@
 
 <div th:replace="~{common/common_js::common_js}"></div>
 <script src="https://bigd.big.ac.cn/js/headerfooter-full.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </html>

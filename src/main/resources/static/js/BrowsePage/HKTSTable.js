@@ -39,7 +39,7 @@ var hkts_table = (function (url) {
                 field: 'geneid',
                 align: "center",
                 formatter: function(value,row,index){
-                    return "<a href='https://bigd.big.ac.cn/LncExpDB/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
+                    return "<a href='https://bigd.big.ac.cn/lncexpdb/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
                 },
                 // sortable: true
 
@@ -115,7 +115,7 @@ var hkts_table = (function (url) {
     });
 });
 
-var url1 = "/LncExpDB/hkts/brain";
+var url1 = "/lncexpdb/hkts/brain";
 hkts_table(url1)
 
 
@@ -142,9 +142,9 @@ $("#hkts_filter").on('click',function () {
         }
     });
     if (all_params.length == 0) {
-        var url = '/LncExpDB/hkts/' + datatype;
+        var url = '/lncexpdb/hkts/' + datatype;
     } else {
-        var url = '/LncExpDB/hkts/' + datatype + '?' + all_params.join("&");
+        var url = '/lncexpdb/hkts/' + datatype + '?' + all_params.join("&");
     }
     console.log(url)
     hkts_table(url);
@@ -261,7 +261,7 @@ $("#hkts_reset").on('click', function () {
     $('input[name="tau2"]').val(1);
     $('input[name="cv1"]').val(0);
     $('input[name="cv2"]').val(5);
-    var url = "/LncExpDB/hkts/brain";
+    var url = "/lncexpdb/hkts/brain";
     hkts_table(url);
 });
 

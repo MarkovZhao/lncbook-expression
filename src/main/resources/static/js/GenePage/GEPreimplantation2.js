@@ -67,20 +67,30 @@ $(function () {
                     text: '',
                     href: 'http://www.example.com'
                 },
-                title: { text: "Development of Human Preimplantation Embryos Dataset 1 ("  + geneid + ")"
+                title: { text: "Development of Human Preimplantation Embryos Dataset 1 ("  + geneid + ")",
+                    style:{
+                        color:"#000000",
+                        fontFamily:"Arial",
+                        fontWeight:"bold",
+                    }
                 },
                 xAxis: {
                     categories: ["Oocyte","Zygote","2-cell","4-cell","8-cell","Morulae","Lateblastocyst"],
+                    lineColor: "#000000",
+                    tickColor: "#000000",
                     style:{
                         fontSize: '17px',
+                        color:"#000000",
+                        fontWeight: 'bold',
                         fontFamily: 'Arial, sans-serif'
                     },
                     labels: {
                         rotation: -30,
                         style: {
                             fontSize:'13px',
-                            fontcolor: '#000000',
+                            color: '#000000',
                             fontWeight: 'bold',
+                            fontFamily: "Arial"
                         },
                     },
                     crosshair: true
@@ -91,15 +101,17 @@ $(function () {
                         text: 'TPM',
                         style: {
                             fontSize: '17px',
+                            color: "#000000",
                             fontWeight: 'bold',
                             fontFamily: 'Arial, sans-serif'
-                        }
+                        },
                     },
                     labels: {
                         style: {
                             fontSize:'13px',
-                            fontcolor: '#000000',
+                            color: '#000000',
                             fontWeight: 'bold',
+                            fontFamily: "Arial"
                         },
                     },
                 },

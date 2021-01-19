@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/semantic.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homepage-customized-style.css}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/components/icon.min.css"/>
+    <meta charset="UTF-8">
+
+    <title>CancerMap: Download</title>
+</head>
+
+<body style="background-color: #0e566c">
+<div th:replace="~{common/top_header :: subheader}"></div>
+<div style="margin-left: 40px;margin-right: 40px;border-bottom: 2px solid white"></div>
+<div class="row" style="padding-top: 60px;padding-left: 60px;padding-right: 60px;padding-bottom: 30px">
+    <div class="col-md-5" style="padding-right: 90px">
+        <h5 style="color: white;font-size: 16px">
+            Default Download:
+        </h5>
+        <table class="table table-bordered" style="color: white;border: solid 2px">
+            <tbody>
+                <tr style="border: solid 2px">
+                    <th style="border: solid 2px">Description</th>
+                    <th style="border: solid 2px">Download</th>
+                    <th style="border: solid 2px">Filesize</th>
+                </tr>
+
+                <tr style="border: solid 2px">
+                    <th style="border: solid 2px">All Countries</th>
+                    <th style="border: solid 2px"><a href="ftp://download.big.ac.cn/lncexpdb/9-CancerMap/ca_sta.rar" style="color: white">ca_sta.rar</a></th>
+                    <th style="border: solid 2px">2.28Mb</th>
+                </tr>
+
+                <tr style="border: solid 2px">
+                    <th style="border: solid 2px">Asia</th>
+                    <th style="border: solid 2px"><a href="ftp://download.big.ac.cn/lncexpdb/9-CancerMap/Asia.rar" style="color: white">Asia.rar</a></th>
+                    <th style="border: solid 2px">607.65Kb</th>
+                </tr>
+
+                <tr style="border: solid 2px">
+                    <th style="border: solid 2px">Africa</th>
+                    <th style="border: solid 2px"><a href="ftp://download.big.ac.cn/lncexpdb/9-CancerMap/Africa.rar" style="color: white">Africa.rar</a></th>
+                    <th style="border: solid 2px">679.28Kb</th>
+                </tr>
+
+                <tr style="border: solid 2px">
+                    <th style="border: solid 2px">Europe</th>
+                    <th style="border: solid 2px"><a href="ftp://download.big.ac.cn/lncexpdb/9-CancerMap/Europe.rar" style="color: white">Europe.rar</a></th>
+                    <th style="border: solid 2px">497.67Kb</th>
+                </tr>
+
+                <tr style="border: solid 2px">
+                    <th style="border: solid 2px">Latin America and the Caribbean</th>
+                    <th style="border: solid 2px"><a href="ftp://download.big.ac.cn/lncexpdb/9-CancerMap/Latin America and the Caribbean.rar" style="color: white">Latin America and the Caribbean.rar</a></th>
+                    <th style="border: solid 2px">404.56Kb</th>
+                </tr>
+
+                <tr style="border: solid 2px">
+                    <th style="border: solid 2px">North America</th>
+                    <th style="border: solid 2px"><a href="ftp://download.big.ac.cn/lncexpdb/9-CancerMap/North America.rar" style="color: white">North America.rar</a></th>
+                    <th style="border: solid 2px">26.11Kb</th>
+                </tr>
+
+                <tr style="border: solid 2px">
+                    <th style="border: solid 2px">Oceania</th>
+                    <th style="border: solid 2px"><a href="ftp://download.big.ac.cn/lncexpdb/9-CancerMap/Oceania.rar" style="color: white">Oceania.rar</a></th>
+                    <th style="border: solid 2px">124.69</th>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-5">
+        <h5 style="color: white;font-size: 16px">
+            Customized Download:
+        </h5>
+
+        <div class="well">
+            <div class="form-group form-group-sm">
+                <label class="col-md-12">Cancer and Country: </label>
+                <div class="col-md-6">
+                    <select name="select_cancer" class="feature form-control col-md-3" style="width: 200px;min-width: 34px" id="select_cancer1" data-placeholder="eg. Lung">
+                        <option value=""></option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <select name="feature" class="feature form-control col-md-3" style="width: 200px" id="select_country1" data-placeholder="eg. China">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group form-group-sm">
+                <label class="col-md-12">Incidence: </label>
+                <div class="col-md-6">
+                    <input type="number" name="new_number_min" value="0" class="form-control" id="new_number_min"
+                           min="0" max="1000000" step="1000"
+                           placeholder="minimum value"/>
+                </div>
+
+                <div class="col-md-6">
+                    <input type="number" name="new_number_max" value="1000000" class="form-control" id="new_number_max"
+                           min="0" max="1000000" step="1000"
+                           placeholder="maximum value"/>
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="col-md-12">Mortality: </label>
+                <div class="col-md-6">
+                    <input type="number" name="death_number_min" value="0" class="form-control" id="death_number_min" min="0" max="1000000"
+                           step="1000"
+                           placeholder="minimum value"/>
+                </div>
+                <div class="col-md-6">
+                    <input type="number" name="death_number_max" value="1000000" class="form-control" id="death_number_max" min="0" max="1000000"
+                           step="1000"
+                           placeholder="maximum value"/>
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="col-md-12">Prevalence: </label>
+                <div class="col-md-6">
+                    <input type="number" name="prevalence_number_min" value="0" class="form-control" id="prevalence_number_min" min="0" max="1000000"
+                           step="1000"
+                           placeholder="minimum value"/>
+                </div>
+                <div class="col-md-6">
+                    <input type="number" name="prevalence_number_max" value="1000000" class="form-control" id="prevalence_number_max" min="0" max="1000000"
+                           step="1000"
+                           placeholder="maximum value"/>
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <div class="input-group-btn" style="padding-left: 15px;padding-top: 15px">
+                    <button class="btn btn-primary btn-sm" type="button" id="download"
+                            data-loading-text="Loading...">
+                        <span class="glyphicon glyphicon-download" aria-hidden="true"></span>  Download
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+
+<div th:replace="~{common/common_js::common_js}"></div>
+<script th:src="@{/js/CancerMap/download.js}"></script>
+<script th:src="@{/js/CancerMap/statistics.js}"></script>
+<script src="https://bigd.big.ac.cn/js/headerfooter-full.js"></script>
+</html>

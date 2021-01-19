@@ -50,20 +50,30 @@ $(function () {
                     text: '',
                     href: 'http://www.example.com'
                 },
-                title: { text: "Development of " + tissue_map[tissue] + " from Early Organogenesis to Adulthood ("  + geneid + ")"
+                title: { text: "Development of " + tissue_map[tissue] + " from Early Organogenesis to Adulthood ("  + geneid + ")",
+                    style:{
+                        color:"#000000",
+                        fontFamily:"Arial",
+                        fontWeight:"bold",
+                    }
                 },
                 xAxis: {
                     categories: xais[tissue],
+                    lineColor: "#000000",
+                    tickColor: "#000000",
                     style:{
                         fontSize: '17px',
+                        color:"#000000",
+                        fontWeight: 'bold',
                         fontFamily: 'Arial, sans-serif'
                     },
                     labels: {
                         rotation: -30,
                         style: {
                             fontSize:'13px',
-                            fontcolor: '#000000',
+                            color: '#000000',
                             fontWeight: 'bold',
+                            fontFamily: "Arial"
                         },
                     },
                     crosshair: true
@@ -74,6 +84,7 @@ $(function () {
                         text: 'TPM',
                         style: {
                             fontSize: '17px',
+                            color:"#000000",
                             fontWeight: 'bold',
                             fontFamily: 'Arial, sans-serif'
                         }
@@ -81,8 +92,9 @@ $(function () {
                     labels: {
                         style: {
                             fontSize:'13px',
-                            fontcolor: '#000000',
+                            color: '#000000',
                             fontWeight: 'bold',
+                            fontFamily: "Arial"
                         },
                     },
                 },

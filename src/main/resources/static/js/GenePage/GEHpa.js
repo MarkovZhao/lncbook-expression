@@ -37,7 +37,12 @@ $(function () {
                     text: '',
                     href: 'http://www.example.com'
                 },
-                title: { text: "Normal Tissues from The Human Protein Atlas (" +  geneid + ")"
+                title: { text: "Normal Tissues from The Human Protein Atlas (" +  geneid + ")",
+                    style:{
+                        color:"#000000",
+                        fontFamily:"Arial",
+                        fontWeight:"bold",
+                    }
                 },
                 xAxis: {
                     categories: ["Brain","Lung","Urinary Bladder","Kidney","Adrenal","Thyroid Gland","Heart",
@@ -45,16 +50,21 @@ $(function () {
                         "Gall Bladder","Small Intestine","Saliva Secreting Gland","Stomach","Liver",
                         "Duodenum","Pancreas","Rectum","Endometrium","Ovary","Testis","Prostate Gland",
                         "Placenta","Fallpian Tube","Skeletal Muscle","Smooth Muscle Tissue","Zone of Skin","Fat"],
+                    lineColor: "#000000",
+                    tickColor: "#000000",
                     style:{
                         fontSize: '17px',
+                        color:"#000000",
+                        fontWeight: 'bold',
                         fontFamily: 'Arial, sans-serif'
                     },
                     labels: {
                         rotation: -30,
                         style: {
-                            fontSize:'11px',
-                            fontcolor: '#000000',
+                            fontSize:'13px',
+                            color: '#000000',
                             fontWeight: 'bold',
+                            fontFamily: "Arial"
                         },
                     },
                     crosshair: true
@@ -65,16 +75,17 @@ $(function () {
                         text: 'TPM',
                         style: {
                             fontSize: '17px',
+                            color: "#000000",
                             fontWeight: 'bold',
                             fontFamily: 'Arial, sans-serif'
-                        }
+                        },
                     },
                     labels: {
                         style: {
-                            fontSize:'11px',
-                            fontcolor: '#000000',
+                            fontSize:'13px',
+                            color: '#000000',
                             fontWeight: 'bold',
-                            fontFamily: 'Arial, sans-serif',
+                            fontFamily: "Arial"
                         },
                     },
                 },

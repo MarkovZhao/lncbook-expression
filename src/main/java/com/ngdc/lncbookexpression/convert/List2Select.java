@@ -1,9 +1,6 @@
 package com.ngdc.lncbookexpression.convert;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class List2Select {
     public static Map<String, Object> convert(List<String> stringList) {
@@ -16,6 +13,9 @@ public class List2Select {
                 maps.add(map);
             }
         }
+//        HashSet set = new HashSet(maps);
+//        maps.clear();
+//        maps.addAll(set);
         Map<String, Object> result = new HashMap<>();
         result.put("results", maps);
         return result;

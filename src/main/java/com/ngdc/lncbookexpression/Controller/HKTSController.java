@@ -45,6 +45,7 @@ public class HKTSController {
         return browseService.searchHKTS(hktSdto,page,size,"tau_hpa",sortName,sortOrder);
     }
 
+
     @RequestMapping(value = "/encode")
     @ResponseBody
     public Map encode(HKTSdto hktSdto, @RequestParam(value = "page",defaultValue = "0") int page,
@@ -92,6 +93,7 @@ public class HKTSController {
     @RequestMapping("/hpa/tissuename")
     public Map<String, Object> hpa(){
         List<String> list = tauHpaRepository.findname();
+        System.out.println(list);
         return List2Select.convert(list);
     }
 

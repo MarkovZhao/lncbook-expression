@@ -37,20 +37,30 @@ $(function () {
                     text: '',
                     href: 'http://www.example.com'
                 },
-                title: { text: "COVID Patients and Normal Control (" +  geneid + ")"
+                title: { text: "COVID Patients and Normal Control (" +  geneid + ")",
+                    style:{
+                        color:"#000000",
+                        fontFamily:"Arial",
+                        fontWeight:"bold",
+                    }
                 },
                 xAxis: {
                     categories: ["COVID patient","Normal control"],
+                    lineColor: "#000000",
+                    tickColor: "#000000",
                     style:{
                         fontSize: '17px',
+                        color:"#000000",
+                        fontWeight: 'bold',
                         fontFamily: 'Arial, sans-serif'
                     },
                     labels: {
                         rotation: -30,
                         style: {
                             fontSize:'13px',
-                            fontcolor: '#000000',
+                            color: '#000000',
                             fontWeight: 'bold',
+                            fontFamily: "Arial"
                         },
                     },
                     crosshair: true
@@ -61,15 +71,17 @@ $(function () {
                         text: 'TPM',
                         style: {
                             fontSize: '17px',
+                            color: "#000000",
                             fontWeight: 'bold',
                             fontFamily: 'Arial, sans-serif'
-                        }
+                        },
                     },
                     labels: {
                         style: {
                             fontSize:'13px',
-                            fontcolor: '#000000',
+                            color: '#000000',
                             fontWeight: 'bold',
+                            fontFamily: "Arial"
                         },
                     },
                 },
@@ -139,20 +151,30 @@ $(function () {
                     text: '',
                     href: 'http://www.example.com'
                 },
-                title: { text: "HBC, HCV, HIV Infection and Normal Control (" +  geneid + ")"
+                title: { text: "HBC, HCV, HIV Infection and Normal Control (" +  geneid + ")",
+                    style:{
+                        color:"#000000",
+                        fontFamily:"Arial",
+                        fontWeight:"bold",
+                    }
                 },
                 xAxis: {
                     categories: ["Normal control","HBV infection","HCV infection","HIV infection"],
+                    lineColor: "#000000",
+                    tickColor: "#000000",
                     style:{
                         fontSize: '17px',
+                        color:"#000000",
+                        fontWeight: 'bold',
                         fontFamily: 'Arial, sans-serif'
                     },
                     labels: {
                         rotation: -30,
                         style: {
                             fontSize:'13px',
-                            fontcolor: '#000000',
+                            color: '#000000',
                             fontWeight: 'bold',
+                            fontFamily: "Arial"
                         },
                     },
                     crosshair: true
@@ -163,6 +185,7 @@ $(function () {
                         text: 'TPM',
                         style: {
                             fontSize: '17px',
+                            color: "#000000",
                             fontWeight: 'bold',
                             fontFamily: 'Arial, sans-serif'
                         },
@@ -170,8 +193,9 @@ $(function () {
                     labels: {
                         style: {
                             fontSize:'13px',
-                            fontcolor: '#000000',
+                            color: '#000000',
                             fontWeight: 'bold',
+                            fontFamily: "Arial"
                         },
 
                     },

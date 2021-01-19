@@ -38,7 +38,7 @@ var de_table = (function (url) {
                 field: 'geneid',
                 align: "center",
                 formatter: function(value,row,index){
-                    return "<a href='https://bigd.big.ac.cn/LncExpDB/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
+                    return "<a href='https://bigd.big.ac.cn/lncexpdb/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
                 },
                 // sortable: true
 
@@ -124,13 +124,15 @@ var de_table = (function (url) {
     });
 });
 
-var url1 = "/LncExpDB/de/hiv";
+var url1 = "/lncexpdb/de/hiv";
+var current_url = url1;
 de_table(url1)
 
 $("#type").on("change",function () {
     var type = $(this).val();
 
-    var url = '/LncExpDB/de/'+ type;
+    var url = '/lncexpdb/de/'+ type;
+    current_url = url;
     de_table(url);
 })
 
@@ -209,14 +211,16 @@ $('#chkDiy').on('click', function (e) {
 
 $('#hkr').on("click",function () {
     var type = $('#type').val();
-    $("#de_table").bootstrapTable('refreshOptions', {url:'/LncExpDB/de/' + type + '?' +'padj=0.05&log1=-1',  silent: true, pageNumber: 1, pageSize: 10});
+    $("#de_table").bootstrapTable('refreshOptions', {url:'/lncexpdb/de/' + type + '?' +'padj=0.05&log1=-1',  silent: true, pageNumber: 1, pageSize: 10});
+    current_url = '/lncexpdb/de/' + type + '?' +'padj=0.05&log1=-1';
 });
 
 
 $('#tsr').click(function () {
     var type = $('#type').val();
     $('#tissuename').empty();
-    $("#de_table").bootstrapTable('refreshOptions', {url:'/LncExpDB/de/' + type + '?' +'padj=0.05&log2=1',  silent: true, pageNumber: 1, pageSize: 10});
+    $("#de_table").bootstrapTable('refreshOptions', {url:'/lncexpdb/de/' + type + '?' +'padj=0.05&log2=1',  silent: true, pageNumber: 1, pageSize: 10});
+    current_url = '/lncexpdb/de/' + type + '?' +'padj=0.05&log2=1';
 });
 
 $('#tau').on('click', function () {
@@ -228,7 +232,8 @@ $('#tau').on('click', function () {
     var log2 = $('input[name="log2"]').val();
     var basemean = $('input[name="basemean"]').val();
     console.log(type)
-    var url = '/LncExpDB/de/' + type + "?pvalue="+ pvalue + '&padj=' + padj + '&log1=' + log1 + '&log2=' + log2 + '&basemean=' + basemean;
+    var url = '/lncexpdb/de/' + type + "?pvalue="+ pvalue + '&padj=' + padj + '&log1=' + log1 + '&log2=' + log2 + '&basemean=' + basemean;
+    current_url = url;
     de_table(url);
     $btn.button("reset")
 });
@@ -240,10 +245,38 @@ $("#reset").on('click', function () {
     $('input[name="log1"]').val(-1);
     $('input[name="log2"]').val(1);
     $('input[name="basemean"]').val(1);
-    var url = "/LncExpDB/de/hiv";
+    var url = "/lncexpdb/de/hiv";
+    current_url = url;
     de_table(url);
 });
 
+$("#download").on("click",function () {
+    $("#download").button("loading");
+    var element = document.createElement('a');
+    var file_name = "LncExpDB_" + current_url.split("/lncexpdb/de")[1] + ".csv"
+    console.log(current_url.split("/lncexpdb/de")[1]);
+    // var download_url = "/lncexpdb/download" + current_url.split("/lncexpdb/hkts")[1];
+    // var fileName = "ddd.csv";
+    // var form = $("<form></form>").attr("action",download_url).attr("method","post");
+    // form.append($("<input></input>").attr("type","hidden").attr("name","fileName").attr("value",fileName));
+    // form.appendTo("body").submit().remove();
+    $.ajax(
+        {
+            url: "/lncexpdb/download" + current_url.split("/lncexpdb/de")[1],
+            type: "POST",
+            dataType: "text",
+            success: function (d) {
+                element.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(d));
+                element.setAttribute('download',file_name);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+                $("#download").button("reset");
+            }
+        }
+    )
+})
 
 var ce_table = (function (url) {
     $('#ce_table').bootstrapTable('destroy');
@@ -285,7 +318,7 @@ var ce_table = (function (url) {
                 field: 'geneid',
                 align: "center",
                 formatter: function(value,row,index){
-                    return "<a href='https://bigd.big.ac.cn/LncExpDB/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
+                    return "<a href='https://bigd.big.ac.cn/lncexpdb/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
                 },
                 // sortable: true
 
@@ -313,6 +346,9 @@ var ce_table = (function (url) {
                 title: 'PCG Symbol',
                 field: 'pcgname',
                 align: "center",
+                formatter: function(value,row,index){
+                    return "<a href='https://www.genecards.org/cgi-bin/carddisp.pl?gene=" + value + "'target='_blank'>" + value + "</a>"
+                },
                 // sortable: true,
             },
             {
@@ -354,13 +390,13 @@ var ce_table = (function (url) {
     });
 });
 
-var url1 = "/LncExpDB/ce/hiv";
+var url1 = "/lncexpdb/ce/hiv";
 ce_table(url1)
 
 $("#ce_type").on("change",function () {
     var type = $(this).val();
 
-    var url = '/LncExpDB/ce/'+ type;
+    var url = '/lncexpdb/ce/'+ type;
     ce_table(url);
 })
 
@@ -453,14 +489,14 @@ $('#ce_chkDiy').on('click', function (e) {
 $('#ce_hkr').on("click",function () {
     var type = $('#ce_type').val();
     $('#ce_tissuename').empty();
-    $("#ce_table").bootstrapTable('refreshOptions', {url:'/LncExpDB/ce/' + type + 'distance?start=-2&end=-0.1',  silent: true, pageNumber: 1, pageSize: 10});
+    $("#ce_table").bootstrapTable('refreshOptions', {url:'/lncexpdb/ce/' + type + 'distance?start=-2&end=-0.1',  silent: true, pageNumber: 1, pageSize: 10});
 });
 
 
 $('#ce_tsr').click(function () {
     var type = $('#ce_type').val();
     $('#ce_tissuename').empty();
-    $("#ce_table").bootstrapTable('refreshOptions', {url:'/LncExpDB/ce/' + type + 'distance?start=0',  silent: true, pageNumber: 1, pageSize: 10});
+    $("#ce_table").bootstrapTable('refreshOptions', {url:'/lncexpdb/ce/' + type + 'distance?start=0',  silent: true, pageNumber: 1, pageSize: 10});
 });
 
 $('#ce_tau').on('click', function () {
@@ -472,7 +508,7 @@ $('#ce_tau').on('click', function () {
     var pcc = $('input[name="ce_minBreadth"]').val();
     var mindis = $('input[name="ce_cv1"]').val();
     var maxdis = $('input[name="ce_cv2"]').val();
-    var url = '/LncExpDB/ce/' + type + 'filter?pvalue_start=0&pvalue_end=' + pvalue + '&pcc_start=' + pcc + '&pcc_end=1' + '&distance_start=' + mindis + '&distance_end=' + maxdis;
+    var url = '/lncexpdb/ce/' + type + 'filter?pvalue_start=0&pvalue_end=' + pvalue + '&pcc_start=' + pcc + '&pcc_end=1' + '&distance_start=' + mindis + '&distance_end=' + maxdis;
     $("#ce_table").bootstrapTable('refreshOptions', {url:url,  silent: true, pageNumber: 1, pageSize: 10});
     $btn.button("reset")
 });
@@ -487,13 +523,13 @@ $("#ce_reset").on('click', function () {
     $('input[name="maxBreadth"]').val(1000);
     $("#featurelnc").empty();
     $('#featurelnc_cancel').hide();
-    var url = "/LncExpDB/ce/hbv";
+    var url = "/lncexpdb/ce/hbv";
     ce_table(url);
 
 });
 
 // Select2
-var url1 = "/LncExpDB/ce/hivlncid";
+var url1 = "/lncexpdb/ce/hivlncid";
 
 $('#featurelnc').select2({
     minimumInputLength: 1,
@@ -513,16 +549,16 @@ $('#feature_sect1').change(function () {
     var type = $('#ce_type').val();
     console.log(type)
     if ($('#feature_sect1').val() == "lncid") {
-        url1 = "/LncExpDB/ce/" + type + "lncid";
+        url1 = "/lncexpdb/ce/" + type + "lncid";
         $('#featurelnc').attr('data-placeholder', 'eg. HSALNG000002');
     } else if ($('#feature_sect1').val() == "lncname") {
-        url1 = "/LncExpDB/ce/" + type + "lncname";
+        url1 = "/lncexpdb/ce/" + type + "lncname";
         $('#featurelnc').attr('data-placeholder', 'eg. MALAT1');
     } else if ($('#feature_sect1').val() == "pcgid") {
-        url1 = "/LncExpDB/ce/" + type + "pcgid";
+        url1 = "/lncexpdb/ce/" + type + "pcgid";
         $('#featurelnc').attr('data-placeholder', 'eg. ENSG00000152078.10');
     } else if ($('#feature_sect1').val() == "pcgname") {
-        url1 = "/LncExpDB/ce/" + type + "pcgname";
+        url1 = "/lncexpdb/ce/" + type + "pcgname";
         $('#featurelnc').attr('data-placeholder', 'eg. TLCD4');
     }
     $('#featurelnc').select2({
@@ -543,14 +579,14 @@ $('#feature_sect1').change(function () {
 
 var list = document.getElementById("featurelnc");
 if(list.options[0].value==""){
-    var url = '/LncExpDB/ce/' + $('#ce_type').val();
+    var url = '/lncexpdb/ce/' + $('#ce_type').val();
     ce_table(url)
 }
 
 $('.feature').change(function () {
     var dis = $('.feature').val();
     var v2 = $(".filter").val();
-    var url = '/LncExpDB/ce/' + $('#ce_type').val() + "by" + v2 + '?term=' + dis;
+    var url = '/lncexpdb/ce/' + $('#ce_type').val() + "by" + v2 + '?term=' + dis;
     console.log(url)
     ce_table(url);
     if($(this).val() != null && $(this).val()!=""){
@@ -559,7 +595,7 @@ $('.feature').change(function () {
         $('#featurelnc_cancel').hide();
     }
     $("#featurelnc_cancel").on("click",function () {
-        var url = '/LncExpDB/ce/' + $('#ce_type').val();
+        var url = '/lncexpdb/ce/' + $('#ce_type').val();
         ce_table(url);
         $("#featurelnc").empty();
         $('#featurelnc_cancel').hide();
@@ -567,13 +603,13 @@ $('.feature').change(function () {
 
     var val = $('.feature').val();
     if(val=="" || val==null){
-        var url = '/LncExpDB/ce/' + $('#ce_type').val();
+        var url = '/lncexpdb/ce/' + $('#ce_type').val();
         ce_table(url)
     }
 });
 
 // Featured Select2
-var url1 = "/LncExpDB/de/hiv/geneidlist";
+var url1 = "/lncexpdb/de/hiv/geneidlist";
 
 $('#featurelnc2').select2({
     minimumInputLength: 1,
@@ -593,10 +629,10 @@ $('#feature_sect2').change(function () {
     var type = $('#type').val();
 
     if ($('#feature_sect2').val() == "geneid") {
-        url1 = "/LncExpDB/de/" + type + "/geneidlist";
+        url1 = "/lncexpdb/de/" + type + "/geneidlist";
         $('#featurelnc2').attr('data-placeholder', 'eg. HSALNG000002');
     } else if ($('#feature_sect2').val() == "symbol") {
-        url1 = "/LncExpDB/de/" + type + "/symbollist";
+        url1 = "/lncexpdb/de/" + type + "/symbollist";
         $('#featurelnc2').attr('data-placeholder', 'eg. MALAT1');
     }
     $('#featurelnc2').select2({
@@ -617,14 +653,14 @@ $('#feature_sect2').change(function () {
 
 var list = document.getElementById("featurelnc2");
 if(list.options[0].value==""){
-    var url = '/LncExpDB/de/' + $('#type').val();
+    var url = '/lncexpdb/de/' + $('#type').val();
     de_table(url)
 }
 
 $('.feature2').change(function () {
     var dis = $('.feature2').val();
     var v2 = $(".filter2").val();
-    var url = '/LncExpDB/de/' + $('#type').val() + "?" + v2 + '=' + "'" + dis + "'";
+    var url = '/lncexpdb/de/' + $('#type').val() + "?" + v2 + '=' + "'" + dis + "'";
 
     de_table(url);
     if($(this).val() != null && $(this).val()!=""){
@@ -634,7 +670,7 @@ $('.feature2').change(function () {
     }
 
     $("#featurelnc_cancel2").on("click",function () {
-        var url = '/LncExpDB/de/' + $('#type').val();
+        var url = '/lncexpdb/de/' + $('#type').val();
         de_table(url);
         $("#featurelnc2").empty();
         $('#featurelnc_cancel2').hide();
@@ -642,7 +678,7 @@ $('.feature2').change(function () {
 
     var val = $('.feature2').val();
     if(val=="" || val==null){
-        var url = '/LncExpDB/de/' + $('#type').val();
+        var url = '/lncexpdb/de/' + $('#type').val();
         de_table(url)
     }
 });

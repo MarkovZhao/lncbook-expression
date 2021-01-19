@@ -18,6 +18,9 @@ var hkts_table = (function (url) {
         silent: true,  //刷新事件必须设
         sidePagination: "client",//分页方式：client客户端分页，server服务端分页（*）
         contentType: "application/x-www-form-urlencoded",//请求远程数据的内容类型。
+        exportDataType:'basic',
+        showExport:true,
+        exportTypes:['csv','txt'],
         formatLoadingMessage: function () {
             return "<h4>Please wait...</h4>";
         },
@@ -36,7 +39,7 @@ var hkts_table = (function (url) {
                 field: 'geneid',
                 align: "center",
                 formatter: function(value,row,index){
-                    return "<a href='https://bigd.big.ac.cn/LncExpDB/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
+                    return "<a href='https://bigd.big.ac.cn/lncexpdb/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
                 },
                 // sortable: true
 
@@ -196,7 +199,7 @@ var hkts_table = (function (url) {
     });
 });
 
-var url1 = "/LncExpDB/de/circadian";
+var url1 = "/lncexpdb/de/circadian";
 hkts_table(url1)
 
 if ($('#chkBrowse').is(":checked")) {
@@ -282,14 +285,14 @@ $('#chkDiy').on('click', function (e) {
 $('#hkr').on("click",function () {
     var type = $('#type').val();
     $('#tissuename').empty();
-    $("#hkts_table").bootstrapTable('refreshOptions', {url:'/LncExpDB/hkts/differentiation' + '?' +'tau1=0&tau2=0.5&cv1=0&cv2=0.5',  silent: true, pageNumber: 1, pageSize: 10});
+    $("#hkts_table").bootstrapTable('refreshOptions', {url:'/lncexpdb/hkts/differentiation' + '?' +'tau1=0&tau2=0.5&cv1=0&cv2=0.5',  silent: true, pageNumber: 1, pageSize: 10});
 });
 
 
 $('#tsr').click(function () {
     var type = $('#type').val();
     $('#tissuename').empty();
-    $("#hkts_table").bootstrapTable('refreshOptions', {url:'/LncExpDB/hkts/differentiation' + '?' +'tau1=0.95&tau2=1',  silent: true, pageNumber: 1, pageSize: 10});
+    $("#hkts_table").bootstrapTable('refreshOptions', {url:'/lncexpdb/hkts/differentiation' + '?' +'tau1=0.95&tau2=1',  silent: true, pageNumber: 1, pageSize: 10});
 });
 
 $('#tau').on('click', function () {
@@ -302,7 +305,7 @@ $('#tau').on('click', function () {
     var maxBreadth = $('input[name="maxBreadth"]').val();
     var cv1 = $('input[name="cv1"]').val();
     var cv2 = $('input[name="cv2"]').val();
-    var url = '/LncExpDB/hkts/differentiation' + "?tau1="+ tau1 + '&tau2=' + tau2 + '&minBreadth=' + minBreadth + '&maxBreadth=' + maxBreadth + '&cv1=' + cv1 + '&cv2=' + cv2;
+    var url = '/lncexpdb/hkts/differentiation' + "?tau1="+ tau1 + '&tau2=' + tau2 + '&minBreadth=' + minBreadth + '&maxBreadth=' + maxBreadth + '&cv1=' + cv1 + '&cv2=' + cv2;
     hkts_table(url);
     $btn.button("reset")
 });
@@ -315,9 +318,9 @@ $("#reset").on('click', function () {
     $('input[name="cv2"]').val(3);
     $('input[name="minBreadth"]').val(0);
     $('input[name="maxBreadth"]').val(16);
-    var url = "/LncExpDB/hkts/differentiation";
+    var url = "/lncexpdb/hkts/differentiation";
     hkts_table(url);
-    var url_tissue = "/LncExpDB/hkts/differentiation/tissuename";
+    var url_tissue = "/lncexpdb/hkts/differentiation/tissuename";
     $('#tissuename').select2({
         ajax: {
             url: url_tissue,
@@ -364,7 +367,7 @@ var ce_table = (function (url) {
                 field: 'geneid',
                 align: "center",
                 formatter: function(value,row,index){
-                    return "<a href='https://bigd.big.ac.cn/LncExpDB/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
+                    return "<a href='https://bigd.big.ac.cn/lncexpdb/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
                 },
                 // sortable: true
 
@@ -392,6 +395,9 @@ var ce_table = (function (url) {
                 title: 'PCG Symbol',
                 field: 'pcgname',
                 align: "center",
+                formatter: function(value,row,index){
+                    return "<a href='https://www.genecards.org/cgi-bin/carddisp.pl?gene=" + value + "'target='_blank'>" + value + "</a>"
+                },
                 // sortable: true,
             },
             {
@@ -433,7 +439,7 @@ var ce_table = (function (url) {
     });
 });
 
-var url1 = "/LncExpDB/ce/circadian";
+var url1 = "/lncexpdb/ce/circadian";
 ce_table(url1)
 
 if ($('#ce_chkBrowse').is(":checked")) {
@@ -523,7 +529,7 @@ $('#ce_chkDiy').on('click', function (e) {
 });
 
 $('#ce_chkTissue').on("click", function () {
-    var url_tissue = "/LncExpDB/hkts/differentiation/tissuename";
+    var url_tissue = "/lncexpdb/hkts/differentiation/tissuename";
     console.log(url_tissue)
     $('#ce_tissuename').select2({
         ajax: {
@@ -536,14 +542,14 @@ $('#ce_chkTissue').on("click", function () {
 $('#ce_hkr').on("click",function () {
     var type = $('#ce_type').val();
     $('#ce_tissuename').empty();
-    url = '/LncExpDB/ce/circadiandistance?start=-2&end=-0.1'
+    url = '/lncexpdb/ce/circadiandistance?start=-2&end=-0.1'
     ce_table(url)
 });
 
 $('#ce_tsr').click(function () {
     var type = $('#ce_type').val();
     $('#ce_tissuename').empty();
-    url = '/LncExpDB/ce/circadiandistance?start=0'
+    url = '/lncexpdb/ce/circadiandistance?start=0'
     ce_table(url)
 });
 
@@ -556,7 +562,7 @@ $('#ce_tau').on('click', function () {
     var pcc = $('input[name="ce_minBreadth"]').val();
     var mindis = $('input[name="ce_cv1"]').val();
     var maxdis = $('input[name="ce_cv2"]').val();
-    var url = '/LncExpDB/ce/circadianfilter?pvalue_start=0&pvalue_end=' + pvalue + '&pcc_start=' + pcc + '&pcc_end=1' + '&distance_start=' + mindis + '&distance_end=' + maxdis;
+    var url = '/lncexpdb/ce/circadianfilter?pvalue_start=0&pvalue_end=' + pvalue + '&pcc_start=' + pcc + '&pcc_end=1' + '&distance_start=' + mindis + '&distance_end=' + maxdis;
     ce_table(url);
     $btn.button("reset")
 });
@@ -571,12 +577,12 @@ $("#ce_reset").on('click', function () {
     $('input[name="ce_maxBreadth"]').val(1000);
     $("#featurelnc").empty();
     $('#featurelnc_cancel').hide();
-    var url = "/LncExpDB/ce/circadian";
+    var url = "/lncexpdb/ce/circadian";
     ce_table(url);
 });
 
 // Select2
-var url1 = "/LncExpDB/ce/circadianlncid";
+var url1 = "/lncexpdb/ce/circadianlncid";
 
 $('#featurelnc').select2({
     minimumInputLength: 1,
@@ -596,16 +602,16 @@ $('#feature_sect1').change(function () {
     var type = $('#ce_type').val();
     console.log(type)
     if ($('#feature_sect1').val() == "lncid") {
-        url1 = "/LncExpDB/ce/circadianlncid";
+        url1 = "/lncexpdb/ce/circadianlncid";
         $('#featurelnc').attr('data-placeholder', 'eg. HSALNG000002');
     } else if ($('#feature_sect1').val() == "lncname") {
-        url1 = "/LncExpDB/ce/circadianlncname";
+        url1 = "/lncexpdb/ce/circadianlncname";
         $('#featurelnc').attr('data-placeholder', 'eg. MALAT1');
     } else if ($('#feature_sect1').val() == "pcgid") {
-        url1 = "/LncExpDB/ce/circadianpcgid";
+        url1 = "/lncexpdb/ce/circadianpcgid";
         $('#featurelnc').attr('data-placeholder', 'eg. ENSG00000152078.10');
     } else if ($('#feature_sect1').val() == "pcgname") {
-        url1 = "/LncExpDB/ce/circadianpcgname";
+        url1 = "/lncexpdb/ce/circadianpcgname";
         $('#featurelnc').attr('data-placeholder', 'eg. TLCD4');
     }
     $('#featurelnc').select2({
@@ -626,14 +632,14 @@ $('#feature_sect1').change(function () {
 
 var list = document.getElementById("featurelnc");
 if(list.options[0].value==""){
-    var url = '/LncExpDB/ce/circadian';
+    var url = '/lncexpdb/ce/circadian';
     ce_table(url)
 }
 
 $('.feature').change(function () {
     var dis = $('.feature').val();
     var v2 = $(".filter").val();
-    var url = '/LncExpDB/ce/circadianby' + v2 + '?term=' + dis;
+    var url = '/lncexpdb/ce/circadianby' + v2 + '?term=' + dis;
     console.log(url)
     ce_table(url);
     if($(this).val() != null && $(this).val()!=""){
@@ -642,7 +648,7 @@ $('.feature').change(function () {
         $('#featurelnc_cancel').hide();
     }
     $("#featurelnc_cancel").on("click",function () {
-        var url = '/LncExpDB/ce/circadian';
+        var url = '/lncexpdb/ce/circadian';
         ce_table(url);
         $("#featurelnc").empty();
         $('#featurelnc_cancel').hide();
@@ -650,7 +656,7 @@ $('.feature').change(function () {
 
     var val = $('.feature').val();
     if(val=="" || val==null){
-        var url = '/LncExpDB/ce/circadian';
+        var url = '/lncexpdb/ce/circadian';
         ce_table(url)
     }
 });

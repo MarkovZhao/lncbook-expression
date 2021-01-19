@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/semantic.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homepage-customized-style.css}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/components/icon.min.css"/>
+    <meta charset="UTF-8">
+
+    <title>CancerMap: Contact</title>
+</head>
+
+<body>
+<body style="background-color: #0e566c">
+<div th:replace="~{common/top_header :: subheader}"></div>
+<div style="margin-left: 40px;margin-right: 40px;border-bottom: 2px solid white"></div>
+<div class="panel panel-default" style="margin-top: 30px;margin-left: 45px;margin-right: 45px">
+    <div class="panel-body">
+        <div class="class=col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <address>
+                <Strong>Email: </Strong>
+                <br>
+                *****@big.ac.cn<br>
+            </address>
+            <address>
+                <strong>Postal Address</strong><br>
+                The CancerMap Team<br>
+                National Genomics Data Center<br>
+                China National Center for Bioinformation / Beijing Institute of Genomics, Chinese Academy of Sciences<br>
+                No.1 Beichen West Road<br>
+                Chaoyang District, Beijing 100101<br>
+                China
+            </address>
+            <address>
+                <Strong>Project Leader:</Strong>
+                <br>
+                <a href="https://bigd.big.ac.cn/people/Lina-Ma" target="_blank">Lina Ma:</a> malina(AT)big.ac.cn<br>
+            </address>
+
+            <address>
+                <Strong>LncRNA Integration:</Strong>
+                <br>
+                <a href="http://bigd.big.ac.cn/people/Zhao-Li" target="_blank">Zhao Li:</a> lizhao2018m(AT)big.ac.cn<br>
+            </address>
+
+            <address>
+                <Strong>Web Development:</Strong>
+                <br>
+                <a href="http://bigd.big.ac.cn/people/Zhao-Li" target="_blank">Zhao Li:</a> lizhao2018m(AT)big.ac.cn<br>
+                <a href="#" target="_blank">Shuai Jiang:</a> jiangs(AT)big.ac.cn<br>
+                <a href="http://bigd.big.ac.cn/people/Qiang-Du" target="_blank">Qiang Du:</a> duqiang2019m(AT)big.ac.cn<br>
+                <a href="http://bigd.big.ac.cn/people/Dong-Zou" target="_blank">Dong Zou:</a> zoud(AT)big.ac.cn<br>
+            </address>
+
+            <address>
+                <Strong>Data collection: </Strong>
+                <br>
+                <a href="https://bigd.big.ac.cn/people/Lin-Liu" target="_blank">Lin Liu:</a> liulin(AT)big.ac.cn<br>
+                <a href="https://bigd.big.ac.cn/people/Zhao-Li" target="_blank">Zhao Li:</a> lizhao2018m(AT)big.ac.cn<br>
+            </address>
+
+            <address>
+                <Strong>Expression Analysis: </Strong>
+                <br>
+                <a href="https://bigd.big.ac.cn/people/Lin-Liu" target="_blank">Lin Liu:</a> liulin(AT)big.ac.cn<br>
+                <a href="https://bigd.big.ac.cn/people/Zhao-Li" target="_blank">Zhao Li:</a> lizhao2018m(AT)big.ac.cn<br>
+                <a href="https://bigd.big.ac.cn/people/Qianpeng-Li" target="_blank">Qianpeng Li:</a> liqianpeng2019d(AT)big.ac.cn<br>
+                <a href="https://bigd.big.ac.cn/people/Changrui-Feng" target="_blank">Changrui Feng:</a> fengchangrui2019m(AT)big.ac.cn<br>
+            </address>
+
+            <address>
+                <Strong>Principal Investigator: </Strong>
+                <br>
+                <a href="http://bigd.big.ac.cn/people/Zhang-Zhang" target="_blank">Zhang Zhang</a>: zhangzhang(AT)big.ac.cn
+            </address>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <address>
+                <strong>Map: </strong><br>
+                <img th:src="@{/images/address.jpg}" height="500" width="700"/>
+            </address>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<div th:replace="~{common/common_js::common_js}"></div>
+<script th:src="@{/js/CancerMap/download.js}"></script>
+<script th:src="@{/js/CancerMap/statistics.js}"></script>
+<script src="https://bigd.big.ac.cn/js/headerfooter-full.js"></script>
+</html>

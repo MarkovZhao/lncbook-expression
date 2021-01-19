@@ -8,7 +8,7 @@ $(document).on("click", "a[name='view_expression']", function () {
     var geneid = $(this).data("id");
     console.log(geneid)
     $.ajax({
-        url: '/LncExpDB/gene/circadian?geneid=' + geneid,
+        url: '/lncexpdb/gene/circadian?geneid=' + geneid,
         type: 'POST',
         dataType: 'json',
         cache: false,
@@ -43,17 +43,20 @@ $(document).on("click", "a[name='view_expression']", function () {
                     text: '',
                     href: 'http://www.example.com'
                 },
-                title: { text: "Whole Blood with Intermediate Circadian Phenotype (" + geneid + ")"
+                title: { text: "Whole Blood with Intermediate Circadian Phenotype (" + geneid + ")",
+                    style:{
+                        color:"#000000",
+                        fontFamily:"Arial",
+                        fontWeight:"bold",
+                    }
                 },
                 xAxis: {
                     categories: ["One hour","Three hour","Five hour"
                         ,"Seven hour","Nine hour","Elven hour","Thirteen hour",
                         "Fifteen hour","Seventeen hour","Nineteen hour","Twenty one hour","Twenty three hour"
                     ],
-                    style:{
-                        fontSize: '13px',
-                        fontFamily: 'Arial, sans-serif'
-                    },
+                    lineColor: "#000000",
+                    tickColor: "#000000",
                     labels: {
                         rotation: -30,
                         style: {
@@ -69,6 +72,7 @@ $(document).on("click", "a[name='view_expression']", function () {
                     title: {
                         text: 'TPM',
                         style: {
+                            color: "#000000",
                             fontSize: '17px',
                             fontWeight: 'bold',
                             fontFamily: 'Arial, sans-serif'
@@ -77,8 +81,9 @@ $(document).on("click", "a[name='view_expression']", function () {
                     labels: {
                         style: {
                             fontSize:'13px',
-                            fontcolor: '#000000',
+                            color: '#000000',
                             fontWeight: 'bold',
+                            fontFamily: "Arial",
                         },
                     },
                 },

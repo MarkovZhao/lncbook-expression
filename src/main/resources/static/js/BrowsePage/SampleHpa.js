@@ -9,7 +9,7 @@ $(document).on("click", "a[name='view_expression']", function () {
     var type = $("#type").val();
 
     $.ajax({
-        url: '/LncExpDB/gene/' + type + '?geneid=' + geneid,
+        url: '/lncexpdb/gene/' + type + '?geneid=' + geneid,
         type: 'POST',
         dataType: 'json',
         cache: false,

@@ -37,7 +37,12 @@ $(function () {
                     text: '',
                     href: 'http://www.example.com'
                 },
-                title: { text: "ENCODE Primary Cell Lines (" +  geneid + ")"
+                title: { text: "ENCODE Primary Cell Lines (" +  geneid + ")",
+                    style:{
+                        color:"#000000",
+                        fontFamily:"Arial",
+                        fontWeight:"bold",
+                    }
                 },
                 xAxis: {
                     categories: ["Airway Epithelial","Aortic Smooth Muscle","Articular Chondrocyte of Knee Joint",
@@ -55,16 +60,21 @@ $(function () {
                     "Smooth Muscle Cell of The Coronary Artery","Smooth Muscle Cell of The Pulmonary Artery","Smooth Muscle Cell of The Umbilical Artery",
                     "Smooth Muscle Cell of Trachea","Subcutaneous Preadipocyte","Thoracic Aorta Endothelial","Tracheal Epithelial","Uterine Smooth Muscle",
                     "Vein Endothelial"],
+                    lineColor: "#000000",
+                    tickColor: "#000000",
                     style:{
                         fontSize: '17px',
+                        color:"#000000",
+                        fontWeight: 'bold',
                         fontFamily: 'Arial, sans-serif'
                     },
                     labels: {
                         rotation: -60,
                         style: {
                             fontSize:'13px',
-                            fontcolor: '#000000',
+                            color: '#000000',
                             fontWeight: 'bold',
+                            fontFamily: "Arial"
                         },
                     },
                     crosshair: true
@@ -75,15 +85,17 @@ $(function () {
                         text: 'TPM',
                         style: {
                             fontSize: '17px',
+                            color: "#000000",
                             fontWeight: 'bold',
                             fontFamily: 'Arial, sans-serif'
-                        }
+                        },
                     },
                     labels: {
                         style: {
                             fontSize:'13px',
-                            fontcolor: '#000000',
+                            color: '#000000',
                             fontWeight: 'bold',
+                            fontFamily: "Arial"
                         },
                     },
                 },

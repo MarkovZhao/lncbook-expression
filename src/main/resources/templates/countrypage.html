@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/semantic.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homepage-customized-style.css}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/components/icon.min.css"/>
+    <meta charset="UTF-8">
+
+    <title>CancerMap: Mainpage</title>
+</head>
+
+<body style="background-color: #0e566c">
+
+<div th:replace="~{common/top_header :: subheader}"></div>
+
+<div style="margin-left: 40px;margin-right: 40px;border-bottom: 2px solid white"></div>
+
+<h2 style="color: white;margin-left: 40px">Summary</h2>
+
+<p></p>
+<div class="row">
+    <div class="col-md-10" style="margin-left: 40px">
+        <div class="col-md-6">
+            <table id="gene_table" class="table" style="color: white"></table>
+        </div>
+
+        <div class="col-md-6">
+            <table id="gene_table1" class="table" style="color: white"></table>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="padding-left: 60px;padding-top: 35px;padding-right: 60px">
+    <div class="panel panel-default">
+        <div class="panel-body" id="bar">
+
+        </div>
+    </div>
+</div>
+
+<div class="row" style="padding-left: 45px;padding-top: 35px;padding-right: 45px">
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-body" id="pie_incidence" style="border-right: 2px solid white">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-body" id="pie_mortality">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row" style="padding-left: 45px;padding-top: 35px;padding-right: 45px">
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div id="mortality_rank_map">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div id="incidence_rank_map">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="padding-left: 45px;padding-top: 35px;padding-right: 45px">
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div id="mortality_map">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div id="incidence_map">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="padding-left: 45px;padding-top: 35px;padding-right: 45px">
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div id="continent_incidence">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div id="continent_mortality">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row" style="padding-left: 45px;padding-top: 35px;padding-right: 45px;padding-bottom: 30px">
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div id="world_incidence">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div id="world_mortality">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<div th:replace="~{common/common_js::common_js}"></div>
+<script th:src="@{/js/CancerMap/country.js}"></script>
+<script th:src="@{/js/CancerMap/select.js}"></script>
+<script th:src="@{/highcharts/highcharts.js}"></script>
+<script th:src="@{highcharts/highcharts-more.js}"></script>
+<script th:src="@{/highcharts/highcharts-3d.js}"></script>
+<script th:src="@{/hicharts/highmaps.js}"></script>
+<!--<script src="http://code.highcharts.com.cn/highcharts/6.1.1/highcharts-3d.js"></script>-->
+<script th:src="@{/highcharts/exporting.js}"></script>
+<script th:src="@{/highcharts/export-data.js}"></script>
+<script src="https://unpkg.com/highcharts/modules/variable-pie.js"></script>
+<script th:src="@{/js/map.js}"></script>
+<script th:src="@{/js/world.js}"></script>
+<script src="https://bigd.big.ac.cn/js/headerfooter-full.js"></script>
+</html>

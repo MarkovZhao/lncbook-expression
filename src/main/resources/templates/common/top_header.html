@@ -12,7 +12,7 @@
     <div class="container-fluid" style="padding-left: 0px">
         <div class="row" style="background-color: #f5f5f5">
             <div class="col-md-12" style="min-height: 136px; background-color: #3482c1;
-            background-image: url('https://bigd.big.ac.cn/LncExpDB/images/background.png'); background-size: cover; box-shadow: 0px 0px 5px rgba(52,130,193,0.75)">
+            background-image: url('https://bigd.big.ac.cn/lncexpdb/images/background.png'); background-size: cover; box-shadow: 0px 0px 5px rgba(52,130,193,0.75)">
                 <div class="container" style="padding-top: 10px;padding-left: 0px;margin-left: 0px">
 
                     <div style="padding-left: 0px;padding-top: 20px;margin-left: 13px">
@@ -38,35 +38,35 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <!--                <a class="navbar-brand" href="/LncExpDB/home" style="padding-top: 12px;padding-bottom: 6px">-->
+                    <!--                <a class="navbar-brand" href="/lncexpdb/home" style="padding-top: 12px;padding-bottom: 6px">-->
                     <!--                    <span>Home</span>-->
                     <!--                </a>-->
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-left: 0px">
                     <ul class="nav navbar-nav" style="padding-left: 0px">
-                        <li><a href="/LncExpDB"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
-                        <li><a href="/LncExpDB/genes/"><span class="glyphicon glyphicon-align-justify"></span>&nbsp;Genes</a></li>
-                        <li><a href="/LncExpDB/featured/"><span class="glyphicon glyphicon-tag"></span>&nbsp;Featured Genes</a></li>
+                        <li><a href="/lncexpdb"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
+                        <li><a href="/lncexpdb/genes/"><span class="glyphicon glyphicon-align-justify"></span>&nbsp;Genes</a></li>
+                        <li><a href="/lncexpdb/featured/"><span class="glyphicon glyphicon-tag"></span>&nbsp;Featured Genes</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>&nbsp;Contexts<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/LncExpDB/normal">Normal Tissue and Cell Line</a></li>
-                                <li><a href="/LncExpDB/development">Organ Development</a></li>
-                                <li><a href="/LncExpDB/preimplantation">Preimplantation Embryo</a></li>
-                                <li><a href="/LncExpDB/differentiation">Cell Differentiation</a></li>
-                                <li><a href="/LncExpDB/subcellular">Subcellular Localization</a></li>
-                                <li><a href="/LncExpDB/exosome">Exosome</a></li>
-                                <li><a href="/LncExpDB/ccle">Cancer Cell Line</a></li>
-                                <li><a href="/LncExpDB/virus">Virus Infection</a></li>
-                                <li><a href="/LncExpDB/circadian">Circadian Rhythm</a></li>
+                                <li><a href="/lncexpdb/normal">Normal Tissue and Cell Line</a></li>
+                                <li><a href="/lncexpdb/development">Organ Development</a></li>
+                                <li><a href="/lncexpdb/preimplantation">Preimplantation Embryo</a></li>
+                                <li><a href="/lncexpdb/differentiation">Cell Differentiation</a></li>
+                                <li><a href="/lncexpdb/subcellular">Subcellular Localization</a></li>
+                                <li><a href="/lncexpdb/exosome">Exosome</a></li>
+                                <li><a href="/lncexpdb/ccle">Cancer Cell Line</a></li>
+                                <li><a href="/lncexpdb/virus">Virus Infection</a></li>
+                                <li><a href="/lncexpdb/circadian">Circadian Rhythm</a></li>
                             </ul>
                         </li>
-                        <li><a href="/LncExpDB/capacity/"><span class="glyphicon glyphicon-stats"></span>&nbsp;Expression Capacity</a></li>
-                        <li><a href="/LncExpDB/interactions"><span class="glyphicon glyphicon-magnet" aria-hidden="true"></span>&nbsp;Interactions</a></li>
-                        <li><a href="/LncExpDB/downloads"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>&nbsp;Downloads</a></li>
-                        <li><a href="/LncExpDB/statistics"><span class="glyphicon glyphicon-signal"></span>&nbsp;Statistics</a></li>
-                        <li><a href="/LncExpDB/help"><span class="glyphicon glyphicon-header"></span>&nbsp;Help</a></li>
+                        <li><a href="/lncexpdb/capacity/"><span class="glyphicon glyphicon-stats"></span>&nbsp;Expression Capacity</a></li>
+                        <li><a href="/lncexpdb/interactions"><span class="glyphicon glyphicon-magnet" aria-hidden="true"></span>&nbsp;Interactions</a></li>
+                        <li><a href="/lncexpdb/downloads"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>&nbsp;Downloads</a></li>
+                        <li><a href="/lncexpdb/statistics"><span class="glyphicon glyphicon-signal"></span>&nbsp;Statistics</a></li>
+                        <li><a href="/lncexpdb/help"><span class="glyphicon glyphicon-header"></span>&nbsp;Help</a></li>
                     </ul>
                 </div>
             </div>
@@ -87,3 +87,96 @@
     </header>
 </div>
 
+<div th:fragment="subheader">
+    <div class="container-fluid" style="padding-left: 30px;min-height: 240px">
+        <div class="row" style="background-color: #0e566c">
+            <!--<div class="col-md-12" style="min-height: 300px; background-color: #0e566c;-->
+            <!--background-image: url('https://bigd.big.ac.cn/lncexpdb/images/background.png'); background-size: cover; box-shadow: 0px 0px 5px rgba(52,130,193,0.75)">-->
+            <div class="container" style="padding-top: 10px;padding-left: 0px;margin-left: 0px">
+
+                <div style="padding-left: 0px;padding-top: 20px;margin-left: 13px">
+                    <div class="col-md-8">
+                        <h1 style="color: white;font-size: 40px">Cancer Map</h1>
+
+                        <h3 style="color: white">Get Started by Selecting Cancer and Country: </h3>
+
+                        <div class="form-group">
+
+                            <div class="col-md-4">
+                                <label style="color: white">Select a Cancer Type</label>
+                                <select name="select_cancer" class="feature form-control col-md-3" style="width: 200px;min-width: 34px" id="select_cancer" data-placeholder="eg. Lung">
+                                    <option value=""></option>
+                                </select>
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <label style="color: white">Select a Country</label>
+                                <select name="feature" class="feature form-control col-md-3" style="width: 200px" id="select_country" data-placeholder="eg. China">
+                                    <option value=""></option>
+                                </select>
+
+                            </div>
+
+                            <div class="col-md-4" style="padding-top: 23px">
+                                <button class="btn btn-info btn-sm" type="button" id="search" data-loading-text="Loading...">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                    Search
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="ui labeled compact icon menu inverted" style="background: inherit">
+
+                            <a href="/lncexpdb/cancermap/home" class="item blue">
+                                <i class="icon home"></i>
+                                Home
+                            </a>
+
+                            <a href="#" class="item blue">
+                                <i class="icon search"></i>
+                                Search
+                            </a>
+
+                            <a href="/lncexpdb/cancermap/download" class="item blue">
+                                <i class="icon download"></i>
+                                Download
+                            </a>
+
+                            <a href="#" class="item blue">
+                                <i class="icon circle question"></i>
+                                Help
+                            </a>
+
+                            <a href="/lncexpdb/cancermap/contact" class="item blue">
+                                <i class="icon mail"></i>
+                                Contact
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<header>
+
+    <div style="display: none">
+        <script>
+            var _hmt = _hmt || [];
+            (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?6135241d036b9e2c1e8a5b127010d808";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+        <script src='https://bigd.big.ac.cn/cdn/js/nsti.statistics.js'></script>
+    </div>
+</header>
+</div>

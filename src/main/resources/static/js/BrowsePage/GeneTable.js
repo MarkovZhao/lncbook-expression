@@ -36,7 +36,7 @@ var genetable = (function (url) {
                 field: 'geneid',
                 align: "center",
                 formatter: function(value,row,index){
-                    return "<a href='https://bigd.big.ac.cn/LncExpDB/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
+                    return "<a href='https://bigd.big.ac.cn/lncexpdb/gene?geneid=" + value + "'target='_blank'>" + value + "</a>"
                 },
                 // sortable: true
 
@@ -48,7 +48,7 @@ var genetable = (function (url) {
                 // sortable: true
             },
             {
-                title: '<a href="/LncExpDB/help#classification" target="_blank" title' + '="Based on their genomic locations in respect to protein-coding genes, we classified lncRNAs into ' +
+                title: '<a href="/lncexpdb/help#classification" target="_blank" title' + '="Based on their genomic locations in respect to protein-coding genes, we classified lncRNAs into ' +
                     'seven groups, Intergenic, Intronic (S), Intronic (AS), Overlapping (S), Overlapping (AS), Sense, ' +
                     'and Antisense. S in the bracket represents that lncRNAs are in the same strand of protein-coding RNAs,' +
                     ' and AS represents lncRNAs are in the antisense strand of protein-coding RNAs.">'+'Classification'+' ' +
@@ -96,7 +96,7 @@ var genetable = (function (url) {
     });
 });
 
-var url1 = "/LncExpDB/all/geneidlist";
+var url1 = "/lncexpdb/all/geneidlist";
 
 $('#featurelnc').select2({
     minimumInputLength: 1,
@@ -115,16 +115,16 @@ $('#featurelnc').select2({
 $('#feature_sect1').change(function () {
 
     if ($('#feature_sect1').val() == "geneid") {
-        url1 = "/LncExpDB/all/geneidlist";
+        url1 = "/lncexpdb/all/geneidlist";
         $('#featurelnc').attr('data-placeholder', 'eg. HSALNG000002');
     } else if ($('#feature_sect1').val() == "symbol") {
-        url1 = "/LncExpDB/all/symlist";
+        url1 = "/lncexpdb/all/symlist";
         $('#featurelnc').attr('data-placeholder', 'eg. MALAT1');
     } else if ($('#feature_sect1').val() == "classification") {
-        url1 = "/LncExpDB/all/classificationlist";
+        url1 = "/lncexpdb/all/classificationlist";
         $('#featurelnc').attr('data-placeholder', 'eg. Intergenic');
     } else if ($('#feature_sect1').val() == "chromosome") {
-        url1 = "/LncExpDB/all/chromosomelist";
+        url1 = "/lncexpdb/all/chromosomelist";
         $('#featurelnc').attr('data-placeholder', 'eg. chr1');
     }
     $('#featurelnc').select2({
@@ -145,14 +145,14 @@ $('#feature_sect1').change(function () {
 
 var list = document.getElementById("featurelnc");
 if(list.options[0].value==""){
-    var url = '/LncExpDB/all/lncall';
+    var url = '/lncexpdb/all/lncall';
     genetable(url)
 }
 
 $('.feature').change(function () {
     var dis = $('.feature').val();
     var v2 = $(".select_filter").val();
-    var url = '/LncExpDB/all/' +v2 + '?term=' + dis;
+    var url = '/lncexpdb/all/' +v2 + '?term=' + dis;
     console.log(url)
     genetable(url);
     if($(this).val() != null && $(this).val()!=""){
@@ -161,7 +161,7 @@ $('.feature').change(function () {
         $('#featurelnc_cancel').hide();
     }
     $("#featurelnc_cancel").on("click",function () {
-        var url = '/LncExpDB/all/lncall';
+        var url = '/lncexpdb/all/lncall';
         genetable(url);
         $("#featurelnc").empty();
         $('#featurelnc_cancel').hide();
@@ -169,7 +169,7 @@ $('.feature').change(function () {
 
     var val = $('.feature').val();
     if(val=="" || val==null){
-        var url = '/LncExpDB/all/lncall';
+        var url = '/lncexpdb/all/lncall';
         genetable(url)
     }
 });
@@ -177,10 +177,10 @@ $('.feature').change(function () {
 $('#classification').change(function () {
     var dis = $('#classification').val();
     if (dis != "All") {
-        url_classification = '/LncExpDB/all/classification' + "?term=" + encodeURIComponent(dis);
+        url_classification = '/lncexpdb/all/classification' + "?term=" + encodeURIComponent(dis);
         genetable(url_classification);
     }else{
-        url = '/LncExpDB/all/lncall';
+        url = '/lncexpdb/all/lncall';
         genetable(url);
     }
 
@@ -189,10 +189,10 @@ $('#classification').change(function () {
 $('#chrome').change(function () {
     var dis = $('#chrome').val();
     if (dis != "All") {
-        url_chromosome = '/LncExpDB/all/chromosome' + "?term=" + encodeURIComponent(dis);
+        url_chromosome = '/lncexpdb/all/chromosome' + "?term=" + encodeURIComponent(dis);
         genetable(url_chromosome);
     }else{
-    url = '/LncExpDB/all/lncall';
+    url = '/lncexpdb/all/lncall';
     genetable(url);
 }
 })

@@ -2,11 +2,11 @@ package com.ngdc.lncbookexpression.dto;
 
 public class CEdto {
     String geneid;
-    String lnc_name;
+    String lncname;
     String pcc;
     String pvalue;
     String pcg;
-    String pcg_name;
+    String pcgname;
     String min_dis;
     String max_dis;
 
@@ -34,14 +34,6 @@ public class CEdto {
         this.geneid = geneid;
     }
 
-    public String getLnc_name() {
-        return lnc_name;
-    }
-
-    public void setLnc_name(String lnc_name) {
-        this.lnc_name = lnc_name;
-    }
-
     public String getPcc() {
         return pcc;
     }
@@ -66,11 +58,19 @@ public class CEdto {
         this.pcg = pcg;
     }
 
-    public String getPcg_name() {
-        return pcg_name;
+    public String getLncname() {
+        return lncname;
     }
 
-    public void setPcg_name(String pcg_name) {
-        this.pcg_name = pcg_name;
+    public void setLncname(String lncname) {
+        this.lncname = lncname;
+    }
+
+    public String getPcgname() {
+        return pcgname;
+    }
+
+    public void setPcgname(String pcgname) {
+        this.pcgname = pcgname;
     }
 }
